@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "geheimvz"
+version = "1.0.0"
+description = "Slow Social Network"
+authors = ["Leonard Techel <git@barnslig.eu>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.2"
+django-environ = "^0.11.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
