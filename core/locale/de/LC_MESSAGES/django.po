@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-23 22:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/forms.py:49 core/templates/core/user_detail.html:23
+msgid "Informations"
+msgstr "Informationen"
+
+#: core/forms.py:50 core/views.py:36
+msgid "General"
+msgstr "Allgemeines"
+
+#: core/forms.py:52 core/views.py:38
+msgid "Personal"
+msgstr "Persönliches"
+
+#: core/forms.py:66
+msgid "save"
+msgstr ""
+
+#: core/models.py:10
+msgid "Profile picture"
+msgstr "Profilbild"
+
+#: core/models.py:14
+msgid "Nickname"
+msgstr "Spitzname"
+
+#: core/models.py:17
+msgid "Pronouns"
+msgstr "Pronomen"
+
+#: core/models.py:19
+msgid "Birthday"
+msgstr "Geburtstag"
+
+#: core/models.py:22
+msgid "Looking for"
+msgstr "Auf der Suche nach"
+
+#: core/models.py:24
+msgid "Relationship"
+msgstr "Beziehungsstatus"
+
+#: core/models.py:26
+msgid "Hobbies"
+msgstr "Hobbys"
+
+#: core/models.py:27
+msgid "What I like"
+msgstr "Was ich mag"
+
+#: core/models.py:29
+msgid "What I don't like"
+msgstr "Was ich nicht mag"
+
+#: core/models.py:32
+msgid "Favourite music"
+msgstr "Lieblingsmusik"
+
+#: core/models.py:35
+msgid "Favourite movies"
+msgstr "Lieblingsfilme"
+
+#: core/models.py:38
+msgid "Favourite books"
+msgstr "Lieblingsbücher"
+
+#: core/models.py:41
+msgid "Favourite food"
+msgstr "Lieblingsessen"
+
+#: core/models.py:44
+msgid "I am good at"
+msgstr "Darin bin ich gut"
+
+#: core/models.py:46
+msgid "I wish for"
+msgstr "Was ich mir wünsche"
+
+#: core/templates/core/user_detail.html:6
+#, python-format
+msgid "%(name)s's page"
+msgstr "Seite von %(name)s"
+
+#: core/templates/core/user_detail.html:16
+msgid "Edit my page"
+msgstr "Meine Seite bearbeiten"
+
+#: core/templates/core/user_detail.html:25
+msgid "Account"
+msgstr "Account"
+
+#: core/templates/core/user_detail.html:29
+msgid "Name"
+msgstr "Name"
+
+#: core/templates/core/user_detail.html:34
+msgid "Member since"
+msgstr "Mitglied seit"
+
+#: core/templates/core/user_detail.html:39
+msgid "Last update"
+msgstr "Letztes Update"
+
+#: core/views.py:63
+msgid "Profile successfully updated"
+msgstr ""

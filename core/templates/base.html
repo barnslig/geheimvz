@@ -1,0 +1,55 @@
+{% load django_vite %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeheimVZ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% vite_hmr_client %}
+    {% vite_asset 'core/assets/main.ts' %}
+  </head>
+  <body>
+    <div class="max-w-screen-lg mx-auto my-5">
+      <div class="grid grid-cols-12 gap-4">
+        <aside class="col-span-2">
+          <a class="block py-1 mb-2 border-b border-rose-600" href="/">
+            <img src="{% static 'core/logo.svg' %}" alt="GeheimVZ" />
+          </a>
+          {% block aside %}
+          {% endblock %}
+        </aside>
+        <div class="col-span-10">
+          <header class="">
+            <div class="flex items-center justify-between px-4 py-3 text-white border border-rose-600 rounded-tr-2xl bg-gradient-to-t from-rose-500 to-rose-400">
+              <div class="text-xl uppercase"><span class="font-bold">Geheim</span>Verzeichnis</div>
+              {% block headernav %}
+                <nav>
+                  <a class="px-2 py-1 hover:bg-rose-400" href="{% url 'login' %}">einloggen</a>
+                  <a class="px-2 py-1 hover:bg-rose-400" href="">hier anmelden</a>
+                  <a class="px-2 py-1 hover:bg-rose-400" href="">hilfe</a>
+                </nav>
+              {% endblock %}
+            </div>
+            <h1 class="px-4 py-1 text-lg font-bold text-white border border-t-0 bg-rose-400 border-rose-600">{% block headertitle %}Bist du schon drin?{% endblock %}</h1>
+          </header>
+          <main>
+            {% if messages %}
+            <div class="container my-4">
+              <ul class="messages">
+                  {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

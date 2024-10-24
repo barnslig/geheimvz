@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block aside %}
+<nav>
+  <ul>
+    <li><a class="block border-b" href="">Start</a></li>
+    <li><a class="block border-b" href="{% url 'profile' request.user.id %}">Meine Seite</a></li>
+    <li><a class="block border-b" href="">Meine Freunde</a></li>
+    <li><a class="block border-b" href="">Meine Gruppen</a></li>
+    <li><a class="block border-b" href="">Nachrichten</a></li>
+    <li><a class="block border-b" href="">Mein Account</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block headernav %}
+<nav class="flex">
+  <a class="px-2 py-1 hover:bg-rose-400" href="">einladen</a>
+  <a class="px-2 py-1 hover:bg-rose-400" href="">hilfe</a>
+  <form action="{% url 'logout' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="px-2 py-1 hover:bg-rose-400">raus hier</button>
+  </form>
+</nav>
+{% endblock %}

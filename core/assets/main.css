@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form div {
+  @apply grid grid-cols-2 gap-2 mx-4 mb-2;
+}
+
+.form label {
+}
+
+.form input,
+.form textarea {
+  @apply px-1 border;
+}

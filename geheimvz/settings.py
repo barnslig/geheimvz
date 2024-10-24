@@ -18,6 +18,7 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
     DEBUG=(bool, False),
     LANGUAGE_CODE=(str, "en-us"),
+    LOG_LEVEL=(str, "WARNING"),
     TIME_ZONE=(str, "UTC"),
 )
 
@@ -48,10 +49,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_vite",
+    "crispy_forms",
+    "crispy_tailwind",
+    "debug_toolbar",
+    "pictures",
+    "core.apps.CoreConfig",
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -107,6 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "core.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -124,8 +135,76 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "access_key": env("S3_ACCESS_KEY_ID"),
+            "secret_key": env("S3_SECRET_ACCESS_KEY"),
+            "bucket_name": env("S3_BUCKET_NAME"),
+            "endpoint_url": env("S3_ENDPOINT_URL"),
+            "custom_domain": env("S3_CUSTOM_DOMAIN"),
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# User-Uploaded files
+# https://docs.djangoproject.com/en/5.1/topics/files/
+
+MEDIA_ROOT = Path(env("MEDIA_ROOT"))
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DJANGO_VITE = {"default": {"dev_mode": DEBUG, "static_url_prefix": "core/assets"}}
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
+# Logging
+# https://docs.djangoproject.com/en/5.1/topics/logging/
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": env("LOG_LEVEL"),
+            "propagate": False,
+        },
+    },
+}
+
+INTERNAL_IPS = ["127.0.0.1"]
+
+PICTURES = {
+    "BREAKPOINTS": {
+        "md": 768,
+        "lg": 1024,
+    },
+    "GRID_COLUMNS": 12,
+    "CONTAINER_WIDTH": 1024,
+    # "FILE_TYPES": ["AVIF"],
+    # "PIXEL_DENSITIES": [1, 2],
+    "USE_PLACEHOLDERS": False,
+    # "QUEUE_NAME": "pictures",
+    # "PROCESSOR": "pictures.tasks.process_picture",
+}

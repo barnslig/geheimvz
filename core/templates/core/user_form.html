@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+Das bin ich
+{% endblock %}
+
+{% block content %}
+<div class="mx-4 my-4">
+  <div class="mx-3 my-4">
+    <p>Hier kannst du dein Profil anpassen!</p>
+  </div>
+
+  <form class="form" enctype="multipart/form-data" method="post">
+    {% crispy form %}
+  </form>
+</div>
+{% endblock %}

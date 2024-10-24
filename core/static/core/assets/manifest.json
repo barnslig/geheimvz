@@ -1,0 +1,11 @@
+{
+  "core/assets/main.ts": {
+    "file": "assets/main-BnbFeMRp.js",
+    "name": "main",
+    "src": "core/assets/main.ts",
+    "isEntry": true,
+    "css": [
+      "assets/main-C_IMsFqW.css"
+    ]
+  }
+}

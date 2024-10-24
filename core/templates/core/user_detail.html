@@ -1,0 +1,62 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load pictures %}
+
+{% block headertitle %}
+{% blocktranslate with name=user.username %}{{ name }}'s page{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-10 gap-4">
+  <div class="col-span-3 my-3">
+    {% if user.image %}
+      {% picture user.image img_loading="lazy" img_class="w-full p-1 border mb-4" lg=3 %}
+    {% endif %}
+
+    <ul class="text-rose-500">
+    {% if current %}
+      <li><a class="block px-1 border-b border-current hover:text-rose-700" href="{% url 'profile-update' %}">{% translate 'Edit my page' %}</a></li>
+    {% endif %}
+    </ul>
+  </div>
+
+  <div class="col-span-7">
+    <section>
+      <h2 class="px-3 py-1 my-4 font-bold border-y bg-rose-200 text-rose-700 border-rose-400">{% translate 'Informations' %}</h2>
+
+      <h3 class="mt-5 font-bold text-rose-500">{% translate 'Account' %}</h3>
+
+      <dl>
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-slate-500">{% translate 'Name' %}:</dt>
+          <dd class="col-span-4">{{ user.username }}</dd>
+        </div>
+
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-slate-500">{% translate 'Member since' %}:</dt>
+          <dd class="col-span-4">{{ user.date_joined|date }}</dd>
+        </div>
+
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-slate-500">{% translate 'Last update' %}:</dt>
+          <dd class="col-span-4">{{ user.last_login|date }}</dd>
+        </div>
+      </dl>
+
+      {% for section in sections %}
+        <h3 class="mt-5 font-bold text-rose-500">{{ section.headline }}</h3>
+
+        <dl>
+          {% for field in section.fields %}
+            <div class="grid grid-cols-7 gap-4">
+              <dt class="col-span-3 text-slate-500">{{ field.label }}:</dt>
+              <dd class="col-span-4">{{ field.value }}</dd>
+            </div>
+          {% endfor %}
+        </dl>
+      {% endfor%}
+    </section>
+  </div>
+</div>
+{% endblock %}

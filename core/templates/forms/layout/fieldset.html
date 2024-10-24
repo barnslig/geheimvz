@@ -1,0 +1,6 @@
+<fieldset {% if fieldset.css_id %}id="{{ fieldset.css_id }}"{% endif %}
+    class="my-4 {{ fieldset.css_class }} {{ form_style }}"
+    {{ fieldset.flat_attrs|safe }}>
+    {% if legend %}<legend class="block mx-4 mt-5 font-bold text-rose-500">{{ legend|safe }}</legend>{% endif %}
+    {{ fields|safe }}
+</fieldset>
