@@ -18,9 +18,19 @@ import pillow_avif
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
+    DATABASE_URL=(str, None),
     DEBUG=(bool, False),
-    LANGUAGE_CODE=(str, "en-us"),
+    LANGUAGE_CODE=(str, "de-de"),
     LOG_LEVEL=(str, "WARNING"),
+    S3_ACCESS_KEY_ID=(str, None),
+    S3_BUCKET_NAME=(str, None),
+    S3_CUSTOM_DOMAIN=(str, None),
+    S3_ENDPOINT_URL=(str, None),
+    S3_SECRET_ACCESS_KEY=(str, None),
+    SECRET_KEY=(
+        str,
+        "django-insecure-0vmd)dzp1if@fftcsgaka2y5m5+&r#k^!1yq5d3pq8*w)l3ku^",
+    ),
     TIME_ZONE=(str, "UTC"),
 )
 
@@ -296,6 +306,8 @@ IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic
 # Content-Security-Policy
 # https://django-csp.readthedocs.io/en/3.8/
 
-CSP_IMG_SRC = ["'self'", env("S3_CUSTOM_DOMAIN") + "/", "data:"]
+CSP_IMG_SRC = ["'self'", "data:"]
+if env("S3_CUSTOM_DOMAIN"):
+    CSP_IMG_SRC.append(env("S3_CUSTOM_DOMAIN") + "/")
 
 CSP_REPORT_ONLY = DEBUG
