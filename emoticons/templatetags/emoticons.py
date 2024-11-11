@@ -1,4 +1,5 @@
 from django import template
+from django.templatetags.static import static
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
@@ -16,7 +17,7 @@ def apply_emoticons(text: str):
     for emoticon, image_url in emoticons:
         text = text.replace(
             emoticon,
-            f'<img class="inline image-pixelated" src="{image_url}" alt="{emoticon}" />',
+            f'<img class="inline image-pixelated" src="{static(image_url)}" alt="{emoticon}" />',
         )
 
     return mark_safe(text)

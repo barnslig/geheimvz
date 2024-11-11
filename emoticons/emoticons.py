@@ -1,5 +1,3 @@
-from django.templatetags.static import static
-
 emoticons = [
     "arrow",
     "biggrin",
@@ -27,4 +25,4 @@ emoticons = [
     "wink",
 ]
 
-emoticons = [(f":{s}:", static(f"emoticons/icon_{s}.gif")) for s in emoticons]
+emoticons = [(f":{s}:", f"emoticons/icon_{s}.gif") for s in emoticons]
