@@ -1,0 +1,36 @@
+{% load emoticons %}
+{% load i18n %}
+
+<article class="grid grid-cols-7 gap-4 my-4">
+  <div class="col-span-1">
+    {% component "profile_image" obj=created_by image_field="image_profile_small" / %}
+  </div>
+
+  <div class="col-span-6">
+    <header class="px-2 py-1 border-y border-neutral-300 bg-neutral-200 text-neutral-content">
+      <div>
+        {% url 'profile' created_by.id as href %}
+        {% blocktranslate with href=href name=created_by.display_name trimmed %}
+          <a class="font-bold" href="{{ href }}">{{ name }}</a> has written
+        {% endblocktranslate %}
+      </div>
+      <div class="text-sm">{% blocktranslate with created_at=created_at %}At {{ created_at }}{% endblocktranslate %}</div>
+      {% if component_vars.is_filled.subline %}
+        <div class="text-sm">{% slot "subline" %}{% endslot %}</div>
+      {% endif %}
+    </header>
+
+    <div class="mx-2 my-3 mixed-copy">
+      {{ post|emoticons|linebreaks }}
+      <p class="text-sm">
+        {% if can_send_messages %}
+          <a href="{% url 'message_create_to' created_by.pk %}">[{% translate 'Send message' %}]</a>
+        {% endif %}
+
+        {% if component_vars.is_filled.actions %}
+          {% slot "actions" %}{% endslot %}
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</article>

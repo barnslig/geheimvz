@@ -1,0 +1,24 @@
+{% extends "base-login.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'This is me' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<p class="my-4">{% translate 'Update your account.' %} <a href="{% url 'profile' request.user.id %}">[{% translate 'Back to your profile' %}]</a></p>
+
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+
+<p class="my-4">{% translate 'Other actions' %}</p>
+<p class="flex gap-2 my-4">
+  <a class="btn" href="{% url 'password_change' %}">{% translate 'Change password' %}</a>
+  <a class="btn" href="{% url 'account-delete' %}">{% translate 'Delete account' %}</a>
+</p>
+{% endblock %}

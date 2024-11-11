@@ -1,0 +1,20 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+  {{ headline }}
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-sm mx-auto my-6">
+    <p class="mb-4">{{ copy }}</p>
+    <form action="{{ action }}" method="post">
+      {% csrf_token %}
+      <div class="flex justify-between">
+        <a class="btn" href="{{ cancel_href }}">{% translate 'Go back' %}</a>
+        <button class="btn" type="submit">{% translate 'Confirm' %}</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

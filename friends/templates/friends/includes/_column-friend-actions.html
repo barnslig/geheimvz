@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% with friend=record.from_user %}
+<ul class="actions">
+  <li><a class="action" href="{% url 'friend-remove' friend.pk  %}">{% translate 'End friendship' %}</a></li>
+  <li><a class="action" href="{% url 'profile' friend.pk %}">{% blocktranslate with name=friend.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'message_create_to' friend.pk %}">{% translate 'Send message' %}</a></li>
+</ul>
+{% endwith %}

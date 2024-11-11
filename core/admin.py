@@ -20,6 +20,10 @@ UserAdmin.fieldsets += (
         _("Personal"),
         {
             "fields": (
+                "mothers_maiden_name",
+                "name_of_first_pet",
+                "grew_up_street",
+                "first_car_make",
                 "looking_for",
                 "relationship",
                 "hobbies",
@@ -35,5 +39,6 @@ UserAdmin.fieldsets += (
         },
     ),
 )
+
 
 admin.site.register(User, UserAdmin)

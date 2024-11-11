@@ -1,0 +1,16 @@
+{% extends "base-login.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'This is me' %}
+{% endblock %}
+
+{% block content %}
+<p class="my-4">{% translate 'Delete your account.' %} <a href="{% url 'account' %}">[{% translate 'Go to account settings' %}]</a></p>
+
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

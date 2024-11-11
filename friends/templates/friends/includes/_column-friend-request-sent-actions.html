@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% with user=record.to_user %}
+<ul class="actions">
+  <li>
+    <form class="flex flex-1" method="post" action="{% url 'friendship_cancel' record.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="action">{% translate 'Cancel friend request' %}</button>
+    </form>
+  </li>
+  <li><a class="action" href="{% url 'profile' user.id %}">{% blocktranslate with name=user.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'message_create_to' user.pk %}">{% translate 'Send message' %}</a></li>
+</ul>
+{% endwith %}

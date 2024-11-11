@@ -1,0 +1,25 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+{{ user.display_name }}
+{% endblock %}
+
+{% block content %}
+<p class="my-4"><a href="{% url 'profile' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to {{ name }}'s page{% endblocktranslate %}]</a></p>
+
+<h2 class="mt-4 mb-2 text-lg font-bold">{% blocktranslate with name=user.display_name trimmed %}Pinboard of {{ name }}{% endblocktranslate %}</h2>
+
+<p class="mb-4"><a href="{% url 'pinboard-create' user.pk %}">{% translate 'Write something' %}</a></p>
+
+{% for item in page_obj %}
+  {% component "post" created_at=item.created_at created_by=item.created_by post=item.message %}
+    {% fill "actions" %}
+      <a href="{% url 'pinboard_delete' item.pk %}">[{% translate 'Delete post' %}]</a>
+    {% endfill %}
+  {% endcomponent %}
+{% endfor %}
+
+{% component "page_pagination" page_obj=page_obj %}{% endcomponent %}
+{% endblock %}

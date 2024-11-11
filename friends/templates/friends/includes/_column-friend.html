@@ -1,0 +1,29 @@
+{% load emoticons %}
+{% load i18n %}
+{% load static %}
+
+<div class="flex gap-4">
+  <div class="w-32">
+    {% component "profile_image" obj=value image_field="image_profile_small" / %}
+  </div>
+  <dl>
+    <div class="grid grid-cols-3 gap-4">
+      <dt class="col-span-1 text-base-accent">{% translate 'Name' %}:</dt>
+      <dd class="col-span-2"><a href="{% url 'profile' value.id %}">{{ value.display_name }}</a></dd>
+    </div>
+
+    {% if show_created %}
+    <div class="grid grid-cols-3 gap-4">
+      <dt class="col-span-1 text-base-accent">{% translate 'Created' %}:</dt>
+      <dd class="col-span-2">{{ record.created }}</dd>
+    </div>
+    {% endif %}
+
+    {% if show_message %}
+    <div class="grid grid-cols-3 gap-4">
+      <dt class="col-span-1 text-base-accent">{% translate 'Message' %}:</dt>
+      <dd class="col-span-2">{{ record.message|emoticons|linebreaks }}</dd>
+    </div>
+    {% endif %}
+  </dl>
+</div>

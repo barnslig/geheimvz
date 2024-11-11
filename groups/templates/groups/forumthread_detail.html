@@ -1,0 +1,26 @@
+{% extends "base-login.html" %}
+
+{% load emoticons %}
+{% load i18n %}
+{% load static %}
+
+{% block headertitle %}
+{{ thread.group.name }}
+{% endblock %}
+
+{% block content %}
+  <p class="my-4"><a href="{% url 'group' thread.group.pk %}">[{% translate 'Back to group' %}]</a></p>
+
+  <h2 class="mt-4 mb-2 text-lg font-bold">{{ thread.topic }}</h2>
+
+  <p class="mb-4">
+    <a href="{% url 'forumthread_list' thread.group.pk %}">{% translate 'All topics' %}</a> |
+    <a href="{% url 'forumpost_create' thread.pk %}">{% translate 'Write post' %}</a>
+  </p>
+
+  {% for post in page_obj %}
+    {% component "post" created_at=post.created_at created_by=post.created_by post=post.post %}{% endcomponent %}
+  {% endfor %}
+
+  {% component "page_pagination" page_obj=page_obj %}{% endcomponent %}
+{% endblock %}

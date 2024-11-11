@@ -1,0 +1,10 @@
+<section>
+  <h2 class="px-3 py-1 {% if component_vars.is_filled.actions %}mt-4{% else %}my-4{% endif %} font-bold border-y bg-secondary-200 text-secondary-content border-secondary-300">{{ headline }}</h2>
+  {% if component_vars.is_filled.actions %}
+    <div class="flex justify-between px-3 py-1 mb-4 border-b bg-secondary-100 border-secondary-300">
+      {% slot "actions" %}{% endslot %}
+    </div>
+  {% endif %}
+
+  {% slot "content" default required %}{% endslot %}
+</section>

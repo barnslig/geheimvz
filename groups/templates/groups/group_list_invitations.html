@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block headertitle %}
+{% translate 'Group invitations' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+{% if table.data %}
+  {% render_table table %}
+{% else %}
+  <p class="my-4">{% translate 'You have no open group invites.' %}</p>
+{% endif %}
+
+{% endblock %}

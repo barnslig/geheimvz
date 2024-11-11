@@ -1,0 +1,102 @@
+{% load django_tables2 %}
+{% load i18n l10n %}
+{% block table-wrapper %}
+<div class="my-4 table-container">
+  {% block table %}
+    <table {% render_attrs table.attrs %}>
+      {% block table.thead %}
+      {% if table.show_header %}
+        <thead {{ table.attrs.thead.as_html }}>
+          <tr>
+          {% for column in table.columns %}
+            <th {{ column.attrs.th.as_html }}>
+              {% if column.orderable %}
+                <a href="{% querystring table.prefixed_order_by_field=column.order_by_alias.next %}">{{ column.header }}</a>
+              {% else %}
+                {{ column.header }}
+              {% endif %}
+            </th>
+          {% endfor %}
+          </tr>
+        </thead>
+      {% endif %}
+      {% endblock table.thead %}
+      {% block table.tbody %}
+        <tbody {{ table.attrs.tbody.as_html }}>
+        {% for row in table.paginated_rows %}
+          {% block table.tbody.row %}
+          <tr {{ row.attrs.as_html }}>
+            {% for column, cell in row.items %}
+              <td {{ column.attrs.td.as_html }}>{% if column.localize == None %}{{ cell }}{% else %}{% if column.localize %}{{ cell|localize }}{% else %}{{ cell|unlocalize }}{% endif %}{% endif %}</td>
+            {% endfor %}
+          </tr>
+          {% endblock table.tbody.row %}
+        {% empty %}
+          {% if table.empty_text %}
+          {% block table.tbody.empty_text %}
+          <tr><td colspan="{{ table.columns|length }}">{{ table.empty_text }}</td></tr>
+          {% endblock table.tbody.empty_text %}
+          {% endif %}
+        {% endfor %}
+        </tbody>
+      {% endblock table.tbody %}
+      {% block table.tfoot %}
+      {% if table.has_footer %}
+      <tfoot {{ table.attrs.tfoot.as_html }}>
+        <tr>
+        {% for column in table.columns %}
+          <td {{ column.attrs.tf.as_html }}>{{ column.footer }}</td>
+        {% endfor %}
+        </tr>
+      </tfoot>
+      {% endif %}
+      {% endblock table.tfoot %}
+    </table>
+  {% endblock table %}
+
+  {% block pagination %}
+    {% if table.page and table.paginator.num_pages > 1 %}
+    <div class="pt-4 text-sm text-right border-t border-primary-200">
+      {% translate 'Page:' %}
+      <ul class="inline-flex gap-2">
+        {% if table.page.has_previous %}
+          {% block pagination.previous %}
+            <li>
+              <a href="{% querystring table.prefixed_page_field=1 %}" title="{% trans 'first' %}">|&laquo;</a>
+            </li>
+            <li>
+              <a href="{% querystring table.prefixed_page_field=table.page.previous_page_number %}" title="{% trans 'previous' %}">&laquo;</a>
+            </li>
+          {% endblock pagination.previous %}
+        {% endif %}
+        {% if table.page.has_previous or table.page.has_next %}
+        {% block pagination.range %}
+          {% for p in table.page|table_page_range:table.paginator %}
+            <li>
+              {% if p == '...' %}
+                <a href="#">{{ p }}</a>
+              {% else %}
+                <a {% if p == table.page.number %}class="font-bold text-black"{% endif %} href="{% querystring table.prefixed_page_field=p %}">
+                  {{ p }}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% endblock pagination.range %}
+        {% endif %}
+        {% if table.page.has_next %}
+          {% block pagination.next %}
+            <li>
+              <a href="{% querystring table.prefixed_page_field=table.page.next_page_number %}" title="{% trans 'next' %}">&raquo;</a>
+            </li>
+            <li>
+              <a href="{% querystring table.prefixed_page_field=table.paginator.num_pages %}" title="{% trans 'last' %}">&raquo;|</a>
+            </li>
+          {% endblock pagination.next %}
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  {% endblock pagination %}
+</div>
+{% endblock table-wrapper %}

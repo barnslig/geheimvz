@@ -1,0 +1,32 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'Invite friends' %}
+{% endblock %}
+
+{% block content %}
+  <h2 class="mt-4 mb-2 text-lg font-bold">{% translate 'Invite your friends!' %}</h2>
+
+  {% if invites %}
+    <ul class="divide-y divide-primary-300">
+      {% for invite in invites %}
+        <li class="py-4">
+          <p class="mb-2">{% translate 'Your code' %}</p>
+          <div class="mb-2">
+            <div class="inline-flex gap-10 py-4 pl-10 pr-4 font-mono text-lg font-bold border border-neutral-300 bg-neutral-200 text-neutral-content whitespace-nowrap">
+              <code>{{ invite.code }}</code>
+              <button type="button" title="{% translate 'Copy to clipboard' %}" data-copy-to-clipboard="{{ invite.code }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </div>
+          </div>
+          <p>{% blocktranslate with count=invite.remaining %}Remaining invites: {{ count }}{% endblocktranslate %}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="mb-4">{% translate 'You have no invites left.' %}</p>
+  {% endif %}
+{% endblock %}

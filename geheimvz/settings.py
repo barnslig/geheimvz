@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from pathlib import Path
 import environ
 import os
-from pathlib import Path
+
+import pillow_avif
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
@@ -39,6 +41,8 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
+INTERNAL_IPS = ["127.0.0.1"]
+
 
 # Application definition
 
@@ -48,13 +52,26 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django_vite",
+    "django_components",
+    "csp",
     "crispy_forms",
     "crispy_tailwind",
-    "debug_toolbar",
-    "pictures",
+    "imagekit",
+    "friendship",
+    "django_tables2",
+    "account.apps.AccountConfig",
     "core.apps.CoreConfig",
+    "emoticons.apps.EmoticonsConfig",
+    "friends.apps.FriendsConfig",
+    "groups.apps.GroupsConfig",
+    "invites.apps.InvitesConfig",
+    "pinboard.apps.PinboardConfig",
+    "private_messages.apps.PrivateMessagesConfig",
+    "search.apps.SearchConfig",
+    "debug_toolbar",
     "django_cleanup.apps.CleanupConfig",
 ]
 
@@ -68,6 +85,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "csp.middleware.CSPMiddleware",
 ]
 
 ROOT_URLCONF = "geheimvz.urls"
@@ -76,13 +94,28 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+            ],
+            "builtins": [
+                "django_components.templatetags.component_tags",
+            ],
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    [
+                        # Default Django loader
+                        "django.template.loaders.filesystem.Loader",
+                        # Inluding this is the same as APP_DIRS=True
+                        "django.template.loaders.app_directories.Loader",
+                        # Components loader
+                        "django_components.template_loader.Loader",
+                    ],
+                )
             ],
         },
     },
@@ -119,6 +152,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "core.User"
 
+LOGIN_REDIRECT_URL = "index-login"
+
+LOGOUT_REDIRECT_URL = "index"
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -133,8 +171,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+# https://django-storages.readthedocs.io/en/latest/
+# https://whitenoise.readthedocs.io/en/stable/django.html#add-compression-and-caching-support
+# https://github.com/EmilStenstrom/django-components/blob/master/README.md#installation
 
 STATIC_URL = "static/"
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
@@ -153,21 +195,22 @@ STORAGES = {
     },
 }
 
-# User-Uploaded files
-# https://docs.djangoproject.com/en/5.1/topics/files/
+WHITENOISE_ROOT = BASE_DIR / "geheimvz/static"
 
-MEDIA_ROOT = Path(env("MEDIA_ROOT"))
-MEDIA_URL = "/media/"
+STATICFILES_FINDERS = [
+    # Default finders
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    # Django components
+    "django_components.finders.ComponentsFileSystemFinder",
+]
 
-# Default primary key field type
+
+# Default primary-200 key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DJANGO_VITE = {"default": {"dev_mode": DEBUG, "static_url_prefix": "core/assets"}}
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-CRISPY_TEMPLATE_PACK = "tailwind"
 
 # Logging
 # https://docs.djangoproject.com/en/5.1/topics/logging/
@@ -193,18 +236,66 @@ LOGGING = {
     },
 }
 
-INTERNAL_IPS = ["127.0.0.1"]
 
-PICTURES = {
-    "BREAKPOINTS": {
-        "md": 768,
-        "lg": 1024,
+# Vite Integration
+# https://github.com/MrBin99/django-vite
+
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": DEBUG,
+        "static_url_prefix": "core/assets",
     },
-    "GRID_COLUMNS": 12,
-    "CONTAINER_WIDTH": 1024,
-    # "FILE_TYPES": ["AVIF"],
-    # "PIXEL_DENSITIES": [1, 2],
-    "USE_PLACEHOLDERS": False,
-    # "QUEUE_NAME": "pictures",
-    # "PROCESSOR": "pictures.tasks.process_picture",
 }
+
+
+# Crispy Forms
+# https://django-crispy-forms.readthedocs.io/en/latest/
+# https://django-crispy-forms.github.io/crispy-tailwind/
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
+
+
+# Tables
+# https://django-tables2.readthedocs.io/en/latest/pages/custom-rendering.html
+
+DJANGO_TABLES2_TABLE_ATTRS = {
+    "class": "w-full table-auto",
+    "thead": {
+        "class": "border-t border-b bg-secondary-200 border-secondary-300 text-secondary-content",
+    },
+    "tbody": {
+        "class": "divide-y divide-primary-300",
+    },
+    "th": {
+        "class": "px-2 py-1 text-left",
+    },
+    "td": {
+        "class": "px-2 py-4 align-top",
+    },
+}
+
+DJANGO_TABLES2_TEMPLATE = "core/django_tables2/table.html"
+
+
+# Components
+# https://github.com/EmilStenstrom/django-components
+
+COMPONENTS = {
+    "dirs": [],
+}
+
+
+# Image Transforms
+# https://django-imagekit.readthedocs.io/en/latest/
+
+IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic"
+
+
+# Content-Security-Policy
+# https://django-csp.readthedocs.io/en/3.8/
+
+CSP_IMG_SRC = ["'self'", env("S3_CUSTOM_DOMAIN") + "/", "data:"]
+
+CSP_REPORT_ONLY = DEBUG

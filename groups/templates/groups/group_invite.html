@@ -1,0 +1,15 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% blocktranslate with name=group.name %}Invite to group "{{ name }}"{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<p class="my-4">{% translate 'Invite a friend to the group!' %} <a href="{% url 'group' group.pk %}">[{% translate 'Back to group' %}]</a></p>
+<form method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

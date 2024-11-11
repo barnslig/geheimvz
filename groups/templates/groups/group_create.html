@@ -1,0 +1,16 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% translate 'Create new group' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<form class="mb-4 form" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

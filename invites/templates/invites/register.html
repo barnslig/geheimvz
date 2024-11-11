@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'Register' %}
+{% endblock %}
+
+{% block content %}
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

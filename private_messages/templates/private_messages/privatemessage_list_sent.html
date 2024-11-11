@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block headertitle %}
+{% translate 'My messages' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+{% if table.data %}
+  <p class="my-4">{% blocktranslate count count=page_obj.paginator.count %}You have sent one message.{% plural %}You have sent {{ count }} messages.{% endblocktranslate %}</p>
+  {% render_table table %}
+{% else %}
+  <p class="my-4">{% translate 'You have not yet sent any messages.' %}</p>
+{% endif %}
+{% endblock %}

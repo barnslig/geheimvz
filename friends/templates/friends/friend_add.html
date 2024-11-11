@@ -1,0 +1,14 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% blocktranslate with name=other_user.display_name %}Send a friend request to {{ name }}{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-06 11:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pinboard/forms.py:23
+msgid "Write onto pinboard"
+msgstr "Auf die Pinnwand schreiben"
+
+#: pinboard/models.py:11 pinboard/models.py:31
+msgid "Pinboard Message"
+msgstr "Pinnwand-Nachricht"
+
+#: pinboard/models.py:12
+msgid "Pinboard Messages"
+msgstr "Pinnwand-Nachrichten"
+
+#: pinboard/models.py:19
+msgid "Created by"
+msgstr "Erstellt von"
+
+#: pinboard/models.py:25
+msgid "Created for"
+msgstr "Erstellt für"
+
+#: pinboard/templates/pinboard/pinboardmessage_form.html:7
+#, python-format
+msgid "Write onto the pinboard of %(name)s"
+msgstr "Schreibe auf die Pinnwand von %(name)s"
+
+#: pinboard/templates/pinboard/pinboardmessage_form.html:13
+msgid "Leave a nice message!"
+msgstr "Lass eine nette Nachricht da!"
+
+#: pinboard/templates/pinboard/pinboardmessage_form.html:14
+#: pinboard/templates/pinboard/pinboardmessage_list.html:10
+#, python-format
+msgid "Back to %(name)s's page"
+msgstr "Zur Seite von %(name)s"
+
+#: pinboard/templates/pinboard/pinboardmessage_form.html:15
+#, python-format
+msgid "Back to %(name)s's pinboard"
+msgstr "Zur Pinnwand von %(name)s"
+
+#: pinboard/templates/pinboard/pinboardmessage_list.html:12
+#, python-format
+msgid "Pinboard of %(name)s"
+msgstr "Pinnwand von %(name)s"
+
+#: pinboard/templates/pinboard/pinboardmessage_list.html:14
+msgid "Write something"
+msgstr "Etwas schreiben"
+
+#: pinboard/templates/pinboard/pinboardmessage_list.html:19
+msgid "Delete post"
+msgstr "Beitrag löschen"
+
+#: pinboard/views.py:58
+msgid "Successfully posted to pinboard"
+msgstr "Erfolgreich auf die Pinnward geschrieben"
+
+#: pinboard/views.py:86
+msgid "Post successfully deleted"
+msgstr "Nachricht erfolgreich von der Pinnwand gelöscht!"
+
+#: pinboard/views.py:94
+#, python-format
+msgid "Delete %(name)s post from your pinboard"
+msgstr "%(name)ss Nachricht von deiner Pinnwand löschen"
+
+#: pinboard/views.py:97
+#, python-format
+msgid ""
+"Are you sure that you want to delete %(name)s's post from your pinboard?"
+msgstr ""
+"Bist du dir sicher, dass du %(name)ss Nachricht von deiner Pinnwand löschen "
+"möchtest?"

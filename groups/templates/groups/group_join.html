@@ -1,0 +1,14 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% blocktranslate with name=group.name %}Join group "{{ name }}"?{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

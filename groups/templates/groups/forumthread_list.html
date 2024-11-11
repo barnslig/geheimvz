@@ -1,0 +1,22 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block headertitle %}
+{{ group.name }}
+{% endblock %}
+
+{% block content %}
+  <p class="my-4"><a href="{% url 'group' group.pk %}">[{% translate 'Back to group' %}]</a></p>
+
+  <h2 class="mt-4 mb-2 text-lg font-bold">{% translate 'All topics' %}</h2>
+
+  <p class="mb-4"><a href="{% url 'forumthread_create' pk=group.pk %}">{% translate 'Start new topic' %}</a></p>
+
+  {% if table.data %}
+    {% render_table table %}
+  {% else %}
+    <p class="my-4">{% translate 'There are no topics yet!' %}</p>
+  {% endif %}
+{% endblock %}

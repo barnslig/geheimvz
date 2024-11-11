@@ -1,62 +1,154 @@
 {% extends "base-login.html" %}
 
+{% load emoticons %}
 {% load i18n %}
-{% load pictures %}
+{% load static %}
 
 {% block headertitle %}
-{% blocktranslate with name=user.username %}{{ name }}'s page{% endblocktranslate %}
+{% blocktranslate with name=user.display_name %}{{ name }}'s page{% endblocktranslate %}
 {% endblock %}
 
 {% block content %}
 <div class="grid grid-cols-10 gap-4">
-  <div class="col-span-3 my-3">
-    {% if user.image %}
-      {% picture user.image img_loading="lazy" img_class="w-full p-1 border mb-4" lg=3 %}
-    {% endif %}
+  <div class="col-span-3 my-4">
+    {% component "profile_image" obj=user image_field="image_profile_medium" / %}
 
-    <ul class="text-rose-500">
-    {% if current %}
-      <li><a class="block px-1 border-b border-current hover:text-rose-700" href="{% url 'profile-update' %}">{% translate 'Edit my page' %}</a></li>
-    {% endif %}
+    <ul aria-label="{% translate 'Actions' %}" class="my-4 actions">
+      {% if current %}
+        <li><a class="action" href="{% url 'profile-update' %}">{% translate 'Edit my page' %}</a></li>
+      {% else %}
+        {% if can_send_messages %}
+          <li><a class="action" href="{% url 'message_create_to' user.id %}">{% translate 'Send message' %}</a></li>
+        {% endif %}
+        {% if are_friends %}
+          <li><a class="action" href="{% url 'friend-remove' user.id %}">{% translate 'End friendship' %}</a></li>
+        {% elif not friend_request_sent %}
+          <li><a class="action" href="{% url 'friend-add' user.id %}">{% translate 'Add friend' %}</a></li>
+        {% else %}
+          <li>
+            <form class="flex flex-1" method="post" action="{% url 'friendship_cancel' friend_request_sent.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="action">{% translate 'Cancel friend request' %}</button>
+            </form>
+          </li>
+        {% endif %}
+      {% endif %}
     </ul>
+
+    {% if can_see_profile %}
+      {% component "section" headline=_("Friends") %}
+        {% if friends|length == 0 %}
+          {% if current %}
+            <p>{% translate 'You have no friends.' %}</p>
+          {% else %}
+            <p>{% blocktranslate with name=user.display_name %}{{ name }} has no friends.{% endblocktranslate %}</p>
+          {% endif %}
+        {% else %}
+          <ul class="px-3 list-disc list-inside text-primary-accent">
+            {% for friend in friends %}
+              <li><a href="{% url 'profile' friend.id %}">{{ friend.display_name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endcomponent %}
+    {% endif %}
   </div>
 
-  <div class="col-span-7">
-    <section>
-      <h2 class="px-3 py-1 my-4 font-bold border-y bg-rose-200 text-rose-700 border-rose-400">{% translate 'Informations' %}</h2>
+  <div class="col-span-7 mb-4">
+    {% component "section" headline=_("Connection") %}
+      {% if request.user == user %}
+        <p class="text-center">{% translate "It's you!" %}</p>
+      {% elif are_friends %}
+        <p class="text-center">{% translate "You are friends." %}</p>
+      {% else %}
+        <div class="flex items-center gap-2">
+          {% for u in connection %}
+            <a class="flex flex-col items-center justify-center max-w-24" href="{% url 'profile' u.pk %}">
+              {% component "profile_image" obj=u image_field="image_profile_small" / %}
+              <div class="mt-1 text-center hyphens-auto">{{ u.display_name }}</div>
+            </a>
+            {% if not forloop.last %} ↔ {% endif %}
+          {% empty %}
+            <p class="text-center">{% translate 'No connection found.' %}</p>
+          {% endfor %}
+          </div>
+      {% endif %}
+    {% endcomponent %}
 
-      <h3 class="mt-5 font-bold text-rose-500">{% translate 'Account' %}</h3>
+    {% component "section" headline=_("Informations") %}
+      <h3 class="mt-5 font-bold text-primary-accent">{% translate 'Account' %}</h3>
 
       <dl>
         <div class="grid grid-cols-7 gap-4">
-          <dt class="col-span-3 text-slate-500">{% translate 'Name' %}:</dt>
-          <dd class="col-span-4">{{ user.username }}</dd>
+          <dt class="col-span-3 text-base-accent">{% translate 'Name' %}:</dt>
+          <dd class="col-span-4">{{ user.display_name }}</dd>
         </div>
 
         <div class="grid grid-cols-7 gap-4">
-          <dt class="col-span-3 text-slate-500">{% translate 'Member since' %}:</dt>
+          <dt class="col-span-3 text-base-accent">{% translate 'Member since' %}:</dt>
           <dd class="col-span-4">{{ user.date_joined|date }}</dd>
         </div>
 
         <div class="grid grid-cols-7 gap-4">
-          <dt class="col-span-3 text-slate-500">{% translate 'Last update' %}:</dt>
+          <dt class="col-span-3 text-base-accent">{% translate 'Last update' %}:</dt>
           <dd class="col-span-4">{{ user.last_login|date }}</dd>
         </div>
       </dl>
 
-      {% for section in sections %}
-        <h3 class="mt-5 font-bold text-rose-500">{{ section.headline }}</h3>
+      {% if can_see_profile %}
+        {% for section in sections %}
+          <h3 class="mt-5 font-bold text-primary-accent">{{ section.headline }}</h3>
 
-        <dl>
-          {% for field in section.fields %}
-            <div class="grid grid-cols-7 gap-4">
-              <dt class="col-span-3 text-slate-500">{{ field.label }}:</dt>
-              <dd class="col-span-4">{{ field.value }}</dd>
-            </div>
+          <dl>
+            {% for field in section.fields %}
+              <div class="grid grid-cols-7 gap-4">
+                <dt class="col-span-3 text-base-accent">{{ field.label }}:</dt>
+                <dd class="col-span-4">{{ field.value|emoticons|linebreaks }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        {% endfor%}
+      {% endif %}
+    {% endcomponent %}
+
+    {% if can_see_profile and user.groups_member.count > 0 %}
+      {% component "section" headline=_("Groups") %}
+        <ul class="px-3 list-disc list-inside text-primary-accent">
+        {% for group in user.groups_member.all %}
+          <li><a href="{% url 'group' group.id %}">{{ group.name }}</a></li>
+        {% endfor %}
+        </ul>
+      {% endcomponent %}
+    {% endif %}
+
+    {% if can_see_profile %}
+      {% component "section" headline=_("Pinboard") %}
+        {% fill "actions" %}
+          <div>
+          {% blocktranslate with showing=pinboard_page_obj|length total=pinboard_page_obj.paginator.count trimmed %}
+            Showing {{ showing }} of {{ total }}
+          {% endblocktranslate %}
+          </div>
+
+          <div class="flex divide-x divide-secondary-300">
+            <a class="px-2" href="{% url 'pinboard-create' user.pk %}">{% translate 'Write something' %}</a>
+            <a class="pl-2" href="{% url 'pinboard' user.pk %}">{% translate 'Show all' %}</a>
+          </div>
+        {% endfill %}
+
+        {% fill "content" %}
+          {% for item in pinboard_page_obj %}
+            {% component "post" created_at=item.created_at created_by=item.created_by post=item.message %}
+              {% fill "actions" %}
+                <a href="{% url 'pinboard_delete' item.pk %}">[{% translate 'Delete post' %}]</a>
+              {% endfill %}
+            {% endcomponent %}
+          {% empty %}
+            <p>{% translate 'Be the first to write something!' %}</p>
           {% endfor %}
-        </dl>
-      {% endfor%}
-    </section>
+        {% endfill %}
+      {% endcomponent %}
+    {% endif %}
   </div>
 </div>
 {% endblock %}

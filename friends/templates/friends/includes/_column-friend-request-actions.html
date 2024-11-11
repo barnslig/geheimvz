@@ -1,0 +1,20 @@
+{% load i18n %}
+
+{% with from=record.from_user %}
+<ul class="actions">
+  <li>
+    <form class="flex flex-1" method="post" action="{% url 'friendship_accept' record.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="action">{% translate 'Confirm friend request' %}</button>
+    </form>
+  </li>
+  <li>
+    <form class="flex flex-1" method="post" action="{% url 'friendship_reject' record.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="action">{% translate 'Reject friend request' %}</button>
+    </form>
+  </li>
+  <li><a class="action" href="{% url 'profile' from.pk %}">{% blocktranslate with name=from.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'message_create_to' from.pk %}">{% translate 'Send message' %}</a></li>
+</ul>
+{% endwith %}

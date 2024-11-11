@@ -1,0 +1,26 @@
+{% extends "base-login.html" %}
+
+{% load emoticons %}
+{% load i18n %}
+
+{% block headertitle %}
+{% blocktranslate with name=object.from_user.display_name trimmed %}
+Message from {{ name }}
+{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<div class="my-4">
+  {% if object.from_user == request.user %}
+    <p class="my-4"><a href="{% url 'messages_sent' %}">[{% translate 'Sent' %}]</a></p>
+  {% else %}
+    <p class="my-4"><a href="{% url 'messages' %}">[{% translate 'Inbox' %}]</a></p>
+  {% endif %}
+
+  {% component "post" created_at=object.created_at created_by=object.from_user post=object.message %}
+    {% fill "subline" %}
+      {% translate 'Subject' %}: {% if message.subject %}{{ message.subject }}{% else %}[{% translate 'No subject' %}]{% endif %}
+    {% endfill %}
+  {% endcomponent %}
+</div>
+{% endblock %}

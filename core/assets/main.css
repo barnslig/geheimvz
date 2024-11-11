@@ -2,14 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-.form div {
-  @apply grid grid-cols-2 gap-2 mx-4 mb-2;
+@layer utilities {
+  .image-pixelated {
+    image-rendering: pixelated;
+  }
+
+  .size-xs {
+    font-size: 11px;
+  }
+
+  .size-xs .size-container {
+    width: 760px;
+  }
+
+  .size-sm {
+    font-size: 14px;
+  }
+
+  .size-sm .size-container {
+    width: 960px;
+  }
+
+  .size-base {
+    font-size: 16px;
+  }
+
+  .size-base .size-container {
+    width: 1024px;
+  }
+
+  .size-lg {
+    font-size: 18px;
+  }
+
+  .size-lg .size-container {
+    width: 1280px;
+  }
 }
 
-.form label {
+body {
+  @apply bg-base-100 theme-dark:bg-base-200;
 }
 
-.form input,
-.form textarea {
-  @apply px-1 border;
+a {
+  @apply text-primary-accent hover:underline;
+}
+
+.btn {
+  @apply px-2 border-2 cursor-pointer text-primary-content bg-primary-200 border-l-primary-100 border-t-primary-100 border-r-primary-300 border-b-primary-300 active:border-l-primary-300 active:border-t-primary-300 active:border-r-primary-100 active:border-b-primary-100 hover:text-primary-content hover:no-underline;
+}
+
+.mixed-copy h2 {
+  @apply text-lg font-bold border-b border-primary-200;
+}
+
+.mixed-copy p {
+  @apply my-4;
+}
+
+.emoticon-picker button,
+.emoticon-picker button + button {
+  @apply border-b border-r;
+}
+
+.actions {
+  @apply border-b divide-y divide-primary-300 border-primary-300;
+}
+
+.actions li {
+  @apply flex;
+}
+
+.action {
+  @apply flex-grow flex-shrink-0 block px-1 text-left text-primary-accent hover:text-primary-content hover:bg-primary-200 hover:no-underline;
+}
+
+.action + .action {
+  @apply flex-initial;
+}
+
+.message.success {
+  @apply bg-success-200 text-success-content;
 }

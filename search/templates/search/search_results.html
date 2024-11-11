@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block headertitle %}
+{% translate 'Find people' %}
+{% endblock %}
+
+{% block content %}
+<form class="my-4" method="get">
+  {% crispy form %}
+</form>
+
+{% if table.data %}
+  {% render_table table %}
+{% endif %}
+{% endblock %}

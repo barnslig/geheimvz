@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block headertitle %}
+{% translate 'My friends' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+{% if table.data %}
+  <p class="my-4">{% blocktranslate count count=table.data|length %}You have one friend.{% plural %}You have {{ count }} friends.{% endblocktranslate %}</p>
+  {% render_table table %}
+{% else %}
+  <p class="my-4">{% translate 'You have no friends.' %}</p>
+{% endif %}
+{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-23 22:37+0200\n"
+"POT-Creation-Date: 2024-11-11 17:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,107 +18,490 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/forms.py:49 core/templates/core/user_detail.html:23
-msgid "Informations"
-msgstr "Informationen"
-
-#: core/forms.py:50 core/views.py:36
+#: core/admin.py:9 core/forms.py:96 core/views.py:80
 msgid "General"
 msgstr "Allgemeines"
 
-#: core/forms.py:52 core/views.py:38
+#: core/admin.py:20 core/forms.py:103 core/views.py:82
 msgid "Personal"
 msgstr "Persönliches"
 
-#: core/forms.py:66
-msgid "save"
-msgstr ""
+#: core/components/page_pagination/page_pagination.html:5
+#: core/templates/core/django_tables2/table.html:65
+msgid "first"
+msgstr "Erste Seite"
 
-#: core/models.py:10
+#: core/components/page_pagination/page_pagination.html:6
+#: core/templates/core/django_tables2/table.html:68
+msgid "previous"
+msgstr "Vorherige Seite"
+
+#: core/components/page_pagination/page_pagination.html:9
+#, python-format
+msgid "Page %(current)s of %(total)s"
+msgstr "Seite %(current)s von %(total)s"
+
+#: core/components/page_pagination/page_pagination.html:12
+#: core/templates/core/django_tables2/table.html:90
+msgid "next"
+msgstr "Nächste Seite"
+
+#: core/components/page_pagination/page_pagination.html:13
+#: core/templates/core/django_tables2/table.html:93
+msgid "last"
+msgstr "Letzte Seite"
+
+#: core/components/post/post.html:13
+#, python-format
+msgid "<a class=\"font-bold\" href=\"%(href)s\">%(name)s</a> has written"
+msgstr "<a class=\"font-bold\" href=\"%(href)s\">%(name)s</a> schrieb"
+
+#: core/components/post/post.html:17
+#, python-format
+msgid "At %(created_at)s"
+msgstr "Am %(created_at)s"
+
+#: core/components/post/post.html:27 core/templates/core/user_detail.html:21
+msgid "Send message"
+msgstr "Nachricht schicken"
+
+#: core/components/profile_image/profile_image.py:11 core/forms.py:92
+#: core/models.py:23
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: core/models.py:14
+#: core/forms.py:120
+msgid "save"
+msgstr "speichern"
+
+#: core/helpers.py:37
+#, python-format
+msgid "Maximum file size of %(value)s MB exceeded!"
+msgstr "Maximale Dateigröße von %(value)s MB überschritten!"
+
+#: core/models.py:36
+msgid "Full name"
+msgstr "Voller Name"
+
+#: core/models.py:39
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: core/models.py:17
+#: core/models.py:42
 msgid "Pronouns"
 msgstr "Pronomen"
 
-#: core/models.py:19
+#: core/models.py:44
 msgid "Birthday"
 msgstr "Geburtstag"
 
-#: core/models.py:22
+#: core/models.py:51
+msgid "Your mother's maiden name"
+msgstr "Mädchenname der Mutter"
+
+#: core/models.py:54
+msgid "Name of your first pet"
+msgstr "Name vom ersten Haustier"
+
+#: core/models.py:60
+msgid "Street where you grew up"
+msgstr "In der Straße bin ich aufgewachsen"
+
+#: core/models.py:63
+msgid "Make of your first car"
+msgstr "Marke vom ersten Auto"
+
+#: core/models.py:65
 msgid "Looking for"
 msgstr "Auf der Suche nach"
 
-#: core/models.py:24
+#: core/models.py:67
 msgid "Relationship"
 msgstr "Beziehungsstatus"
 
-#: core/models.py:26
+#: core/models.py:69
 msgid "Hobbies"
 msgstr "Hobbys"
 
-#: core/models.py:27
+#: core/models.py:70
 msgid "What I like"
 msgstr "Was ich mag"
 
-#: core/models.py:29
+#: core/models.py:72
 msgid "What I don't like"
 msgstr "Was ich nicht mag"
 
-#: core/models.py:32
+#: core/models.py:75
 msgid "Favourite music"
 msgstr "Lieblingsmusik"
 
-#: core/models.py:35
+#: core/models.py:78
 msgid "Favourite movies"
 msgstr "Lieblingsfilme"
 
-#: core/models.py:38
+#: core/models.py:81
 msgid "Favourite books"
 msgstr "Lieblingsbücher"
 
-#: core/models.py:41
+#: core/models.py:84
 msgid "Favourite food"
 msgstr "Lieblingsessen"
 
-#: core/models.py:44
+#: core/models.py:87
 msgid "I am good at"
 msgstr "Darin bin ich gut"
 
-#: core/models.py:46
+#: core/models.py:89
 msgid "I wish for"
 msgstr "Was ich mir wünsche"
 
-#: core/templates/core/user_detail.html:6
+#: core/models.py:93
+msgid "Everyone logged in"
+msgstr "Alle, die eingeloggt sind."
+
+#: core/models.py:94
+msgid "Only my friends"
+msgstr "Nur meine Freunde"
+
+#: core/models.py:100
+msgid "Who can see your page?"
+msgstr "Wer darf meine Seite sehen?"
+
+#: core/models.py:106
+msgid "Who can send you messages?"
+msgstr "Wer darf mir Nachrichten schicken?"
+
+#: core/models.py:111
+msgid "Rose"
+msgstr "Rosa"
+
+#: core/models.py:112
+msgid "Blue"
+msgstr "Blau"
+
+#: core/models.py:113
+msgid "Green"
+msgstr "Grün"
+
+#: core/models.py:114
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: core/models.py:115
+msgid "High Contrast"
+msgstr "Hoher Kontrast"
+
+#: core/models.py:118
+msgid "Sans-Serif"
+msgstr "Sans-Serif"
+
+#: core/models.py:119
+msgid "Serif"
+msgstr "Serif"
+
+#: core/models.py:120
+msgid "Monospace"
+msgstr "Monospace"
+
+#: core/models.py:121
+msgid "Comic"
+msgstr "Comic"
+
+#: core/models.py:128
+msgid "None"
+msgstr "Keiner"
+
+#: core/models.py:129
+msgid "Clouds"
+msgstr "Wolken"
+
+#: core/models.py:130
+msgid "Charlie Brown"
+msgstr "Charlie Brown"
+
+#: core/models.py:131
+msgid "Waves"
+msgstr "Wellen"
+
+#: core/models.py:134
+msgid "Simple"
+msgstr "Einfach"
+
+#: core/models.py:135
+msgid "Pride"
+msgstr "Pride"
+
+#: core/models.py:136
+msgid "All-Seeing Eye"
+msgstr "Allsehendes Auge"
+
+#: core/models.py:139
+msgid "Extra Small"
+msgstr "Extra klein"
+
+#: core/models.py:140
+msgid "Small"
+msgstr "Klein"
+
+#: core/models.py:141
+msgid "Default"
+msgstr "Normal"
+
+#: core/models.py:142
+msgid "Large"
+msgstr "Größer"
+
+#: core/models.py:148
+msgid "Theme color"
+msgstr "Farbe"
+
+#: core/models.py:154
+msgid "Theme font"
+msgstr "Schriftart"
+
+#: core/models.py:160
+msgid "Theme size"
+msgstr "Schriftgröße"
+
+#: core/models.py:166
+msgid "Theme background"
+msgstr "Hintergrund"
+
+#: core/models.py:172
+msgid "Theme logo"
+msgstr "Logo"
+
+#: core/templates/base-login.html:7
+msgid "Find people"
+msgstr "Leute finden"
+
+#: core/templates/base-login.html:12
+msgid "Start"
+msgstr "Start"
+
+#: core/templates/base-login.html:14
+msgid "My page"
+msgstr "Meine Seite"
+
+#: core/templates/base-login.html:15
+msgid "edit"
+msgstr "ändern"
+
+#: core/templates/base-login.html:17
+msgid "My friends"
+msgstr "Meine Freunde"
+
+#: core/templates/base-login.html:18
+msgid "My groups"
+msgstr "Meine Gruppen"
+
+#: core/templates/base-login.html:19
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: core/templates/base-login.html:20
+msgid "My account"
+msgstr "Mein Account"
+
+#: core/templates/base-login.html:27
+msgid "invite"
+msgstr "einladen"
+
+#: core/templates/base-login.html:28
+msgid "help"
+msgstr "hilfe"
+
+#: core/templates/base-login.html:31
+msgid "get out"
+msgstr "raus hier"
+
+#: core/templates/core/confirmation.html:15
+msgid "Go back"
+msgstr "Zurück"
+
+#: core/templates/core/confirmation.html:16
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: core/templates/core/django_tables2/table.html:60
+msgid "Page:"
+msgstr "Seite:"
+
+#: core/templates/core/index_login.html:6
+#: core/templates/core/index_login.html:13
+#, python-format
+msgid "Hey %(name)s!"
+msgstr "Hey %(name)s!"
+
+#: core/templates/core/index_login.html:17
+msgid "New friends"
+msgstr "Neue Freunde"
+
+#: core/templates/core/index_login.html:18
+#, python-format
+msgid ""
+"You have %(count)s request from someone who wants to add you as a friend."
+msgid_plural ""
+"You have %(count)s requests from someone who wants to add you as a friend."
+msgstr[0] ""
+"Du hast %(count)s Einladungen von jemandem, der Dich als Freund hinzufügen "
+"möchte."
+msgstr[1] ""
+"Du hast %(count)s Einladung von Leuten, die Dich als Freund hinzufügen "
+"möchten."
+
+#: core/templates/core/index_login.html:19
+msgid "View requests and confirm friends"
+msgstr "Einladungen ansehen und Freunde bestätigen"
+
+#: core/templates/core/index_login.html:23
+msgid "You've got mail!"
+msgstr "Post für dich!"
+
+#: core/templates/core/index_login.html:24
+#, python-format
+msgid "You have one unread messages."
+msgid_plural "You have %(count)s unread messages."
+msgstr[0] "Du hast eine ungelesene Nachricht."
+msgstr[1] "Du hast %(count)s ungelesene Nachrichten."
+
+#: core/templates/core/index_login.html:25
+msgid "View messages"
+msgstr "Nachrichten anzeigen"
+
+#: core/templates/core/index_login.html:29
+msgid "You are invited!"
+msgstr "Du bist eingeladen!"
+
+#: core/templates/core/index_login.html:30
+#, python-format
+msgid "You have one open group invite."
+msgid_plural "You have %(count)s open group invites."
+msgstr[0] "Du hast eine offene Gruppeneinladung."
+msgstr[1] "Du hast %(count)s offene Gruppeneinladungen."
+
+#: core/templates/core/index_login.html:31
+msgid "View group invites"
+msgstr "Gruppeneinladungen ansehen"
+
+#: core/templates/core/user_detail.html:8
 #, python-format
 msgid "%(name)s's page"
 msgstr "Seite von %(name)s"
 
 #: core/templates/core/user_detail.html:16
+msgid "Actions"
+msgstr "Aktionen"
+
+#: core/templates/core/user_detail.html:18
 msgid "Edit my page"
 msgstr "Meine Seite bearbeiten"
 
-#: core/templates/core/user_detail.html:25
+#: core/templates/core/user_detail.html:24
+msgid "End friendship"
+msgstr "Freundschaft beenden"
+
+#: core/templates/core/user_detail.html:26
+msgid "Add friend"
+msgstr "Freundschaftsanfrage stellen"
+
+#: core/templates/core/user_detail.html:31
+msgid "Cancel friend request"
+msgstr "Freundschaftsanfrage zurückziehen"
+
+#: core/templates/core/user_detail.html:39
+msgid "Friends"
+msgstr "Freunde"
+
+#: core/templates/core/user_detail.html:42
+msgid "You have no friends."
+msgstr "Du hast keine Freunde."
+
+#: core/templates/core/user_detail.html:44
+#, python-format
+msgid "%(name)s has no friends."
+msgstr "%(name)s hat keine Freunde."
+
+#: core/templates/core/user_detail.html:58
+msgid "Connection"
+msgstr "Verbindung"
+
+#: core/templates/core/user_detail.html:60
+msgid "It's you!"
+msgstr "Das bist Du!"
+
+#: core/templates/core/user_detail.html:62
+msgid "You are friends."
+msgstr "Ihr seid Freunde."
+
+#: core/templates/core/user_detail.html:72
+msgid "No connection found."
+msgstr "Keine Verbindung gefunden."
+
+#: core/templates/core/user_detail.html:78
+msgid "Informations"
+msgstr "Informationen"
+
+#: core/templates/core/user_detail.html:79
 msgid "Account"
 msgstr "Account"
 
-#: core/templates/core/user_detail.html:29
+#: core/templates/core/user_detail.html:83
 msgid "Name"
 msgstr "Name"
 
-#: core/templates/core/user_detail.html:34
+#: core/templates/core/user_detail.html:88
 msgid "Member since"
 msgstr "Mitglied seit"
 
-#: core/templates/core/user_detail.html:39
+#: core/templates/core/user_detail.html:93
 msgid "Last update"
 msgstr "Letztes Update"
 
-#: core/views.py:63
-msgid "Profile successfully updated"
+#: core/templates/core/user_detail.html:115
+msgid "Groups"
+msgstr "Gruppen"
+
+#: core/templates/core/user_detail.html:125
+msgid "Pinboard"
+msgstr "Pinnwand"
+
+#: core/templates/core/user_detail.html:128
+#, python-format
+msgid "Showing %(showing)s of %(total)s"
+msgstr "Zeige %(showing)s von %(total)s"
+
+#: core/templates/core/user_detail.html:134
+msgid "Write something"
+msgstr "Etwas schreiben"
+
+#: core/templates/core/user_detail.html:135
+msgid "Show all"
+msgstr "Alle ansehen"
+
+#: core/templates/core/user_detail.html:143
+msgid "Delete post"
+msgstr "Post löschen"
+
+#: core/templates/core/user_detail.html:147
+msgid "Be the first to write something!"
+msgstr "Schreib den ersten Beitrag!"
+
+#: core/templates/core/user_form.html:7
+msgid "This is me"
 msgstr ""
+
+#: core/templates/core/user_form.html:12
+msgid "Back to your profile"
+msgstr "Zurück zu deiner Seite"
+
+#: core/templates/registration/login.html:33
+msgid "Lost password?"
+msgstr "Passwort vergessen?"
+
+#: core/views.py:129
+msgid "Profile successfully updated"
+msgstr "Profil erfolgreich geupdated."
+
+#~ msgid "Profile image"
+#~ msgstr "Profilbild"

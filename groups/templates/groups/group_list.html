@@ -1,0 +1,23 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'My groups' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<p class="mb-4">{% blocktranslate count count=page_obj.paginator.count %}You are in one group{% plural %}You are in {{ count }} groups.{% endblocktranslate %}</p>
+
+{% if page_obj.paginator.count > 0 %}
+<ul class="mb-4 list-disc list-inside text-primary-accent">
+  {% for group in page_obj %}
+    <li><a href="{% url 'group' group.pk %}">{{ group.name }}</a></li>
+  {% endfor %}
+</ul>
+
+{% component "page_pagination" page_obj=page_obj %}{% endcomponent %}
+{% endif %}
+{% endblock %}

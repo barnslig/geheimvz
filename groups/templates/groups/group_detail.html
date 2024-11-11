@@ -1,0 +1,112 @@
+{% extends "base-login.html" %}
+
+{% load emoticons %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block headertitle %}
+{{ group.name }}
+{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-10 gap-4 mb-4">
+  <div class="col-span-7">
+    {% component "section" headline=_("Description") %}
+      <div class="space-y-2">{{ group.description|emoticons|linebreaks }}</div>
+    {% endcomponent %}
+
+    {% component "section" headline=_("Informations") %}
+      <dl>
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-base-accent">{% translate 'Name' %}:</dt>
+          <dd class="col-span-4">{{ group.name }}</dd>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-base-accent">{% translate 'Founder' %}:</dt>
+          <dd class="col-span-4"><a href="{% url 'profile' group.created_by.id %}">{{ group.created_by.display_name }}</a></dd>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-base-accent">{% translate 'Created at' %}:</dt>
+          <dd class="col-span-4">{{ group.created_at|date }}</dd>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+          <dt class="col-span-3 text-base-accent">{% translate 'Last update' %}:</dt>
+          <dd class="col-span-4">{{ group.updated_at|date }}</dd>
+        </div>
+      </dl>
+    {% endcomponent %}
+
+    {% if is_member %}
+      {% component "section" headline=_("Members") %}
+        {% fill "actions" %}
+          <p>{% blocktranslate count members=group.members.count %}The group has one member.{% plural%}The group has {{ members }} members.{% endblocktranslate %}</p>
+        {% endfill %}
+
+        {% fill "content" %}
+          <ul class="list-disc list-inside text-primary-accent">
+            {% for member in group.members.all %}
+              <li><a href="{% url 'profile' member.id %}">{{ member.display_name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfill %}
+      {% endcomponent %}
+    {% endif %}
+
+    {% if is_member and group.has_forum %}
+      {% component "section" headline=_("Forum") %}
+        {% fill "actions" %}
+          <div></div>
+          <div class="flex divide-x divide-secondary-300">
+            <a class="px-2" href="{% url 'forumthread_create' pk=group.pk %}">{% translate 'Start new topic' %}</a>
+            <a class="pl-2" href="{% url 'forumthread_list' pk=group.pk %}">{% translate 'All topics' %}</a>
+          </div>
+        {% endfill %}
+
+        {% fill "content" %}
+          {% if latest_threads_table.data %}
+            {% render_table latest_threads_table %}
+          {% else %}
+            <p class="my-4">{% translate 'There are no topics yet!' %}</p>
+          {% endif %}
+        {% endfill %}
+      {% endcomponent %}
+    {% endif %}
+  </div>
+
+  <div class="col-span-3 my-4">
+    {% component "profile_image" obj=group image_field="image_profile_medium" alt=_("Group picture") / %}
+
+    <ul aria-label="{% translate 'Actions' %}" class="my-4 actions">
+      {% if can_invite %}
+      <li><a class="action" href="{% url 'group-invite' pk=group.pk %}">{% translate 'Invite friends to group' %}</a></li>
+      {% endif %}
+
+      {% if is_member %}
+      <li><a class="action" href="{% url 'group-leave' pk=group.pk %}">{% translate 'Leave the group' %}</a></li>
+      {% elif can_join %}
+      <li><a class="action" href="{% url 'group-join' pk=group.pk %}">{% translate 'Join the group' %}</a></li>
+      {% endif %}
+
+      {% if is_admin %}
+      <li><a class="action" href="{% url 'group-update' pk=group.pk %}">{% translate 'Edit the group' %}</a></li>
+      {% endif %}
+    </ul>
+
+    {% component "section" headline=_("Status") %}
+      <p class="mb-2">
+        {% if is_member %}
+          {% translate 'You are a member' %}
+        {% elif is_invited %}
+          {% translate 'You are invited!' %}
+        {% else %}
+          {% translate 'You are not member' %}
+        {% endif %}
+      </p>
+      {% if not is_member and not is_invited and group.is_private %}
+        <p>{% translate 'The group is invite-only.' %}
+      {% endif %}
+    {% endcomponent %}
+  </div>
+</div>
+{% endblock %}

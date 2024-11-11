@@ -1,0 +1,22 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% blocktranslate with name=user.display_name %}Write onto the pinboard of {{ name }}{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+
+<p class="my-4">
+  {% translate 'Leave a nice message!' %}
+  <a href="{% url 'profile' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to {{ name }}'s page{% endblocktranslate %}]</a>
+  <a href="{% url 'pinboard' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to {{ name }}'s pinboard{% endblocktranslate %}]</a>
+</p>
+
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+
+{% endblock %}

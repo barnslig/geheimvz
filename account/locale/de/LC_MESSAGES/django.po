@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 17:09+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/forms.py:25 account/forms.py:51 account/forms.py:73
+msgid "save"
+msgstr "speichern"
+
+#: account/forms.py:78
+#, python-format
+msgid "Type \"%s\" to confirm."
+msgstr "Schreibe: \"%s\""
+
+#: account/forms.py:78 account/forms.py:83
+msgid "yes, i want"
+msgstr "Ja, ich will"
+
+#: account/forms.py:84
+msgid "Not correct!"
+msgstr "Nicht richtig!"
+
+#: account/forms.py:93 account/templates/account/user_form.html:22
+msgid "Delete account"
+msgstr "Konto löschen"
+
+#: account/forms.py:105 account/templates/account/user_form.html:21
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: account/templates/account/appearance_form.html:7
+#: account/templates/account/password_change_form.html:7
+#: account/templates/account/privacy_form.html:7
+#: account/templates/account/user_confirm_delete.html:7
+#: account/templates/account/user_form.html:7
+msgid "This is me"
+msgstr "Das bin ich"
+
+#: account/templates/account/appearance_form.html:14
+msgid "Customise the page to match your style!"
+msgstr "Passe die Seite an deinen Style an!"
+
+#: account/templates/account/password_change_form.html:11
+msgid "Change your password."
+msgstr "Ändere dein Passwort."
+
+#: account/templates/account/password_change_form.html:11
+#: account/templates/account/user_confirm_delete.html:11
+msgid "Go to account settings"
+msgstr "Zurück zu den Account-Einstellungen"
+
+#: account/templates/account/privacy_form.html:14
+msgid "Customise who can know what about you!"
+msgstr "Passe an, wer was von dir wissen darf!"
+
+#: account/templates/account/user_confirm_delete.html:11
+msgid "Delete your account."
+msgstr "Hier kannst du dein Konto löschen."
+
+#: account/templates/account/user_form.html:13
+msgid "Update your account."
+msgstr "Hier kannst du dein Konto anpassen."
+
+#: account/templates/account/user_form.html:13
+msgid "Back to your profile"
+msgstr "Zurück zu deiner Seite"
+
+#: account/templates/account/user_form.html:19
+msgid "Other actions"
+msgstr "Weitere Aktionen"
+
+#: account/views.py:16
+msgid "Account settings"
+msgstr "Konto"
+
+#: account/views.py:20
+msgid "Appearance"
+msgstr "Style"
+
+#: account/views.py:24
+msgid "Privacy"
+msgstr "Privatsphäre"
+
+#: account/views.py:37 account/views.py:54 account/views.py:72
+msgid "Profile successfully updated"
+msgstr "Konto erfolgreich geupdated"
+
+#: account/views.py:84
+msgid "Account successfully deleted"
+msgstr "Konto erfolgreich gelöscht"
+
+#: account/views.py:95
+msgid "Password change successful"
+msgstr "Passwort erfolgreich geändert"

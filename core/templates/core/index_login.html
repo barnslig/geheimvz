@@ -1,0 +1,36 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+{% blocktranslate with name=request.user.display_name %}Hey {{ name }}!{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-10 gap-4 my-4 -mx-4">
+
+  <div class="col-span-6 col-start-3 mixed-copy">
+    <h2>{% blocktranslate with name=request.user.display_name %}Hey {{ name }}!{% endblocktranslate %}</h2>
+    <p>Deine Startseite! Damit du immer den Überblick behältst, was es Neues für dich gibt... Ob dich jemand gegruschelt hat oder du neue Freunde hast, ob du Nachrichten bekommen hast und wer als letztes deine Seite angeschaut hat.</p>
+
+    {% if friend_requests > 0 %}
+    <h2>{% translate 'New friends'%}</h2>
+    <p>{% blocktranslate count count=friend_requests %}You have {{ count }} request from someone who wants to add you as a friend.{% plural %}You have {{ count }} requests from someone who wants to add you as a friend.{% endblocktranslate %}</p>
+    <p><a href="{% url 'friend-requests' %}">[ {% translate 'View requests and confirm friends' %} ]</a></p>
+    {% endif %}
+
+    {% if unread_messages > 0 %}
+    <h2>{% translate "You've got mail!" %}</h2>
+    <p>{% blocktranslate count count=unread_messages %}You have one unread messages.{% plural %}You have {{ count }} unread messages.{% endblocktranslate %}</p>
+    <p><a href="{% url 'messages' %}">[ {% translate 'View messages' %} ]</a></p>
+    {% endif %}
+
+    {% if group_invites > 0 %}
+    <h2>{% translate 'You are invited!' %}</h2>
+    <p>{% blocktranslate count count=group_invites %}You have one open group invite.{% plural %}You have {{ count }} open group invites.{% endblocktranslate %}</p>
+    <p><a href="{% url 'group-invitations' %}">[ {% translate 'View group invites' %} ]</a></p>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

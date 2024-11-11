@@ -17,24 +17,51 @@ Including another URLconf
 
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
-from django.urls import include, path
-from pictures.conf import get_settings
+from django.urls import path
+from django.contrib.auth import views as auth_views
 
-from core import views as core_views
+from core import urls as core_urls
+from account import urls as account_urls
+from friends import urls as friends_urls
+from groups import urls as groups_urls
+from invites import urls as invites_urls
+from pinboard import urls as pinboard_urls
+from private_messages import urls as private_messages_urls
+from search import urls as search_urls
 
 urlpatterns = [
-    path("", core_views.index),
-    path("profile.php/<str:id>", core_views.profile, name="profile"),
+    # Auth
+    path("logout.php", auth_views.LogoutView.as_view(), name="logout"),
     path(
-        "edit-profile.php",
-        core_views.ProfileUpdateView.as_view(),
-        name="profile-update",
+        "pw-reset.php",
+        auth_views.PasswordResetView.as_view(),
+        name="password_reset",
     ),
-    path("accounts/", include("django.contrib.auth.urls")),
+    path(
+        "pw-reset-done.php",
+        auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "pw-reset.php/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "pw-reset-complete.php",
+        auth_views.PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
+    ),
+    # Admin
     path("admin/", admin.site.urls),
-] + debug_toolbar_urls()
+]
 
-if get_settings().USE_PLACEHOLDERS:
-    urlpatterns += [
-        path("_pictures/", include("pictures.urls")),
-    ]
+urlpatterns += core_urls.urlpatterns
+urlpatterns += account_urls.urlpatterns
+urlpatterns += friends_urls.urlpatterns
+urlpatterns += groups_urls.urlpatterns
+urlpatterns += invites_urls.urlpatterns
+urlpatterns += pinboard_urls.urlpatterns
+urlpatterns += private_messages_urls.urlpatterns
+urlpatterns += search_urls.urlpatterns
+urlpatterns += debug_toolbar_urls()

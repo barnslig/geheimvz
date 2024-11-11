@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 14:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: friends/forms.py:12
+msgid "Your message"
+msgstr "Deine Nachricht"
+
+#: friends/forms.py:20
+msgid "Send a friend request"
+msgstr "Freundschaftsanfrage senden"
+
+#: friends/tables.py:7
+msgid "Friend"
+msgstr "Freund"
+
+#: friends/tables.py:12 friends/tables.py:27 friends/tables.py:43
+#: friends/tables.py:57
+msgid "Actions"
+msgstr "Aktionen"
+
+#: friends/tables.py:23
+msgid "Suggestion"
+msgstr "Vorschlag"
+
+#: friends/tables.py:38
+msgid "From"
+msgstr "Von"
+
+#: friends/tables.py:53
+msgid "To"
+msgstr "An"
+
+#: friends/templates/friends/friend_add.html:7
+#, python-format
+msgid "Send a friend request to %(name)s"
+msgstr "Eine Freundschaftsanfrage an %(name)s senden"
+
+#: friends/templates/friends/friend_list.html:7
+#: friends/templates/friends/friend_requests.html:7
+#: friends/templates/friends/friend_requests_sent.html:7
+#: friends/templates/friends/friend_suggestions.html:7
+msgid "My friends"
+msgstr "Meine Freunde"
+
+#: friends/templates/friends/friend_list.html:14
+#, python-format
+msgid "You have one friend."
+msgid_plural "You have %(count)s friends."
+msgstr[0] "Du hast einen Freund."
+msgstr[1] "Du hast %(count)s Freunde."
+
+#: friends/templates/friends/friend_list.html:17
+msgid "You have no friends."
+msgstr "Du hast keine Freunde."
+
+#: friends/templates/friends/friend_requests.html:14
+#, python-format
+msgid "You have one open friend request."
+msgid_plural "You have %(count)s open friend requests."
+msgstr[0] "Du hast eine offene Freundschaftsanfragen!"
+msgstr[1] "Du hast %(count)s offene Freundschaftsanfragen!"
+
+#: friends/templates/friends/friend_requests.html:17
+msgid "You have no open friend requests!"
+msgstr "Du hast keine offenen Freundschaftsanfragen!"
+
+#: friends/templates/friends/friend_requests_sent.html:16
+msgid "You have not sent any friend requests!"
+msgstr "Du hast keine Freundschaftsanfragen verschickt!"
+
+#: friends/templates/friends/friend_suggestions.html:14
+msgid "Do you know ...?"
+msgstr "Kennst du schon ...?"
+
+#: friends/templates/friends/friend_suggestions.html:14
+#: friends/templates/friends/friend_suggestions.html:17
+msgid "Go to search"
+msgstr "Zur Suche"
+
+#: friends/templates/friends/friend_suggestions.html:17
+msgid "You currently have no friend suggestions!"
+msgstr "Wir haben aktuell keine Freundschlaftsvorschläge für dich."
+
+#: friends/templates/friends/includes/_column-friend-actions.html:5
+msgid "End friendship"
+msgstr "Freundschaft beenden"
+
+#: friends/templates/friends/includes/_column-friend-actions.html:6
+#: friends/templates/friends/includes/_column-friend-request-actions.html:17
+#: friends/templates/friends/includes/_column-friend-request-sent-actions.html:11
+#: friends/templates/friends/includes/_column-suggestion-actions.html:5
+#, python-format
+msgid "%(name)s's page"
+msgstr "Seite von %(name)s"
+
+#: friends/templates/friends/includes/_column-friend-actions.html:7
+#: friends/templates/friends/includes/_column-friend-request-actions.html:18
+#: friends/templates/friends/includes/_column-friend-request-sent-actions.html:12
+msgid "Send message"
+msgstr "Nachricht schicken"
+
+#: friends/templates/friends/includes/_column-friend-request-actions.html:8
+msgid "Confirm friend request"
+msgstr "Freundschaftsanfrage bestätigen"
+
+#: friends/templates/friends/includes/_column-friend-request-actions.html:14
+msgid "Reject friend request"
+msgstr "Freundschaftsanfrage ablehnen"
+
+#: friends/templates/friends/includes/_column-friend-request-sent-actions.html:8
+msgid "Cancel friend request"
+msgstr "Freundschaftsanfrage zurückziehen"
+
+#: friends/templates/friends/includes/_column-friend.html:11
+#: friends/templates/friends/includes/_column-suggestion.html:10
+msgid "Name"
+msgstr "Name"
+
+#: friends/templates/friends/includes/_column-friend.html:17
+msgid "Created"
+msgstr "Erstellt"
+
+#: friends/templates/friends/includes/_column-friend.html:24
+msgid "Message"
+msgstr "Nachricht"
+
+#: friends/templates/friends/includes/_column-suggestion-actions.html:4
+msgid "Add friend"
+msgstr "Freundschaftsanfrage stellen"
+
+#: friends/templates/friends/includes/_column-suggestion.html:15
+msgid "Connection"
+msgstr "Verbindung"
+
+#: friends/templates/friends/includes/_column-suggestion.html:16
+#, python-format
+msgid "One mutual friend."
+msgid_plural "%(count)s mutual friends."
+msgstr[0] "Ein gemeinsamer Freund."
+msgstr[1] "%(count)s gemeinsame Freunde."
+
+#: friends/views.py:24
+msgid "All friends"
+msgstr "Alle Freunde"
+
+#: friends/views.py:28
+msgid "Find friends"
+msgstr "Freunde finden"
+
+#: friends/views.py:32
+msgid "Friend requests"
+msgstr "Freundschaftsanfragen"
+
+#: friends/views.py:36
+msgid "Sent friend requests"
+msgstr "Verschickte Freundschaftsanfragen"
+
+#: friends/views.py:77
+msgid "Friendship ended."
+msgstr "Freundschaft beendet."
+
+#: friends/views.py:83
+#, python-format
+msgid "End friendship with %(name)s"
+msgstr "Freundschaft mit %(name)s beenden"
+
+#: friends/views.py:85
+#, python-format
+msgid "Are you sure that you want to end the friendship with %(name)s?"
+msgstr ""
+"Bist du dir sicher, dass du die Freundschaft mit %(name)s beenden willst?"

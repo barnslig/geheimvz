@@ -1,0 +1,5 @@
+<nav class="flex gap-2 px-3 pt-6 mb-4 -mx-4 border-b border-primary-300 whitespace-nowrap">
+{% for tab in tabs %}
+  <a {% if tab.current %}aria-current="page" {% endif %}class="px-2 hover:bg-primary-200 hover:text-primary-content hover:no-underline{% if tab.current %} text-primary-content bg-primary-200{% else %} text-primary-accent{% endif %}" href="{{ tab.href }}">{{ tab.label }}</a>
+{% endfor %}
+</nav>

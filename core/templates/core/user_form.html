@@ -1,19 +1,18 @@
 {% extends "base-login.html" %}
 
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block headertitle %}
-Das bin ich
+{% translate 'This is me' %}
 {% endblock %}
 
 {% block content %}
-<div class="mx-4 my-4">
-  <div class="mx-3 my-4">
-    <p>Hier kannst du dein Profil anpassen!</p>
-  </div>
-
-  <form class="form" enctype="multipart/form-data" method="post">
-    {% crispy form %}
-  </form>
+<div class="my-4">
+  <p>Hier kannst du dein Profil anpassen! <a href="{% url 'profile' request.user.id %}">[{% translate 'Back to your profile' %}]</a></p>
 </div>
+
+<form class="my-4" enctype="multipart/form-data" method="post">
+  {% crispy form %}
+</form>
 {% endblock %}

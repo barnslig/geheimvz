@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load static %}
+
+<div class="flex gap-4">
+  <div class="w-32">
+    {% component "profile_image" obj=record image_field="image_profile_small" / %}
+  </div>
+  <dl>
+    <div class="grid grid-cols-3 gap-4">
+      <dt class="col-span-1 text-base-accent">{% translate 'Name' %}:</dt>
+      <dd class="col-span-2"><a href="{% url 'profile' record.id %}">{{ record.display_name }}</a></dd>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4">
+      <dt class="col-span-1 text-base-accent">{% translate 'Connection' %}:</dt>
+      <dd class="col-span-2">{% blocktranslate count count=record.mutual_friends_count %}One mutual friend.{% plural %}{{ count }} mutual friends.{% endblocktranslate %}</dd>
+    </div>
+  </dl>
+</div>

@@ -1,55 +1,75 @@
 {% load django_vite %}
 {% load static %}
+{% load login %}
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="{% if request.user.is_authenticated %}{{ request.user.appearance_size }}{% else %}size-base{% endif %}">
   <head>
     <meta charset="utf-8" />
     <title>GeheimVZ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=768" />
 
     {% vite_hmr_client %}
     {% vite_asset 'core/assets/main.ts' %}
+
+    <link rel="icon" href="{% static 'core/favicon/icon-32x32.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'core/favicon/icon-192x192.png' %}" sizes="192x192" />
   </head>
-  <body>
-    <div class="max-w-screen-lg mx-auto my-5">
-      <div class="grid grid-cols-12 gap-4">
+  <body{% if request.user.is_authenticated %} class="{{ request.user.appearance_color }} {{ request.user.appearance_font }}"{% endif %}>
+    <div class="mx-auto my-5 size-container">
+      <div class="grid items-start grid-cols-12 gap-4">
         <aside class="col-span-2">
-          <a class="block py-1 mb-2 border-b border-rose-600" href="/">
-            <img src="{% static 'core/logo.svg' %}" alt="GeheimVZ" />
+          <a class="block py-1 mb-4 border-b border-primary-300" href="/">
+            {% include "_logo.html" %}
           </a>
           {% block aside %}
+            <form method="post" action="{% url 'login' %}">
+              {% login_form %}
+            </form>
           {% endblock %}
         </aside>
         <div class="col-span-10">
-          <header class="">
-            <div class="flex items-center justify-between px-4 py-3 text-white border border-rose-600 rounded-tr-2xl bg-gradient-to-t from-rose-500 to-rose-400">
+          <header>
+            <div class="flex items-center justify-between px-4 py-3 border text-primary-content border-primary-300 rounded-tr-2xl bg-gradient-to-t from-primary-200 to-primary-100">
               <div class="text-xl uppercase"><span class="font-bold">Geheim</span>Verzeichnis</div>
               {% block headernav %}
                 <nav>
-                  <a class="px-2 py-1 hover:bg-rose-400" href="{% url 'login' %}">einloggen</a>
-                  <a class="px-2 py-1 hover:bg-rose-400" href="">hier anmelden</a>
-                  <a class="px-2 py-1 hover:bg-rose-400" href="">hilfe</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'login' %}">einloggen</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'register' %}">hier anmelden</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="">hilfe</a>
                 </nav>
               {% endblock %}
             </div>
-            <h1 class="px-4 py-1 text-lg font-bold text-white border border-t-0 bg-rose-400 border-rose-600">{% block headertitle %}Bist du schon drin?{% endblock %}</h1>
           </header>
-          <main>
-            {% if messages %}
-            <div class="container my-4">
-              <ul class="messages">
-                  {% for message in messages %}
-                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                  {% endfor %}
-              </ul>
-            </div>
-            {% endif %}
+          <main class="border border-t-0 border-primary-300 bg-base-100 text-base-content">
+            <h1 class="px-4 py-1 text-lg font-bold border-b text-primary-content bg-primary-100 border-primary-300">{% block headertitle %}Bist du schon drin?{% endblock %}</h1>
 
-            {% block content %}{% endblock %}
+            <div class="px-4">
+              {% if messages %}
+              <div class="container my-4">
+                <ul>
+                  {% for message in messages %}
+                  <li class="px-4 py-2 message{% if message.tags %} {{ message.tags }}{% endif %}">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+
+              {% block content %}{% endblock %}
+            </div>
           </main>
+          <div class="flex justify-center gap-2 my-4 image-pixelated">
+            <a href="https://geheimorganisation.org" target="_blank" rel="nofollow">
+              <img src="{% static "core/chicklets/geheimorga.png" %}" width="80" height="15" loading="lazy" alt="Geheimorganisation" />
+            </a>
+            <img src="{% static "core/chicklets/pride.gif" %}" width="80" height="15" loading="lazy" alt="Pride!" />
+            <a href="/info.php">
+              <img src="{% static "core/chicklets/php.gif" %}" width="80" height="15" loading="lazy" alt="Powered by PHP" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
+    {% include "_background.html" %}
   </body>
 </html>

@@ -1,0 +1,16 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% translate 'New message' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<form class="my-8 form" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

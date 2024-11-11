@@ -1,0 +1,19 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block headertitle %}
+{% blocktranslate with name=object.name %}Edit group {{ name }}{% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+
+{% if object %}
+<p class="my-4"><a href="{% url 'group' object.pk %}">[{% translate 'Back to group' %}]</a></p>
+{% endif %}
+
+<form class="mb-4 form" enctype="multipart/form-data" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

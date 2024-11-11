@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 14:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: private_messages/forms.py:40
+msgid "Send message"
+msgstr "Nachricht schicken"
+
+#: private_messages/models.py:20
+msgid "Sender"
+msgstr "Absender"
+
+#: private_messages/models.py:26
+msgid "Recipient"
+msgstr "Empfänger"
+
+#: private_messages/models.py:33
+#: private_messages/templates/private_messages/privatemessage_detail.html:22
+msgid "Subject"
+msgstr "Betreff"
+
+#: private_messages/models.py:35
+msgid "Message"
+msgstr "Nachricht"
+
+#: private_messages/models.py:36
+#: private_messages/templates/private_messages/includes/_column-seen.html:4
+msgid "Seen"
+msgstr "Gelesen"
+
+#: private_messages/tables.py:11
+msgid "Sent at"
+msgstr "Verschickt am"
+
+#: private_messages/tables.py:16
+#: private_messages/templates/private_messages/privatemessage_detail.html:22
+msgid "No subject"
+msgstr "kein Betreff"
+
+#: private_messages/templates/private_messages/includes/_column-seen.html:6
+msgid "Unread"
+msgstr "Ungelesen"
+
+#: private_messages/templates/private_messages/privatemessage_detail.html:7
+#, python-format
+msgid "Message from %(name)s"
+msgstr "Nachricht von %(name)s"
+
+#: private_messages/templates/private_messages/privatemessage_detail.html:15
+#: private_messages/views.py:29
+msgid "Sent"
+msgstr "Gesendet"
+
+#: private_messages/templates/private_messages/privatemessage_detail.html:17
+#: private_messages/views.py:25
+msgid "Inbox"
+msgstr "Empfangen"
+
+#: private_messages/templates/private_messages/privatemessage_form.html:7
+#: private_messages/views.py:33
+msgid "New message"
+msgstr "Nachricht schreiben"
+
+#: private_messages/templates/private_messages/privatemessage_list.html:7
+#: private_messages/templates/private_messages/privatemessage_list_sent.html:7
+msgid "My messages"
+msgstr "Meine Nachrichten"
+
+#: private_messages/templates/private_messages/privatemessage_list.html:14
+#, python-format
+msgid "You have one message."
+msgid_plural "You have %(count)s messages."
+msgstr[0] "Du hast eine Nachricht empfangen."
+msgstr[1] "Du hast %(count)s Nachrichten empfangen."
+
+#: private_messages/templates/private_messages/privatemessage_list.html:17
+msgid "You have not yet received any messages."
+msgstr "Du hast noch keine Nachrichten bekommen."
+
+#: private_messages/templates/private_messages/privatemessage_list_sent.html:14
+#, python-format
+msgid "You have sent one message."
+msgid_plural "You have sent %(count)s messages."
+msgstr[0] "Du hast eine Nachricht verschickt."
+msgstr[1] "Du hast %(count)s Nachrichten verschickt."
+
+#: private_messages/templates/private_messages/privatemessage_list_sent.html:17
+msgid "You have not yet sent any messages."
+msgstr "Du hast noch keine Nachrichten verschickt."
+
+#: private_messages/views.py:89
+msgid "Private message successfully sent!"
+msgstr "Nachricht erfolgreich verschickt!"

@@ -1,0 +1,7 @@
+{% if actions|length > 0 %}
+<ul class="actions">
+  {% for action in actions %}
+  <li><a class="action" href="{{ action.href }}">{{ action.label }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 16:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: invites/forms.py:13 invites/models.py:13
+msgid "Code"
+msgstr "Einladungscode"
+
+#: invites/forms.py:21
+msgid "Code is not valid!"
+msgstr "Einladungscode ist nicht gültig!"
+
+#: invites/forms.py:34 invites/templates/invites/register.html:7
+msgid "Register"
+msgstr "Anmelden"
+
+#: invites/models.py:10
+msgid "Invite code"
+msgstr "Einladungscode"
+
+#: invites/models.py:11
+msgid "Invite codes"
+msgstr "Einladungscodes"
+
+#: invites/models.py:18
+msgid "Owner"
+msgstr "Besitzer"
+
+#: invites/models.py:20
+msgid "Remaining invites"
+msgstr "Verbleibende Einladungen"
+
+#: invites/templates/invites/invite_code_list.html:6
+msgid "Invite friends"
+msgstr "Freunde einladen"
+
+#: invites/templates/invites/invite_code_list.html:10
+msgid "Invite your friends!"
+msgstr "Lade deine Freunde ein!"
+
+#: invites/templates/invites/invite_code_list.html:16
+msgid "Your code"
+msgstr "Dein Code"
+
+#: invites/templates/invites/invite_code_list.html:20
+msgid "Copy to clipboard"
+msgstr "In die Zwischenablage kopieren"
+
+#: invites/templates/invites/invite_code_list.html:25
+#, python-format
+msgid "Remaining invites: %(count)s"
+msgstr "Verbleibende Einladungen: %(count)s"
+
+#: invites/templates/invites/invite_code_list.html:30
+msgid "You have no invites left."
+msgstr "Du hast keine Einladungen."

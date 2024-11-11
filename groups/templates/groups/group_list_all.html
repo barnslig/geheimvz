@@ -1,0 +1,20 @@
+{% extends "base-login.html" %}
+
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'Find groups' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<ul class="mb-4 list-disc list-inside text-primary-accent">
+  {% for group in page_obj %}
+    <li><a href="{% url 'group' group.pk %}">{{ group.name }}</a></li>
+  {% endfor %}
+</ul>
+
+{% component "page_pagination" page_obj=page_obj %}{% endcomponent %}
+
+{% endblock %}
