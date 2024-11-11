@@ -1,0 +1,6 @@
+__pycache__
+*.mo
+*.sqlite*
+core/static/assets
+node_modules
+staticfiles
