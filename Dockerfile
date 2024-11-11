@@ -26,7 +26,7 @@ COPY . /app
 
 RUN poetry install --only main --no-root
 
-RUN django-admin compilemessages
+RUN python manage.py compilemessages
 
 
 FROM python:3.12-alpine
