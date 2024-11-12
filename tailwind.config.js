@@ -111,6 +111,10 @@ export default {
                 content: "#1d4ed8", // blue-700
               },
 
+              neutral: {
+                300: "#93c5fd", // blue-300 -- border
+              },
+
               base: {
                 200: "#eff6ff", // blue-50  -- background
                 300: "#bfdbfe", // blue-200 -- border
@@ -134,6 +138,10 @@ export default {
                 200: "#a7f3d0", // emerald-200 -- background
                 300: "#6ee7b7", // emerald-300 -- border
                 content: "#047857", // emerald-700
+              },
+
+              neutral: {
+                300: "#6ee7b7", // emerald-300 -- border
               },
 
               base: {
