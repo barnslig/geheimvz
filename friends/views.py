@@ -94,7 +94,11 @@ def friend_remove(request: HttpRequest, pk: str):
 def friend_list(request: HttpRequest):
     current_tabs = make_tabs(tabs, "list")
 
-    friends = Friend.objects.select_related("from_user").filter(to_user=request.user)
+    friends = (
+        Friend.objects.select_related("from_user")
+        .filter(to_user=request.user)
+        .order_by("-created")
+    )
     table = FriendsTable(friends)
 
     table.paginate(page=request.GET.get("page", 1), per_page=5)
