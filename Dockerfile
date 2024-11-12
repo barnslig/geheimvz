@@ -9,7 +9,7 @@ RUN npm ci && npm run build
 
 FROM python:3.12-alpine AS builder
 
-RUN apk add gettext
+RUN apk add gettext postgresql-dev
 
 RUN pip install poetry==1.8.4
 
