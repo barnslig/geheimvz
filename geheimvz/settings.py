@@ -175,9 +175,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "core.User"
-
 LOGIN_REDIRECT_URL = "index-login"
-
+LOGIN_URL = "login"
 LOGOUT_REDIRECT_URL = "index"
 
 
