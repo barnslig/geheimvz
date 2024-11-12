@@ -9,7 +9,7 @@ RUN npm ci && npm run build
 
 FROM python:3.12-alpine AS builder
 
-RUN apk add gettext postgresql-dev
+RUN apk add postgresql-dev
 
 RUN pip install poetry==1.8.4
 
@@ -26,15 +26,13 @@ COPY . /app
 
 RUN poetry install --only main --no-root
 
-RUN python manage.py compilemessages
-
 
 FROM python:3.12-alpine
 
 ARG USER_ID=3000
 ARG GROUP_ID=3000
 
-RUN apk add libpq
+RUN apk add gettext libpq
 
 RUN addgroup -g ${GROUP_ID} app \
     && adduser -h /app -G app -S -D -u ${USER_ID} app \
@@ -50,8 +48,8 @@ WORKDIR /app
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY . .
 COPY --from=app /app/core/static/core/assets /app/core/static/core/assets
-COPY --from=builder /app/*/locale/*/*/*.mo ./
 
+RUN python manage.py compilemessages
 RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000
