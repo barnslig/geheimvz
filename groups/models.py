@@ -27,10 +27,14 @@ class Group(models.Model):
         verbose_name=_("Created by"),
     )
 
+    image_height = models.PositiveIntegerField(blank=True, null=True)
+    image_width = models.PositiveIntegerField(blank=True, null=True)
     image = ProcessedImageField(
         spec=ProfileKeep,
         null=True,
         blank=True,
+        width_field="image_width",
+        height_field="image_height",
         upload_to=UploadToUuidFilename("groups/"),
         validators=[ValidateMaxFilesize(10)],
         verbose_name=_("Group picture"),

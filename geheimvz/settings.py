@@ -18,6 +18,7 @@ import pillow_avif
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
+    CACHE_URL=(str, "locmemcache://"),
     CSRF_TRUSTED_ORIGINS=(list, []),
     DATABASE_URL=(str, None),
     DEBUG=(bool, False),
@@ -25,7 +26,7 @@ env = environ.Env(
     LOG_LEVEL=(str, "WARNING"),
     S3_ACCESS_KEY_ID=(str, None),
     S3_BUCKET_NAME=(str, None),
-    S3_CUSTOM_DOMAIN=(str, None),
+    S3_PUBLIC_URL=(str, None),
     S3_ENDPOINT_URL=(str, None),
     S3_SECRET_ACCESS_KEY=(str, None),
     SECRET_KEY=(
@@ -72,6 +73,7 @@ INSTALLED_APPS = [
     "csp",
     "crispy_forms",
     "crispy_tailwind",
+    "django_s3_storage",
     "imagekit",
     "friendship",
     "django_tables2",
@@ -145,6 +147,14 @@ DATABASES = {
 }
 
 
+# Caches
+# https://docs.djangoproject.com/en/5.1/ref/settings/#caches
+
+CACHES = {
+    "default": env.cache(),
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -184,7 +194,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-# https://django-storages.readthedocs.io/en/latest/
+# https://github.com/etianen/django-s3-storage
 # https://whitenoise.readthedocs.io/en/stable/django.html#add-compression-and-caching-support
 # https://github.com/EmilStenstrom/django-components/blob/master/README.md#installation
 
@@ -194,19 +204,21 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "access_key": env("S3_ACCESS_KEY_ID"),
-            "secret_key": env("S3_SECRET_ACCESS_KEY"),
-            "bucket_name": env("S3_BUCKET_NAME"),
-            "endpoint_url": env("S3_ENDPOINT_URL"),
-            "custom_domain": env("S3_CUSTOM_DOMAIN"),
-        },
+        "BACKEND": "django_s3_storage.storage.S3Storage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+AWS_ACCESS_KEY_ID = env("S3_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("S3_SECRET_ACCESS_KEY")
+AWS_S3_BUCKET_NAME = env("S3_BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = env("S3_ENDPOINT_URL")
+AWS_S3_PUBLIC_URL = env("S3_PUBLIC_URL")
+
+AWS_REGION = "auto"
+AWS_S3_BUCKET_AUTH = False
 
 WHITENOISE_ROOT = BASE_DIR / "geheimvz/static"
 
@@ -310,7 +322,7 @@ IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic
 # https://django-csp.readthedocs.io/en/3.8/
 
 CSP_IMG_SRC = ["'self'", "data:"]
-if env("S3_CUSTOM_DOMAIN"):
-    CSP_IMG_SRC.append(env("S3_CUSTOM_DOMAIN") + "/")
+if env("S3_PUBLIC_URL"):
+    CSP_IMG_SRC.append(env("S3_PUBLIC_URL") + "/")
 
 CSP_REPORT_ONLY = DEBUG

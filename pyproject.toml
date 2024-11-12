@@ -15,7 +15,6 @@ django-crispy-forms = "^2.3"
 crispy-tailwind = "^1.0.3"
 pillow = "^11.0.0"
 whitenoise = {extras = ["brotli"], version = "^6.8.2"}
-django-storages = {extras = ["s3"], version = "^1.14.4"}
 django-debug-toolbar = "^4.4.6"
 django-cleanup = "^9.0.0"
 django-friendship = "^1.9.6"
@@ -29,6 +28,7 @@ filetype = "^1.2.0"
 django-components = "^0.102"
 django-csp = "^3.8"
 psycopg2 = "^2.9.10"
+django-s3-storage = "^0.15.0"
 
 
 [build-system]

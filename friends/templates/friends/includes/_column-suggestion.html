@@ -2,7 +2,7 @@
 
 <div class="flex gap-4">
   <div class="w-32">
-    {% component "profile_image" obj=record image_field="image_profile_small" / %}
+    {% component "profile_image" record.image_profile_small record.image_width record.image_height / %}
   </div>
   <dl>
     <div class="grid grid-cols-3 gap-4">

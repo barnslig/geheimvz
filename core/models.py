@@ -14,10 +14,14 @@ from .imagegenerators import ProfileKeep
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 
+    image_height = models.PositiveIntegerField(blank=True, null=True)
+    image_width = models.PositiveIntegerField(blank=True, null=True)
     image = ProcessedImageField(
         spec=ProfileKeep,
         null=True,
         blank=True,
+        width_field="image_width",
+        height_field="image_height",
         upload_to=UploadToUuidFilename("profiles/"),
         validators=[ValidateMaxFilesize(10)],
         verbose_name=_("Profile picture"),

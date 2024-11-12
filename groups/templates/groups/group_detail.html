@@ -74,7 +74,7 @@
   </div>
 
   <div class="col-span-3 my-4">
-    {% component "profile_image" obj=group image_field="image_profile_medium" alt=_("Group picture") / %}
+    {% component "profile_image" group.image_profile_medium group.image_width group.image_height / %}
 
     <ul aria-label="{% translate 'Actions' %}" class="my-4 actions">
       {% if can_invite %}

@@ -1,7 +1,7 @@
 {% load static %}
 
 {% if img %}
-  <img class="w-full p-1 border border-neutral-300" alt="{{ alt }}" src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy" />
+  <img class="w-full p-1 border border-neutral-300" alt="{{ alt }}" src="{{ img.url }}"{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}"{% endif %} loading="lazy" />
 {% else %}
   <img class="w-full p-1 border border-neutral-300 aspect-[2/3]" src="{% static 'core/default-profile.avif' %}" alt="{{ alt }}" loading="lazy" />
 {% endif %}

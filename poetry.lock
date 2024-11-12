@@ -574,28 +574,19 @@ files = [
 ]
 
 [[package]]
-name = "django-storages"
-version = "1.14.4"
-description = "Support for many storage backends in Django"
+name = "django-s3-storage"
+version = "0.15.0"
+description = "Django Amazon S3 file storage."
 optional = false
-python-versions = ">=3.7"
+python-versions = "*"
 files = [
-    {file = "django-storages-1.14.4.tar.gz", hash = "sha256:69aca94d26e6714d14ad63f33d13619e697508ee33ede184e462ed766dc2a73f"},
-    {file = "django_storages-1.14.4-py3-none-any.whl", hash = "sha256:d61930acb4a25e3aebebc6addaf946a3b1df31c803a6bf1af2f31c9047febaa3"},
+    {file = "django-s3-storage-0.15.0.tar.gz", hash = "sha256:2f81ada72de54f7ba092a079aaf1e03f32e3bd9901ddcf62847ebe7de4fc554c"},
+    {file = "django_s3_storage-0.15.0-py3-none-any.whl", hash = "sha256:d6805d09ce6ffb79c25b97d22dacdad5084bbfa67c361c5f4deaf4bce50ac635"},
 ]
 
 [package.dependencies]
-boto3 = {version = ">=1.4.4", optional = true, markers = "extra == \"s3\""}
-Django = ">=3.2"
-
-[package.extras]
-azure = ["azure-core (>=1.13)", "azure-storage-blob (>=12)"]
-boto3 = ["boto3 (>=1.4.4)"]
-dropbox = ["dropbox (>=7.2.1)"]
-google = ["google-cloud-storage (>=1.27)"]
-libcloud = ["apache-libcloud"]
-s3 = ["boto3 (>=1.4.4)"]
-sftp = ["paramiko (>=1.15)"]
+boto3 = ">=1.4.4,<2"
+django = ">=3.2"
 
 [[package]]
 name = "django-tables2"
@@ -1228,4 +1219,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bce505d2e569ca5c6f2a9f2184e17b91da9d9c5d6541803b35704f351133e4c2"
+content-hash = "34fb0e6a6c7cc7953e027dce667437f89ec56a14001c68adcc0ad76487feae01"
