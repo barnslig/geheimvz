@@ -45,9 +45,9 @@ ENV VIRTUAL_ENV=/app/.venv \
 
 WORKDIR /app
 
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
-COPY . .
-COPY --from=app /app/core/static/core/assets /app/core/static/core/assets
+COPY --from=builder --chown app:app ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --chown app:app . .
+COPY --from=app --chown app:app /app/core/static/core/assets /app/core/static/core/assets
 
 RUN python manage.py compilemessages
 RUN python manage.py collectstatic --no-input
