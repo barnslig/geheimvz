@@ -22,11 +22,12 @@ class Command(BaseCommand):
 
         for user in users:
             with transaction.atomic():
-                InviteCode.objects.filter(owner=user).delete()
-                code = InviteCode()
-                code.owner = user
-                code.code = generate_code(user.display_name, 12)
-                code.remaining = 2
-                code.save()
+                if user.invite_codes.filter(remaining__gt=0).count() == 0:
+                    InviteCode.objects.filter(owner=user).delete()
+                    code = InviteCode()
+                    code.owner = user
+                    code.code = generate_code(user.display_name, 12)
+                    code.remaining = 2
+                    code.save()
 
         self.stdout.write(self.style.SUCCESS("Successfully created codes"))
