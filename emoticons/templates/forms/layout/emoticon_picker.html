@@ -4,7 +4,7 @@
   <div class="grid grid-cols-11 col-span-7 col-start-4 border-t border-l emoticon-picker">
     {% for emoticon, image_url in emoticons %}
       <button class="flex justify-center py-1" type="button" title="{{ emoticon }}" data-insert-text="{{ emoticon }}" data-insert-text-into="{{ for_field_id }}">
-        <img class="block w-[15px] h-[17px]" src="{{ image_url }}" alt="{{ emoticon }}" />
+        <img class="block w-[15px] h-[17px]" src="{% static image_url %}" alt="{{ emoticon }}" />
       </button>
     {% endfor %}
   </div>
