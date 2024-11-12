@@ -1,0 +1,6 @@
+{% load emoticons %}
+{% load i18n %}
+
+<div aria-label="{% translate 'Message of the day' %}" class="px-2 py-1 my-4 text-sm border border-primary-300 bg-base-100 text-base-content">
+  {{ message.message|safe|emoticons }}
+</div>

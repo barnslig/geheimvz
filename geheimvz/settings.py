@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     "friends.apps.FriendsConfig",
     "groups.apps.GroupsConfig",
     "invites.apps.InvitesConfig",
+    "motd.apps.MotdConfig",
     "pinboard.apps.PinboardConfig",
     "private_messages.apps.PrivateMessagesConfig",
     "search.apps.SearchConfig",
