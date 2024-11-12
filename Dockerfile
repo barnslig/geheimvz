@@ -9,7 +9,7 @@ RUN npm ci && npm run build
 
 FROM python:3.12-alpine AS builder
 
-RUN apk add gettext postgresql-dev
+RUN apk add gettext libpq libpq-dev
 
 RUN pip install poetry==1.8.4
 
@@ -33,6 +33,8 @@ FROM python:3.12-alpine
 
 ARG USER_ID=3000
 ARG GROUP_ID=3000
+
+RUN apk add libpq
 
 RUN addgroup -g ${GROUP_ID} app \
     && adduser -h /app -G app -S -D -u ${USER_ID} app \
