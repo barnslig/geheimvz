@@ -323,6 +323,6 @@ IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic
 
 CSP_IMG_SRC = ["'self'", "data:"]
 if env("S3_PUBLIC_URL"):
-    CSP_IMG_SRC.append(env("S3_PUBLIC_URL") + "/")
+    CSP_IMG_SRC.append(env("S3_PUBLIC_URL"))
 
 CSP_REPORT_ONLY = DEBUG
