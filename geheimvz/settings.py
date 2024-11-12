@@ -18,6 +18,7 @@ import pillow_avif
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
+    CSRF_TRUSTED_ORIGINS=(list, []),
     DATABASE_URL=(str, None),
     DEBUG=(bool, False),
     LANGUAGE_CODE=(str, "de-de"),
@@ -52,6 +53,8 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 INTERNAL_IPS = ["127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 
 # Application definition
