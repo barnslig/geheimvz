@@ -56,4 +56,4 @@ RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000
 
-CMD ["daphne", "-s", "'Apache/2.2.22 (Unix) PHP/5.2.0'", "geheimvz.asgi:application"]
+CMD ["daphne", "-b", "::", "-s", "'Apache/2.2.22 (Unix) PHP/5.2.0'", "geheimvz.asgi:application"]
