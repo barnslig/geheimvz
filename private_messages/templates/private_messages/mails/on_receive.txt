@@ -1,0 +1,9 @@
+Hey {{ to_name }},
+
+in deinem Nachrichtendienst wartet eine neue Nachricht von {{ from_name }} auf dich.
+Hier kannst du sie lesen:
+
+{{ action_url }}
+
+Viel Spaß!
+Dein GeheimVZ-Team

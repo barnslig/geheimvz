@@ -4,8 +4,31 @@ from django import forms
 from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _, gettext
 
+from .models import NotificationSettings
 from core.models import User
 from core.forms import RightColumn
+
+
+class NotificationSettingsForm(forms.ModelForm):
+    class Meta:
+        model = NotificationSettings
+        fields = [
+            "on_new_pinboard_message",
+            "on_new_private_message",
+            "on_new_friend_request",
+            "on_new_group_invitation",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Field("on_new_pinboard_message"),
+            Field("on_new_private_message"),
+            Field("on_new_friend_request"),
+            Field("on_new_group_invitation"),
+            RightColumn(Submit("submit", _("save"))),
+        )
 
 
 class UserForm(forms.ModelForm):

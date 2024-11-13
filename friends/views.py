@@ -17,6 +17,7 @@ from .tables import (
     FriendSuggestionsTable,
     FriendsTable,
 )
+from .tasks import send_on_friend_request
 
 tabs = {
     "list": {
@@ -49,6 +50,14 @@ def friend_add(request: HttpRequest, pk: str):
         if form.is_valid():
             message = form.cleaned_data["message"]
             Friend.objects.add_friend(request.user, other_user, message)
+
+            if other_user.notification_settings.on_new_friend_request:
+                send_on_friend_request.delay(
+                    request.user.display_name,
+                    other_user.display_name,
+                    other_user.email,
+                )
+
             return redirect(other_user)
     else:
         form = FriendAddForm()

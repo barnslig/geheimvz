@@ -1,0 +1,9 @@
+Hey {{ to_name }},
+
+{{ from_name }} lädt dich in die Gruppe "{{ group_name }}" ein.
+Hier kannst du die Einladung anschauen und annehmen:
+
+{{ action_url }}
+
+Viel Spaß!
+Dein GeheimVZ-Team

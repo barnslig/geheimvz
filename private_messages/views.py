@@ -1,9 +1,10 @@
-from django.http import HttpRequest
 from django_ratelimit.decorators import ratelimit
 from django_tables2 import SingleTableView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -16,6 +17,7 @@ from core.components.tabs.tabs import TabsMixin
 from .forms import PrivateMessageForm
 from .models import PrivateMessage
 from .tables import PrivateMessagesSentTable, PrivateMessagesTable
+from .tasks import send_on_receive_mail
 
 User = get_user_model()
 
@@ -83,7 +85,9 @@ class PrivateMessageDetailView(LoginRequiredMixin, DetailView):
 
 @method_decorator(ratelimit(key="user", rate="1/m", method="POST"), name="post")
 @method_decorator(ratelimit(key="user", rate="20/d", method="POST"), name="post")
-class PrivateMessageCreateView(TabsMixin, LoginRequiredMixin, CreateView):
+class PrivateMessageCreateView(
+    TabsMixin, LoginRequiredMixin, SuccessMessageMixin, CreateView
+):
     form_class = PrivateMessageForm
     model = PrivateMessage
     success_message = _("Private message successfully sent!")
@@ -104,4 +108,12 @@ class PrivateMessageCreateView(TabsMixin, LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         self.object = form.save()
         self.object.from_user = self.request.user
+
+        if self.object.to_user.notification_settings.on_new_private_message:
+            send_on_receive_mail.delay(
+                self.object.from_user.display_name,
+                self.object.to_user.display_name,
+                self.object.to_user.email,
+            )
+
         return super().form_valid(form)

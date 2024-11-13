@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth import views as auth_views
 
+from .models import NotificationSettings
 from core.components.tabs.tabs import TabsMixin
 from core.models import User
 
@@ -12,6 +13,7 @@ from .forms import (
     AppearanceForm,
     AuthenticationForm,
     DeleteForm,
+    NotificationSettingsForm,
     PasswordChangeForm,
     PrivacyForm,
     UserForm,
@@ -26,11 +28,32 @@ tabs = {
         "href": reverse_lazy("account-appearance"),
         "label": _("Appearance"),
     },
+    "notifications": {
+        "href": reverse_lazy("account-notifications"),
+        "label": _("Notifications"),
+    },
     "privacy": {
         "href": reverse_lazy("account-privacy"),
         "label": _("Privacy"),
     },
 }
+
+
+class NotificationSettingsUpdateView(
+    TabsMixin,
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    UpdateView,
+):
+    form_class = NotificationSettingsForm
+    model = NotificationSettings
+    tabs = tabs
+    tab_current = "notifications"
+    success_message = _("Notification settings successfully updated")
+    success_url = reverse_lazy("account-notifications")
+
+    def get_object(self):
+        return self.request.user.notification_settings.first()
 
 
 class ProfileUpdateView(

@@ -4,6 +4,8 @@ from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import login
 
+from account.models import NotificationSettings
+
 from .forms import RegisterForm
 from .models import InviteCode
 
@@ -28,6 +30,9 @@ def register(request: HttpRequest):
                 invite.save()
 
                 user = form.save()
+
+                s = NotificationSettings(owner=user)
+                s.save()
 
             login(request, user)
             return redirect("index-login")

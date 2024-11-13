@@ -1,0 +1,18 @@
+{% extends "base-login.html" %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block headertitle %}
+{% translate 'This is me' %}
+{% endblock %}
+
+{% block content %}
+{% component "tabs" tabs=tabs / %}
+
+<p class="my-4">{% translate 'Update your notification settings.' %}</p>
+
+<form class="my-4" method="post">
+  {% crispy form %}
+</form>
+{% endblock %}

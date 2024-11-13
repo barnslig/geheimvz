@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-11 14:13+0100\n"
+"POT-Creation-Date: 2024-11-13 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,16 +128,16 @@ msgstr "Freundschaftsanfrage ablehnen"
 msgid "Cancel friend request"
 msgstr "Freundschaftsanfrage zurückziehen"
 
-#: friends/templates/friends/includes/_column-friend.html:11
-#: friends/templates/friends/includes/_column-suggestion.html:10
+#: friends/templates/friends/includes/_column-friend.html:10
+#: friends/templates/friends/includes/_column-suggestion.html:9
 msgid "Name"
 msgstr "Name"
 
-#: friends/templates/friends/includes/_column-friend.html:17
+#: friends/templates/friends/includes/_column-friend.html:16
 msgid "Created"
 msgstr "Erstellt"
 
-#: friends/templates/friends/includes/_column-friend.html:24
+#: friends/templates/friends/includes/_column-friend.html:23
 msgid "Message"
 msgstr "Nachricht"
 
@@ -145,43 +145,43 @@ msgstr "Nachricht"
 msgid "Add friend"
 msgstr "Freundschaftsanfrage stellen"
 
-#: friends/templates/friends/includes/_column-suggestion.html:15
+#: friends/templates/friends/includes/_column-suggestion.html:14
 msgid "Connection"
 msgstr "Verbindung"
 
-#: friends/templates/friends/includes/_column-suggestion.html:16
+#: friends/templates/friends/includes/_column-suggestion.html:15
 #, python-format
 msgid "One mutual friend."
 msgid_plural "%(count)s mutual friends."
 msgstr[0] "Ein gemeinsamer Freund."
 msgstr[1] "%(count)s gemeinsame Freunde."
 
-#: friends/views.py:24
+#: friends/views.py:25
 msgid "All friends"
 msgstr "Alle Freunde"
 
-#: friends/views.py:28
+#: friends/views.py:29
 msgid "Find friends"
 msgstr "Freunde finden"
 
-#: friends/views.py:32
+#: friends/views.py:33
 msgid "Friend requests"
 msgstr "Freundschaftsanfragen"
 
-#: friends/views.py:36
+#: friends/views.py:37
 msgid "Sent friend requests"
 msgstr "Verschickte Freundschaftsanfragen"
 
-#: friends/views.py:77
+#: friends/views.py:86
 msgid "Friendship ended."
 msgstr "Freundschaft beendet."
 
-#: friends/views.py:83
+#: friends/views.py:92
 #, python-format
 msgid "End friendship with %(name)s"
 msgstr "Freundschaft mit %(name)s beenden"
 
-#: friends/views.py:85
+#: friends/views.py:94
 #, python-format
 msgid "Are you sure that you want to end the friendship with %(name)s?"
 msgstr ""

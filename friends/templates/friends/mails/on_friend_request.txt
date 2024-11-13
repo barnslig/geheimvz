@@ -1,0 +1,9 @@
+Hey {{ to_name }},
+
+{{ from_name }} möchte dich als Freund hinzufügen, aber bevor wir das machen können, musst du noch bestätigen, dass ihr Freunde seid.
+Einfach einloggen und bestätigen, dass ihr Freunde seid:
+
+{{ action_url }}
+
+Viel Spaß!
+Dein GeheimVZ-Team

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-06 11:49+0100\n"
+"POT-Creation-Date: 2024-11-13 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,20 +71,20 @@ msgstr "Etwas schreiben"
 msgid "Delete post"
 msgstr "Beitrag löschen"
 
-#: pinboard/views.py:58
+#: pinboard/views.py:59
 msgid "Successfully posted to pinboard"
 msgstr "Erfolgreich auf die Pinnward geschrieben"
 
-#: pinboard/views.py:86
+#: pinboard/views.py:94
 msgid "Post successfully deleted"
 msgstr "Nachricht erfolgreich von der Pinnwand gelöscht!"
 
-#: pinboard/views.py:94
+#: pinboard/views.py:102
 #, python-format
 msgid "Delete %(name)s post from your pinboard"
 msgstr "%(name)ss Nachricht von deiner Pinnwand löschen"
 
-#: pinboard/views.py:97
+#: pinboard/views.py:105
 #, python-format
 msgid ""
 "Are you sure that you want to delete %(name)s's post from your pinboard?"

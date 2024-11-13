@@ -1,0 +1,9 @@
+Hey {{ to_name }},
+
+{{ from_name }} hat einen neuen Eintrag auf deiner Pinnwand hinterlassen!
+Um ihn zu lesen, kannst du dich hier einloggen und dann auf "Meine Seite" klicken:
+
+{{ action_url }}
+
+Viel Spaß!
+Dein GeheimVZ-Team

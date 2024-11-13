@@ -19,7 +19,9 @@ from django.views.generic.list import ListView
 
 from core.components.tabs.tabs import TabsMixin, make_tabs
 
+from .models import ForumPost, ForumThread, Group, GroupInvitation
 from .tables import GroupInviteTable, ThreadsTable
+from .tasks import send_on_group_invitation
 from .forms import (
     ForumPostForm,
     ForumThreadCreateForm,
@@ -29,7 +31,6 @@ from .forms import (
     GroupJoinForm,
     GroupLeaveForm,
 )
-from .models import ForumPost, ForumThread, Group, GroupInvitation
 
 User = get_user_model()
 
@@ -194,13 +195,21 @@ def group_invite(request: HttpRequest, pk: str):
         form = GroupInviteForm(to_user_queryset, request.POST, instance=invitation)
 
         if form.is_valid():
-            form.save()
+            invitation = form.save()
 
             messages.add_message(
                 request,
                 messages.SUCCESS,
                 _("User successfully invited"),
             )
+
+            if invitation.to_user.notification_settings.on_new_group_invitation:
+                send_on_group_invitation.delay(
+                    invitation.from_user.display_name,
+                    invitation.to_user.display_name,
+                    invitation.for_group.name,
+                    invitation.to_user.email,
+                )
 
             return redirect("group", pk=group.pk)
     else:

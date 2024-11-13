@@ -1,4 +1,3 @@
-from django.urls import reverse_lazy
 from django_ratelimit.decorators import ratelimit
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -7,10 +6,12 @@ from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from .forms import PinboardMessageForm
 from .models import PinboardMessage
+from .tasks import send_on_create_mail
 
 User = get_user_model()
 
@@ -58,6 +59,13 @@ def pinboard_create(request: HttpRequest, pk: str):
                 _("Successfully posted to pinboard"),
             )
 
+            if user.notification_settings.on_new_pinboard_message:
+                send_on_create_mail.delay(
+                    request.user.display_name,
+                    user.display_name,
+                    user.email,
+                )
+
             return redirect(user)
     else:
         form = PinboardMessageForm()
@@ -86,7 +94,7 @@ def pinboard_delete(request: HttpRequest, pk: str):
             _("Post successfully deleted"),
         )
 
-        return redirect("pinboard", pk=request.user.pk)
+        return redirect("pinboard", pk=post.created_for.pk)
 
     created_by_name = post.created_by.display_name
 

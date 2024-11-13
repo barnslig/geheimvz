@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-11 14:13+0100\n"
+"POT-Creation-Date: 2024-11-13 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,17 +63,17 @@ msgid "Message from %(name)s"
 msgstr "Nachricht von %(name)s"
 
 #: private_messages/templates/private_messages/privatemessage_detail.html:15
-#: private_messages/views.py:29
+#: private_messages/views.py:31
 msgid "Sent"
 msgstr "Gesendet"
 
 #: private_messages/templates/private_messages/privatemessage_detail.html:17
-#: private_messages/views.py:25
+#: private_messages/views.py:27
 msgid "Inbox"
 msgstr "Empfangen"
 
 #: private_messages/templates/private_messages/privatemessage_form.html:7
-#: private_messages/views.py:33
+#: private_messages/views.py:35
 msgid "New message"
 msgstr "Nachricht schreiben"
 
@@ -104,6 +104,6 @@ msgstr[1] "Du hast %(count)s Nachrichten verschickt."
 msgid "You have not yet sent any messages."
 msgstr "Du hast noch keine Nachrichten verschickt."
 
-#: private_messages/views.py:89
+#: private_messages/views.py:93
 msgid "Private message successfully sent!"
 msgstr "Nachricht erfolgreich verschickt!"
