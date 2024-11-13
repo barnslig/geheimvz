@@ -6,4 +6,4 @@ Hier kannst du die Einladung anschauen und annehmen:
 {{ action_url }}
 
 Viel Spaß!
-Dein GeheimVZ-Team
+Dein geheimVZ-Team
