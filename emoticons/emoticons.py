@@ -23,6 +23,7 @@ emoticons = [
     "twisted",
     "ugeek",
     "wink",
+    "secco"
 ]
 
 emoticons = [(f":{s}:", f"emoticons/icon_{s}.gif") for s in emoticons]
