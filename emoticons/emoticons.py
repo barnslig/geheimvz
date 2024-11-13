@@ -1,4 +1,5 @@
 emoticons = [
+    "antifa",
     "arrow",
     "biggrin",
     "confused",
@@ -18,12 +19,12 @@ emoticons = [
     "redface",
     "rolleyes",
     "sad",
+    "secco"
     "smile",
     "surprised",
     "twisted",
     "ugeek",
     "wink",
-    "secco"
 ]
 
 emoticons = [(f":{s}:", f"emoticons/icon_{s}.gif") for s in emoticons]
