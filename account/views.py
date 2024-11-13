@@ -53,7 +53,7 @@ class NotificationSettingsUpdateView(
     success_url = reverse_lazy("account-notifications")
 
     def get_object(self):
-        return self.request.user.notification_settings.first()
+        return self.request.user.notification_settings
 
 
 class ProfileUpdateView(
