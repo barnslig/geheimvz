@@ -30,6 +30,7 @@ django-csp = "^3.8"
 psycopg2 = "^2.9.10"
 django-s3-storage = "^0.15.0"
 redis = "^5.2.0"
+celery = {extras = ["redis"], version = "^5.4.0"}
 
 
 [build-system]

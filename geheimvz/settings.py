@@ -18,10 +18,14 @@ import pillow_avif
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
+    BASE_URL=(str, "http://localhost:8000"),
     CACHE_URL=(str, "locmemcache://"),
+    CELERY_BROKER_URL=(str, "amqp://"),
     CSRF_TRUSTED_ORIGINS=(list, []),
     DATABASE_URL=(str, None),
     DEBUG=(bool, False),
+    EMAIL_URL=(str, "smtp://localhost"),
+    EMAIL_FROM=(str, None),
     LANGUAGE_CODE=(str, "de-de"),
     LOG_LEVEL=(str, "WARNING"),
     S3_ACCESS_KEY_ID=(str, None),
@@ -57,6 +61,7 @@ INTERNAL_IPS = ["127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
+BASE_URL = env("BASE_URL")
 
 # Application definition
 
@@ -154,6 +159,27 @@ DATABASES = {
 CACHES = {
     "default": env.cache(),
 }
+
+
+# Queue
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html
+# https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html
+
+CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+
+CELERY_TIMEZONE = env("TIME_ZONE")
+
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+CELERY_ACCEPT_CONTENT = ["json", "application/x-python-serialize"]  # for ImageKit
+
+# Mail
+# https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-EMAIL_BACKEND
+
+EMAIL_CONFIG = env.email()
+vars().update(EMAIL_CONFIG)
+
+DEFAULT_FROM_EMAIL = env("EMAIL_FROM")
 
 
 # Password validation
@@ -314,6 +340,8 @@ COMPONENTS = {
 
 # Image Transforms
 # https://django-imagekit.readthedocs.io/en/latest/
+
+IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = "imagekit.cachefiles.backends.Async"
 
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic"
 
