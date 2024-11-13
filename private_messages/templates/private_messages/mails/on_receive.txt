@@ -6,4 +6,4 @@ Hier kannst du sie lesen:
 {{ action_url }}
 
 Viel Spaß!
-Dein GeheimVZ-Team
+Dein geheimVZ-Team
