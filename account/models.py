@@ -138,7 +138,7 @@ class PrivacySettings(models.Model):
         if self.can_see_profile == PrivacySettings.PrivacyChoices.EVERYONE:
             return True
 
-        if user == self:
+        if user == self.owner:
             return True
 
         if Friend.objects.are_friends(self.owner, user):
