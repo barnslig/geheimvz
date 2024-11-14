@@ -36,7 +36,7 @@
       <ul class="grid grid-cols-4 gap-4">
         {% for user in friend_suggestions %}
           <li class="flex flex-col">
-            <a class="mb-auto" href="{{ user.get_absolute_url }}">
+            <a class="my-auto" href="{{ user.get_absolute_url }}">
               {% component "profile_image" user.image_profile_small user.image_width user.image_height / %}
               <span class="hyphens-auto">{{ user.display_name }}</span>
             </a>
