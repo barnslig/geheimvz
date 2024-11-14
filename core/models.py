@@ -7,7 +7,12 @@ from friendship.models import Friend
 from imagekit.models import ProcessedImageField, ImageSpecField
 from uuid import uuid4
 
-from .helpers import UploadToUuidFilename, ValidateMaxFilesize
+from .helpers import (
+    UploadToUuidFilename,
+    ValidateImageAspectRatio,
+    ValidateImageSize,
+    ValidateMaxFilesize,
+)
 from .imagegenerators import ProfileKeep
 
 
@@ -23,7 +28,11 @@ class User(AbstractUser):
         width_field="image_width",
         height_field="image_height",
         upload_to=UploadToUuidFilename("profiles/"),
-        validators=[ValidateMaxFilesize(10)],
+        validators=[
+            ValidateMaxFilesize(10),
+            ValidateImageSize(100, 100, 4000, 4000),
+            ValidateImageAspectRatio(0.5, 1.8),
+        ],
         verbose_name=_("Profile picture"),
     )
     image_profile_medium = ImageSpecField(

@@ -1,7 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db.models.fields import files
 from django.utils.translation import gettext_lazy as _
-from functools import wraps
 from os.path import splitext, join
 from uuid import uuid4
 from django.utils.deconstruct import deconstructible
@@ -36,4 +35,54 @@ class ValidateMaxFilesize:
             raise ValidationError(
                 _("Maximum file size of %(value)s MB exceeded!"),
                 params={"value": self.max_MB},
+            )
+
+
+@deconstructible
+class ValidateImageAspectRatio:
+    """
+    Validate that an ImageField image ratio is within given bounds
+    """
+
+    def __init__(self, min_ratio: int, max_ratio: int):
+        self.min_ratio = min_ratio
+        self.max_ratio = max_ratio
+
+    def __call__(self, value: files.ImageFieldFile):
+        ratio = value.height / value.width
+        if ratio < self.min_ratio or ratio > self.max_ratio:
+            raise ValidationError(_("Invalid image aspect ratio."))
+
+
+@deconstructible
+class ValidateImageSize:
+    """
+    Validate that an ImageField image width/height is within given bounds
+    """
+
+    def __init__(
+        self, min_width: int, min_height: int, max_width: int, max_height: int
+    ):
+        self.min_width = min_width
+        self.min_height = min_height
+        self.max_width = max_width
+        self.max_height = max_height
+
+    def __call__(self, value: files.ImageFieldFile):
+        if (
+            value.width < self.min_width
+            or self.width > self.max_width
+            or self.height < self.min_height
+            or self.height > self.max_height
+        ):
+            raise ValidationError(
+                _(
+                    "Image size needs to be within %(min_width)sx%(min_height)s and %(max_width)sx%(max_height)s"
+                )
+                % {
+                    "min_width": self.min_width,
+                    "min_height": self.min_height,
+                    "max_width": self.max_width,
+                    "max_height": self.max_height,
+                }
             )

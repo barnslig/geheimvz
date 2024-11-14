@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 20:55+0100\n"
+"POT-Creation-Date: 2024-11-14 21:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "Send message"
 msgstr "Nachricht schicken"
 
 #: core/components/profile_image/profile_image.py:11 core/forms.py:92
-#: core/models.py:27
+#: core/models.py:36
 msgid "Profile picture"
 msgstr "Profilbild"
 
@@ -83,95 +83,103 @@ msgstr "Maximale Dateigröße von %(value)s MB überschritten!"
 msgid "Invalid image aspect ratio."
 msgstr "Ungültiges Bildseitenverhältnis."
 
-#: core/models.py:40
+#: core/helpers.py:80
+#, python-format
+msgid ""
+"Image size needs to be within %(min_width)sx%(min_height)s and "
+"%(max_width)sx%(max_height)s"
+msgstr "Die Bildgröße muss sich innerhalb von %(min_width)sx%(min_height)s und "
+"%(max_width)sx%(max_height)s befinden"
+
+#: core/models.py:49
 msgid "Full name"
 msgstr "Voller Name"
 
-#: core/models.py:43
+#: core/models.py:52
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: core/models.py:46
+#: core/models.py:55
 msgid "Pronouns"
 msgstr "Pronomen"
 
-#: core/models.py:48
+#: core/models.py:57
 msgid "Birthday"
 msgstr "Geburtstag"
 
-#: core/models.py:55
+#: core/models.py:64
 msgid "Your mother's maiden name"
 msgstr "Mädchenname der Mutter"
 
-#: core/models.py:58
+#: core/models.py:67
 msgid "Name of your first pet"
 msgstr "Name des ersten Haustiers"
 
-#: core/models.py:64
+#: core/models.py:73
 msgid "Street where you grew up"
 msgstr "In dieser Straße bin ich aufgewachsen"
 
-#: core/models.py:67
+#: core/models.py:76
 msgid "Make of your first car"
 msgstr "Marke des ersten Autos"
 
-#: core/models.py:69
+#: core/models.py:78
 msgid "Looking for"
 msgstr "Auf der Suche nach"
 
-#: core/models.py:71
+#: core/models.py:80
 msgid "Relationship"
 msgstr "Beziehungsstatus"
 
-#: core/models.py:73
+#: core/models.py:82
 msgid "Hobbies"
 msgstr "Hobbys"
 
-#: core/models.py:74
+#: core/models.py:83
 msgid "What I like"
 msgstr "Was ich mag"
 
-#: core/models.py:76
+#: core/models.py:85
 msgid "What I don't like"
 msgstr "Was ich nicht mag"
 
-#: core/models.py:79
+#: core/models.py:88
 msgid "Favourite music"
 msgstr "Lieblingsmusik"
 
-#: core/models.py:82
+#: core/models.py:91
 msgid "Favourite movies"
 msgstr "Lieblingsfilme"
 
-#: core/models.py:85
+#: core/models.py:94
 msgid "Favourite books"
 msgstr "Lieblingsbücher"
 
-#: core/models.py:88
+#: core/models.py:97
 msgid "Favourite food"
 msgstr "Lieblingsessen"
 
-#: core/models.py:91
+#: core/models.py:100
 msgid "I am good at"
 msgstr "Darin bin ich gut"
 
-#: core/models.py:93
+#: core/models.py:102
 msgid "I wish for"
 msgstr "Was ich mir wünsche"
 
-#: core/models.py:97
+#: core/models.py:106
 msgid "Everyone logged in"
 msgstr "Alle, die eingeloggt sind."
 
-#: core/models.py:98
+#: core/models.py:107
 msgid "Only my friends"
 msgstr "Nur meine Freunde"
 
-#: core/models.py:104
+#: core/models.py:113
 msgid "Who can see your page?"
 msgstr "Wer darf meine Seite sehen?"
 
-#: core/models.py:110
+#: core/models.py:119
 msgid "Who can send you messages?"
 msgstr "Wer darf mir Nachrichten schicken?"
 

@@ -6,7 +6,12 @@ from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField, ImageSpecField
 import uuid
 
-from core.helpers import UploadToUuidFilename, ValidateMaxFilesize
+from core.helpers import (
+    UploadToUuidFilename,
+    ValidateImageAspectRatio,
+    ValidateImageSize,
+    ValidateMaxFilesize,
+)
 from core.imagegenerators import ProfileKeep
 
 
@@ -49,7 +54,11 @@ class Group(models.Model):
         width_field="image_width",
         height_field="image_height",
         upload_to=UploadToUuidFilename("groups/"),
-        validators=[ValidateMaxFilesize(10)],
+        validators=[
+            ValidateMaxFilesize(10),
+            ValidateImageSize(100, 100, 4000, 4000),
+            ValidateImageAspectRatio(0.5, 1.8),
+        ],
         verbose_name=_("Group picture"),
     )
     image_profile_medium = ImageSpecField(
