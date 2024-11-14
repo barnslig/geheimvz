@@ -5,6 +5,81 @@ from django.utils.translation import gettext_lazy as _
 User = get_user_model()
 
 
+class AppearanceSettings(models.Model):
+    class ColorChoices(models.TextChoices):
+        ROSE = "theme-rose", _("Rose")
+        BLUE = "theme-blue", _("Blue")
+        GREEN = "theme-green", _("Green")
+        DARK = "theme-dark", _("Dark Mode")
+        CONTRAST = "theme-contrast", _("High Contrast")
+
+    class FontChoices(models.TextChoices):
+        SANS = "font-sans", _("Sans-Serif")
+        SERIF = "font-serif", _("Serif")
+        MONO = "font-mono", _("Monospace")
+        COMIC = "font-comic", _("Comic")
+        # SLAB
+        # CUTE
+        # FUTURISTIC
+        # PIXEL
+
+    class BackgroundChoices(models.TextChoices):
+        NONE = "NONE", _("None")
+        CLOUDS = "CLOUDS", _("Clouds")
+        CHARLIE = "CHARLIE", _("Charlie Brown")
+        WAVES = "WAVES", _("Waves")
+
+    class LogoChoices(models.TextChoices):
+        SIMPLE = "SIMPLE", _("Simple")
+        PRIDE = "PRIDE", _("Pride")
+        EYE = "EYE", _("All-Seeing Eye")
+
+    class SizeChoices(models.TextChoices):
+        XS = "size-xs", _("Extra Small")
+        SM = "size-sm", _("Small")
+        BASE = "size-base", _("Default")
+        LG = "size-lg", _("Large")
+
+    owner = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="appearance_settings",
+    )
+    color = models.CharField(
+        max_length=255,
+        choices=ColorChoices,
+        default=ColorChoices.ROSE,
+        verbose_name=_("Theme color"),
+    )
+    font = models.CharField(
+        max_length=255,
+        choices=FontChoices,
+        default=FontChoices.SANS,
+        verbose_name=_("Theme font"),
+    )
+    size = models.CharField(
+        max_length=255,
+        choices=SizeChoices,
+        default=SizeChoices.BASE,
+        verbose_name=_("Theme size"),
+    )
+    background = models.CharField(
+        max_length=255,
+        choices=BackgroundChoices,
+        default=BackgroundChoices.NONE,
+        verbose_name=_("Theme background"),
+    )
+    logo = models.CharField(
+        max_length=255,
+        choices=LogoChoices,
+        default=LogoChoices.SIMPLE,
+        verbose_name=_("Theme logo"),
+    )
+
+    def __str__(self):
+        return f"Settings for {self.owner.display_name}"
+
+
 class NotificationSettings(models.Model):
     owner = models.OneToOneField(
         User,

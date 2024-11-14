@@ -3,7 +3,7 @@
 {% load login %}
 
 <!DOCTYPE html>
-<html lang="de" class="{% if request.user.is_authenticated %}{{ request.user.appearance_size }}{% else %}size-base{% endif %}">
+<html lang="de" class="{% if request.user.is_authenticated %}{{ request.user.appearance_settings.size }}{% else %}size-base{% endif %}">
   <head>
     <meta charset="utf-8" />
     <title>geheimVZ</title>
@@ -15,7 +15,7 @@
     <link rel="icon" href="{% static 'core/favicon/icon-32x32.png' %}" sizes="32x32" />
     <link rel="icon" href="{% static 'core/favicon/icon-192x192.png' %}" sizes="192x192" />
   </head>
-  <body{% if request.user.is_authenticated %} class="{{ request.user.appearance_color }} {{ request.user.appearance_font }}"{% endif %}>
+  <body{% if request.user.is_authenticated %} class="{{ request.user.appearance_settings.color }} {{ request.user.appearance_settings.font }}"{% endif %}>
     <div class="mx-auto my-5 size-container">
       <div class="grid items-start grid-cols-12 gap-4">
         <aside class="col-span-2">

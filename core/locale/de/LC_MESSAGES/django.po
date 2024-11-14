@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-12 22:20+0100\n"
+"POT-Creation-Date: 2024-11-14 17:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,106 +170,6 @@ msgstr "Wer darf meine Seite sehen?"
 #: core/models.py:110
 msgid "Who can send you messages?"
 msgstr "Wer darf mir Nachrichten schicken?"
-
-#: core/models.py:115
-msgid "Rose"
-msgstr "Rosa"
-
-#: core/models.py:116
-msgid "Blue"
-msgstr "Blau"
-
-#: core/models.py:117
-msgid "Green"
-msgstr "Grün"
-
-#: core/models.py:118
-msgid "Dark Mode"
-msgstr "Dark Mode"
-
-#: core/models.py:119
-msgid "High Contrast"
-msgstr "Hoher Kontrast"
-
-#: core/models.py:122
-msgid "Sans-Serif"
-msgstr "Sans-Serif"
-
-#: core/models.py:123
-msgid "Serif"
-msgstr "Serif"
-
-#: core/models.py:124
-msgid "Monospace"
-msgstr "Monospace"
-
-#: core/models.py:125
-msgid "Comic"
-msgstr "Comic"
-
-#: core/models.py:132
-msgid "None"
-msgstr "Keiner"
-
-#: core/models.py:133
-msgid "Clouds"
-msgstr "Wolken"
-
-#: core/models.py:134
-msgid "Charlie Brown"
-msgstr "Charlie Brown"
-
-#: core/models.py:135
-msgid "Waves"
-msgstr "Wellen"
-
-#: core/models.py:138
-msgid "Simple"
-msgstr "Einfach"
-
-#: core/models.py:139
-msgid "Pride"
-msgstr "Pride"
-
-#: core/models.py:140
-msgid "All-Seeing Eye"
-msgstr "Allsehendes Auge"
-
-#: core/models.py:143
-msgid "Extra Small"
-msgstr "Extra klein"
-
-#: core/models.py:144
-msgid "Small"
-msgstr "Klein"
-
-#: core/models.py:145
-msgid "Default"
-msgstr "Normal"
-
-#: core/models.py:146
-msgid "Large"
-msgstr "Größer"
-
-#: core/models.py:152
-msgid "Theme color"
-msgstr "Farbe"
-
-#: core/models.py:158
-msgid "Theme font"
-msgstr "Schriftart"
-
-#: core/models.py:164
-msgid "Theme size"
-msgstr "Schriftgröße"
-
-#: core/models.py:170
-msgid "Theme background"
-msgstr "Hintergrund"
-
-#: core/models.py:176
-msgid "Theme logo"
-msgstr "Logo"
 
 #: core/templates/base-login.html:7
 msgid "Find people"

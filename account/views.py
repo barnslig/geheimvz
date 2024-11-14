@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth import views as auth_views
 
-from .models import NotificationSettings
+from .models import AppearanceSettings, NotificationSettings
 from core.components.tabs.tabs import TabsMixin
 from core.models import User
 
@@ -80,7 +80,7 @@ class AppearanceUpdateView(
     UpdateView,
 ):
     form_class = AppearanceForm
-    model = User
+    model = AppearanceSettings
     success_message = _("Profile successfully updated")
     template_name = "account/appearance_form.html"
     success_url = reverse_lazy("account-appearance")
@@ -88,7 +88,7 @@ class AppearanceUpdateView(
     tab_current = "appearance"
 
     def get_object(self):
-        return self.request.user
+        return self.request.user.appearance_settings
 
 
 class PrivacyUpdateView(

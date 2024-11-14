@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-13 17:10+0100\n"
+"POT-Creation-Date: 2024-11-14 17:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,19 +48,119 @@ msgstr "Passwort ändern"
 msgid "Login"
 msgstr "Anmelden"
 
+#: account/models.py:10
+msgid "Rose"
+msgstr "Rosa"
+
+#: account/models.py:11
+msgid "Blue"
+msgstr "Blau"
+
+#: account/models.py:12
+msgid "Green"
+msgstr "Grün"
+
+#: account/models.py:13
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: account/models.py:14
+msgid "High Contrast"
+msgstr "Hoher Kontrast"
+
 #: account/models.py:17
+msgid "Sans-Serif"
+msgstr "Sans-Serif"
+
+#: account/models.py:18
+msgid "Serif"
+msgstr "Serif"
+
+#: account/models.py:19
+msgid "Monospace"
+msgstr "Monospace"
+
+#: account/models.py:20
+msgid "Comic"
+msgstr "Comic"
+
+#: account/models.py:27
+msgid "None"
+msgstr "Keiner"
+
+#: account/models.py:28
+msgid "Clouds"
+msgstr "Wolken"
+
+#: account/models.py:29
+msgid "Charlie Brown"
+msgstr "Charlie Brown"
+
+#: account/models.py:30
+msgid "Waves"
+msgstr "Wellen"
+
+#: account/models.py:33
+msgid "Simple"
+msgstr "Einfach"
+
+#: account/models.py:34
+msgid "Pride"
+msgstr "Pride"
+
+#: account/models.py:35
+msgid "All-Seeing Eye"
+msgstr "Allsehendes Auge"
+
+#: account/models.py:38
+msgid "Extra Small"
+msgstr "Extra klein"
+
+#: account/models.py:39
+msgid "Small"
+msgstr "Klein"
+
+#: account/models.py:40
+msgid "Default"
+msgstr "Normal"
+
+#: account/models.py:41
+msgid "Large"
+msgstr "Größer"
+
+#: account/models.py:52
+msgid "Theme color"
+msgstr "Farbe"
+
+#: account/models.py:58
+msgid "Theme font"
+msgstr "Schriftart"
+
+#: account/models.py:64
+msgid "Theme size"
+msgstr "Schriftgröße"
+
+#: account/models.py:70
+msgid "Theme background"
+msgstr "Hintergrund"
+
+#: account/models.py:76
+msgid "Theme logo"
+msgstr "Logo"
+
+#: account/models.py:92
 msgid "On new pinboard message"
 msgstr "Bei neuen Nachrichten auf deiner Pinnwand"
 
-#: account/models.py:21
+#: account/models.py:96
 msgid "On new private message"
 msgstr "Bei neuen Nachrichten"
 
-#: account/models.py:25
+#: account/models.py:100
 msgid "On new friend request"
 msgstr "Bei neuen Freundschaftsanfragen"
 
-#: account/models.py:29
+#: account/models.py:104
 msgid "On new group invitation"
 msgstr "Bei neuen Gruppeneinladungen"
 
