@@ -71,9 +71,9 @@ class ValidateImageSize:
     def __call__(self, value: files.ImageFieldFile):
         if (
             value.width < self.min_width
-            or self.width > self.max_width
-            or self.height < self.min_height
-            or self.height > self.max_height
+            or value.width > self.max_width
+            or value.height < self.min_height
+            or value.height > self.max_height
         ):
             raise ValidationError(
                 _(
