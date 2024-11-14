@@ -64,7 +64,7 @@ class Group(models.Model):
         return self.members.contains(user) or self.admins.contains(user)
 
     def get_can_invite(self, user):
-        return self.admins.contains(user)
+        return self.members.contains(user) or self.admins.contains(user)
 
     def get_absolute_url(self):
         return reverse("group", kwargs={"pk": self.pk})

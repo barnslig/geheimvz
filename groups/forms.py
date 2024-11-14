@@ -49,6 +49,10 @@ class GroupForm(ModelForm):
             RightColumn(Submit("submit", _("Update the group"))),
         )
 
+        self.fields["admins"].queryset = User.objects.filter(
+            groups_member__in=[self.instance]
+        )
+
 
 class GroupInviteForm(ModelForm):
     class Meta:

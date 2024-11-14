@@ -124,10 +124,13 @@ class GroupUpdateView(LoginRequiredMixin, UpdateView):
     model = Group
     success_message = _('Group "%(name)s" successfully updated!')
 
+    def get_queryset(self):
+        return super().get_queryset().filter(admins__in=[self.request.user.pk])
+
 
 @login_required
 def group_leave(request: HttpRequest, pk: str):
-    group = get_object_or_404(Group, pk=pk)
+    group = get_object_or_404(request.user.groups_member, pk=pk)
 
     if request.method == "POST":
         group.members.remove(request.user)
@@ -165,7 +168,6 @@ def group_join(request: HttpRequest, pk: str):
     if request.method == "POST":
         with transaction.atomic():
             group.members.add(request.user)
-            group.admins.add(request.user)
 
             if invitation:
                 invitation.delete()
@@ -189,10 +191,7 @@ def group_join(request: HttpRequest, pk: str):
 
 @login_required
 def group_invite(request: HttpRequest, pk: str):
-    group = get_object_or_404(Group, pk=pk)
-
-    if not group.get_can_invite(request.user):
-        raise PermissionDenied()
+    group = get_object_or_404(request.user.groups_member, pk=pk)
 
     to_user_queryset = User.objects.filter(friends__from_user=request.user).filter(
         ~Q(groups_member__pk=group.pk)
