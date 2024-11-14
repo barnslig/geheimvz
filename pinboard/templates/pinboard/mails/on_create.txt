@@ -6,4 +6,4 @@ Um ihn zu lesen, kannst du dich hier einloggen und dann auf "Meine Seite" klicke
 {{ action_url }}
 
 Viel Spaß!
-Dein GeheimVZ-Team
+Dein geheimVZ-Team

@@ -101,15 +101,15 @@ msgstr "Mädchenname der Mutter"
 
 #: core/models.py:58
 msgid "Name of your first pet"
-msgstr "Name vom ersten Haustier"
+msgstr "Name des ersten Haustiers"
 
 #: core/models.py:64
 msgid "Street where you grew up"
-msgstr "In der Straße bin ich aufgewachsen"
+msgstr "In dieser Straße bin ich aufgewachsen"
 
 #: core/models.py:67
 msgid "Make of your first car"
-msgstr "Marke vom ersten Auto"
+msgstr "Marke des ersten Autos"
 
 #: core/models.py:69
 msgid "Looking for"

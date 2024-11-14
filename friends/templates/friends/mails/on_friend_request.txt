@@ -6,4 +6,4 @@ Einfach einloggen und bestätigen, dass ihr Freunde seid:
 {{ action_url }}
 
 Viel Spaß!
-Dein GeheimVZ-Team
+Dein geheimVZ-Team
