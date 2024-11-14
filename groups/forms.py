@@ -50,20 +50,6 @@ class GroupForm(ModelForm):
         )
 
 
-class GroupLeaveForm(Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(Submit("submit", _("Leave group")))
-
-
-class GroupJoinForm(Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(Submit("submit", _("Join group")))
-
-
 class GroupInviteForm(ModelForm):
     class Meta:
         model = GroupInvitation
