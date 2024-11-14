@@ -110,7 +110,7 @@ def friend_list(request: HttpRequest):
     )
     table = FriendsTable(friends)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,
@@ -127,7 +127,7 @@ def friend_suggestions(request: HttpRequest):
     fof = request.user.get_friends_of_friends()
     table = FriendSuggestionsTable(fof)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,
@@ -148,7 +148,7 @@ def friend_requests(request: HttpRequest):
     )
     table = FriendRequestsTable(friend_requests)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,

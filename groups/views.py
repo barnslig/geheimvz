@@ -80,7 +80,7 @@ class GroupDetailView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
 
 class GroupListView(TabsMixin, LoginRequiredMixin, ListView):
     model = Group
-    paginate_by = 5
+    paginate_by = 20
     ordering = ["name"]
     tabs = tabs
     tab_current = "list"
@@ -92,7 +92,7 @@ class GroupListView(TabsMixin, LoginRequiredMixin, ListView):
 
 class GroupListAllView(TabsMixin, LoginRequiredMixin, ListView):
     model = Group
-    paginate_by = 5
+    paginate_by = 20
     template_name_suffix = "_list_all"
     ordering = ["name"]
     tabs = tabs
@@ -266,7 +266,7 @@ def forumthread_detail(request: HttpRequest, pk: str):
         raise PermissionDenied()
 
     posts = thread.posts.order_by("created_at")
-    posts_paginator = Paginator(posts, 5)
+    posts_paginator = Paginator(posts, 20)
     posts_page_obj = posts_paginator.get_page(request.GET.get("page", 1))
 
     ctx = {
