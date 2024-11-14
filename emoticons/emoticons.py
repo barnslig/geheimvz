@@ -19,7 +19,7 @@ emoticons = [
     "redface",
     "rolleyes",
     "sad",
-    "secco"
+    "secco",
     "smile",
     "surprised",
     "twisted",
