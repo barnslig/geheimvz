@@ -1,3 +1,4 @@
+from annoying.fields import AutoOneToOneField
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -41,7 +42,7 @@ class AppearanceSettings(models.Model):
         BASE = "size-base", _("Default")
         LG = "size-lg", _("Large")
 
-    owner = models.OneToOneField(
+    owner = AutoOneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="appearance_settings",
@@ -82,7 +83,7 @@ class AppearanceSettings(models.Model):
 
 
 class NotificationSettings(models.Model):
-    owner = models.OneToOneField(
+    owner = AutoOneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="notification_settings",
@@ -114,7 +115,7 @@ class PrivacySettings(models.Model):
         EVERYONE = "E", _("Everyone logged in")
         FRIENDS = "F", _("Only my friends")
 
-    owner = models.OneToOneField(
+    owner = AutoOneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="privacy_settings",

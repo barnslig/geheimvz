@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_vite",
     "django_components",
+    "annoying",
     "csp",
     "crispy_forms",
     "crispy_tailwind",

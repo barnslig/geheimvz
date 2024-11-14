@@ -559,6 +559,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-annoying"
+version = "0.10.7"
+description = "This is a django application that tries to eliminate annoying things in the Django framework."
+optional = false
+python-versions = ">=3.0"
+files = [
+    {file = "django-annoying-0.10.7.tar.gz", hash = "sha256:d42a9f4757701903edcb3398c542e6d39e67856295059589296c277350d02fc0"},
+]
+
+[package.dependencies]
+Django = ">=1.11"
+six = "*"
+
+[[package]]
 name = "django-appconf"
 version = "1.0.6"
 description = "A helper class for handling configuration defaults of packaged apps gracefully."
@@ -1459,4 +1473,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b94e28956ce7ef0ffca12efc0cbd7f0cae0321c7a71789641a66e67c39f4e9e8"
+content-hash = "8aedf48b4d6d1dd22451e34063b45e0a5fed7178ff4f774db42917c849be3ccf"
