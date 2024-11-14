@@ -101,24 +101,6 @@ class User(AbstractUser):
     )
     i_wish_for = models.TextField(null=True, blank=True, verbose_name=_("I wish for"))
 
-    # privacy settings
-    class PrivacyChoices(models.TextChoices):
-        EVERYONE = "E", _("Everyone logged in")
-        FRIENDS = "F", _("Only my friends")
-
-    can_see_profile = models.CharField(
-        max_length=1,
-        choices=PrivacyChoices,
-        default=PrivacyChoices.FRIENDS,
-        verbose_name=_("Who can see your page?"),
-    )
-    can_send_messages = models.CharField(
-        max_length=1,
-        choices=PrivacyChoices,
-        default=PrivacyChoices.FRIENDS,
-        verbose_name=_("Who can send you messages?"),
-    )
-
     @property
     def display_name(self):
         if self.full_name and len(self.full_name) > 0:
@@ -162,36 +144,6 @@ class User(AbstractUser):
         )
 
         return fof
-
-    def get_can_see_profile(self, user):
-        if self.can_see_profile == User.PrivacyChoices.EVERYONE:
-            return True
-
-        if user == self:
-            return True
-
-        if Friend.objects.are_friends(self, user):
-            return True
-
-        if user.is_superuser:
-            return True
-
-        return False
-
-    def get_can_send_messages(self, user):
-        if self.can_send_messages == User.PrivacyChoices.EVERYONE:
-            return True
-
-        if Friend.objects.are_friends(self, user):
-            return True
-
-        if user.friendship_requests_sent.filter(to_user=user).exists():
-            return True
-
-        if user.is_superuser:
-            return True
-
-        return False
 
     def get_absolute_url(self):
         return reverse("profile", kwargs={"id": self.id})

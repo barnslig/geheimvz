@@ -60,8 +60,8 @@ def profile(request: HttpRequest, id: str):
 
         return None
 
-    can_see_profile = user.get_can_see_profile(request.user)
-    can_send_messages = user.get_can_send_messages(request.user)
+    can_see_profile = user.privacy_settings.get_can_see_profile(request.user)
+    can_send_messages = user.privacy_settings.get_can_send_messages(request.user)
 
     are_friends = Friend.objects.are_friends(request.user, user)
 

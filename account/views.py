@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth import views as auth_views
 
-from .models import AppearanceSettings, NotificationSettings
+from .models import AppearanceSettings, NotificationSettings, PrivacySettings
 from core.components.tabs.tabs import TabsMixin
 from core.models import User
 
@@ -37,23 +37,6 @@ tabs = {
         "label": _("Privacy"),
     },
 }
-
-
-class NotificationSettingsUpdateView(
-    TabsMixin,
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UpdateView,
-):
-    form_class = NotificationSettingsForm
-    model = NotificationSettings
-    tabs = tabs
-    tab_current = "notifications"
-    success_message = _("Notification settings successfully updated")
-    success_url = reverse_lazy("account-notifications")
-
-    def get_object(self):
-        return self.request.user.notification_settings
 
 
 class ProfileUpdateView(
@@ -91,6 +74,23 @@ class AppearanceUpdateView(
         return self.request.user.appearance_settings
 
 
+class NotificationSettingsUpdateView(
+    TabsMixin,
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    UpdateView,
+):
+    form_class = NotificationSettingsForm
+    model = NotificationSettings
+    tabs = tabs
+    tab_current = "notifications"
+    success_message = _("Notification settings successfully updated")
+    success_url = reverse_lazy("account-notifications")
+
+    def get_object(self):
+        return self.request.user.notification_settings
+
+
 class PrivacyUpdateView(
     TabsMixin,
     LoginRequiredMixin,
@@ -98,14 +98,15 @@ class PrivacyUpdateView(
     UpdateView,
 ):
     form_class = PrivacyForm
-    model = User
+    model = PrivacySettings
     success_message = _("Profile successfully updated")
+    success_url = reverse_lazy("account-privacy")
     template_name = "account/privacy_form.html"
     tabs = tabs
     tab_current = "privacy"
 
     def get_object(self):
-        return self.request.user
+        return self.request.user.privacy_settings
 
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):

@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _, gettext
 
-from .models import AppearanceSettings, NotificationSettings
+from .models import AppearanceSettings, NotificationSettings, PrivacySettings
 from core.models import User
 from core.forms import RightColumn
 
@@ -77,7 +77,7 @@ class AppearanceForm(forms.ModelForm):
 
 class PrivacyForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = PrivacySettings
         fields = [
             "can_see_profile",
             "can_send_messages",

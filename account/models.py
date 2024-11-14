@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from friendship.models import Friend
 
 User = get_user_model()
 
@@ -103,6 +104,64 @@ class NotificationSettings(models.Model):
         default=True,
         verbose_name=_("On new group invitation"),
     )
+
+    def __str__(self):
+        return f"Settings for {self.owner.display_name}"
+
+
+class PrivacySettings(models.Model):
+    class PrivacyChoices(models.TextChoices):
+        EVERYONE = "E", _("Everyone logged in")
+        FRIENDS = "F", _("Only my friends")
+
+    owner = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="privacy_settings",
+    )
+
+    can_see_profile = models.CharField(
+        max_length=1,
+        choices=PrivacyChoices,
+        default=PrivacyChoices.FRIENDS,
+        verbose_name=_("Who can see your page?"),
+    )
+    can_send_messages = models.CharField(
+        max_length=1,
+        choices=PrivacyChoices,
+        default=PrivacyChoices.FRIENDS,
+        verbose_name=_("Who can send you messages?"),
+    )
+
+    def get_can_see_profile(self, user):
+        if self.can_see_profile == PrivacySettings.PrivacyChoices.EVERYONE:
+            return True
+
+        if user == self:
+            return True
+
+        if Friend.objects.are_friends(self.owner, user):
+            return True
+
+        if user.is_superuser:
+            return True
+
+        return False
+
+    def get_can_send_messages(self, user):
+        if self.can_send_messages == PrivacySettings.PrivacyChoices.EVERYONE:
+            return True
+
+        if Friend.objects.are_friends(self.owner, user):
+            return True
+
+        if user.friendship_requests_sent.filter(to_user=user).exists():
+            return True
+
+        if user.is_superuser:
+            return True
+
+        return False
 
     def __str__(self):
         return f"Settings for {self.owner.display_name}"
