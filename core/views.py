@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import UpdateView
 from friendship.models import Friend
 
+from groups.models import Group
 from private_messages.models import PrivateMessage
 
 from .forms import ProfileForm
@@ -32,6 +33,8 @@ def index_login(request: HttpRequest):
         PrivateMessage.objects.filter(to_user=request.user).filter(seen=False).count()
     )
     ctx["group_invites"] = request.user.group_invitations_received.count()
+    ctx["friend_suggestions"] = request.user.get_friends_of_friends()[:4]
+    ctx["popular_groups"] = Group.objects.popular(request.user)[:5]
     return render(request, "core/index_login.html", ctx)
 
 

@@ -56,7 +56,8 @@ a {
   @apply text-lg font-bold border-b border-primary-200;
 }
 
-.mixed-copy p {
+.mixed-copy p,
+.mixed-copy ul {
   @apply my-4;
 }
 

@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField, ImageSpecField
@@ -12,10 +13,22 @@ from core.imagegenerators import ProfileKeep
 User = get_user_model()
 
 
+class GroupManager(models.Manager):
+    def popular(self, for_user):
+        return (
+            Group.objects.exclude(members__in=[for_user])
+            .annotate(friends_count=Count(Q(members__friends__from_user=for_user)))
+            .annotate(members_count=Count("members"))
+            .order_by("-friends_count", "-members_count")
+        )
+
+
 class Group(models.Model):
     class Meta:
         verbose_name = _("Group")
         verbose_name_plural = _("Groups")
+
+    objects = GroupManager()
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)

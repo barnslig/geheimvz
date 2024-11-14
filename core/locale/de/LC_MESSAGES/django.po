@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 17:54+0100\n"
+"POT-Creation-Date: 2024-11-14 20:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/admin.py:9 core/forms.py:96 core/views.py:80
+#: core/admin.py:9 core/forms.py:96 core/views.py:83
 msgid "General"
 msgstr "Allgemeines"
 
-#: core/admin.py:20 core/forms.py:103 core/views.py:82
+#: core/admin.py:20 core/forms.py:103 core/views.py:85
 msgid "Personal"
 msgstr "Persönliches"
 
@@ -74,10 +74,14 @@ msgstr "Profilbild"
 msgid "save"
 msgstr "speichern"
 
-#: core/helpers.py:37
+#: core/helpers.py:36
 #, python-format
 msgid "Maximum file size of %(value)s MB exceeded!"
 msgstr "Maximale Dateigröße von %(value)s MB überschritten!"
+
+#: core/helpers.py:54
+msgid "Invalid image aspect ratio."
+msgstr "Ungültiges Bildseitenverhältnis."
 
 #: core/models.py:40
 msgid "Full name"
@@ -288,6 +292,27 @@ msgstr[1] "Du hast %(count)s offene Gruppeneinladungen."
 msgid "View group invites"
 msgstr "Gruppeneinladungen ansehen"
 
+#: core/templates/core/index_login.html:35
+msgid "Do you know ...?"
+msgstr "Kennst du schon ...?"
+
+#: core/templates/core/index_login.html:35
+#: core/templates/core/index_login.html:51
+#: core/templates/core/user_detail.html:134
+msgid "Show all"
+msgstr "Alle ansehen"
+
+#: core/templates/core/index_login.html:43
+#, python-format
+msgid "One mutual friend."
+msgid_plural "%(count)s mutual friends."
+msgstr[0] "Ein gemeinsamer Freund."
+msgstr[1] "%(count)s gemeinsame Freunde."
+
+#: core/templates/core/index_login.html:51
+msgid "Popular groups"
+msgstr "Interessante Gruppen"
+
 #: core/templates/core/user_detail.html:7
 #, python-format
 msgid "%(name)s's page"
@@ -379,10 +404,6 @@ msgstr "Zeige %(showing)s von %(total)s"
 msgid "Write something"
 msgstr "Etwas schreiben"
 
-#: core/templates/core/user_detail.html:134
-msgid "Show all"
-msgstr "Alle ansehen"
-
 #: core/templates/core/user_detail.html:142
 msgid "Delete post"
 msgstr "Post löschen"
@@ -399,7 +420,7 @@ msgstr ""
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: core/views.py:129
+#: core/views.py:132
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."
 
