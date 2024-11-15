@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 17:55+0100\n"
+"POT-Creation-Date: 2024-11-15 12:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,121 +48,137 @@ msgstr "Passwort ändern"
 msgid "Login"
 msgstr "Anmelden"
 
-#: account/models.py:10
+#: account/models.py:12
 msgid "Rose"
 msgstr "Rosa"
 
-#: account/models.py:11
+#: account/models.py:13
 msgid "Blue"
 msgstr "Blau"
 
-#: account/models.py:12
+#: account/models.py:14
 msgid "Green"
 msgstr "Grün"
 
-#: account/models.py:13
+#: account/models.py:15
 msgid "Dark Mode"
 msgstr "Dark Mode"
 
-#: account/models.py:14
+#: account/models.py:16
 msgid "High Contrast"
 msgstr "Hoher Kontrast"
 
-#: account/models.py:17
+#: account/models.py:19
 msgid "Sans-Serif"
 msgstr "Sans-Serif"
 
-#: account/models.py:18
+#: account/models.py:20
 msgid "Serif"
 msgstr "Serif"
 
-#: account/models.py:19
+#: account/models.py:21
 msgid "Monospace"
 msgstr "Monospace"
 
-#: account/models.py:20
+#: account/models.py:22
 msgid "Comic"
 msgstr "Comic"
 
-#: account/models.py:27
+#: account/models.py:29
 msgid "None"
 msgstr "Keiner"
 
-#: account/models.py:28
+#: account/models.py:30
 msgid "Clouds"
 msgstr "Wolken"
 
-#: account/models.py:29
+#: account/models.py:31
 msgid "Charlie Brown"
 msgstr "Charlie Brown"
 
-#: account/models.py:30
+#: account/models.py:32
 msgid "Waves"
 msgstr "Wellen"
 
-#: account/models.py:33
+#: account/models.py:35
 msgid "Simple"
 msgstr "Einfach"
 
-#: account/models.py:34
+#: account/models.py:36
 msgid "Pride"
 msgstr "Pride"
 
-#: account/models.py:35
+#: account/models.py:37
 msgid "All-Seeing Eye"
 msgstr "Allsehendes Auge"
 
-#: account/models.py:38
+#: account/models.py:40
 msgid "Extra Small"
 msgstr "Extra klein"
 
-#: account/models.py:39
+#: account/models.py:41
 msgid "Small"
 msgstr "Klein"
 
-#: account/models.py:40
+#: account/models.py:42
 msgid "Default"
 msgstr "Normal"
 
-#: account/models.py:41
+#: account/models.py:43
 msgid "Large"
 msgstr "Größer"
 
-#: account/models.py:52
+#: account/models.py:54
 msgid "Theme color"
 msgstr "Farbe"
 
-#: account/models.py:58
+#: account/models.py:60
 msgid "Theme font"
 msgstr "Schriftart"
 
-#: account/models.py:64
+#: account/models.py:66
 msgid "Theme size"
 msgstr "Schriftgröße"
 
-#: account/models.py:70
+#: account/models.py:72
 msgid "Theme background"
 msgstr "Hintergrund"
 
-#: account/models.py:76
+#: account/models.py:78
 msgid "Theme logo"
 msgstr "Logo"
 
-#: account/models.py:92
+#: account/models.py:94
 msgid "On new pinboard message"
 msgstr "Bei neuen Nachrichten auf deiner Pinnwand"
 
-#: account/models.py:96
+#: account/models.py:98
 msgid "On new private message"
 msgstr "Bei neuen Nachrichten"
 
-#: account/models.py:100
+#: account/models.py:102
 msgid "On new friend request"
 msgstr "Bei neuen Freundschaftsanfragen"
 
-#: account/models.py:104
+#: account/models.py:106
 msgid "On new group invitation"
 msgstr "Bei neuen Gruppeneinladungen"
+
+#: account/models.py:115
+msgid "Everyone logged in"
+msgstr "Alle die eingeloggt sind"
+
+#: account/models.py:116
+msgid "Only my friends"
+msgstr "nur deine Freune"
+
+#: account/models.py:128
+msgid "Who can see your page?"
+msgstr "Wer kann dein Profil sehen?"
+
+#: account/models.py:134
+msgid "Who can send you messages?"
+msgstr "Wer kann dir Nachrichten schicken?"
 
 #: account/templates/account/appearance_form.html:7
 #: account/templates/account/notificationsettings_form.html:7
@@ -230,18 +246,18 @@ msgstr "Benachrichtigungen"
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: account/views.py:52
-msgid "Notification settings successfully updated"
-msgstr "Benachrichtigungseinstellungen erfolgreich geändert"
-
-#: account/views.py:67 account/views.py:84 account/views.py:102
+#: account/views.py:50 account/views.py:67 account/views.py:102
 msgid "Profile successfully updated"
 msgstr "Konto erfolgreich geändert"
 
-#: account/views.py:114
+#: account/views.py:87
+msgid "Notification settings successfully updated"
+msgstr "Benachrichtigungseinstellungen erfolgreich geändert"
+
+#: account/views.py:115
 msgid "Account successfully deleted"
 msgstr "Konto erfolgreich gelöscht"
 
-#: account/views.py:125
+#: account/views.py:126
 msgid "Password change successful"
 msgstr "Passwort erfolgreich geändert"

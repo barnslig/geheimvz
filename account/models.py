@@ -124,13 +124,13 @@ class PrivacySettings(models.Model):
     can_see_profile = models.CharField(
         max_length=1,
         choices=PrivacyChoices,
-        default=PrivacyChoices.FRIENDS,
+        default=PrivacyChoices.EVERYONE,
         verbose_name=_("Who can see your page?"),
     )
     can_send_messages = models.CharField(
         max_length=1,
         choices=PrivacyChoices,
-        default=PrivacyChoices.FRIENDS,
+        default=PrivacyChoices.EVERYONE,
         verbose_name=_("Who can send you messages?"),
     )
 

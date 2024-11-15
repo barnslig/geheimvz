@@ -55,6 +55,25 @@
         {% endfor %}
       </ul>
     {% endif %}
+    <h2>{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
+    <ul class="px-5 list-disc">
+      <li>
+      {% if can_see_profile %}
+        {% translate 'Everyone logged in' %}
+      {% else %}
+        {% translate 'Only your friends' %}
+      {% endif %}
+          {% translate 'can see your profile' %}
+      </li>
+      <li>
+      {% if can_send_messages %}
+        {% translate 'Everyone logged in' %}
+      {% else %}
+        {% translate 'Only your friends' %}
+      {% endif %}
+        {% translate 'can send you messages' %}
+      </li>
+    </ul>
   </div>
 
 </div>
