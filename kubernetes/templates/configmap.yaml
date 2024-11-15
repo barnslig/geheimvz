@@ -21,4 +21,5 @@ data:
     S3_ENDPOINT_URL={{ .Values.config.S3_ENDPOINT_URL }}
     S3_CUSTOM_DOMAIN={{ .Values.config.S3_CUSTOM_DOMAIN }}
     ALLOWED_HOSTS={{ .Values.config.ALLOWED_HOSTS }}
+    CSRF_TRUSTED_ORIGINS={{ .Values.config.BASE_URL }}
 
