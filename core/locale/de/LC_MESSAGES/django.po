@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 21:12+0100\n"
+"POT-Creation-Date: 2024-11-15 12:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/admin.py:9 core/forms.py:96 core/views.py:83
+#: core/admin.py:9 core/forms.py:96 core/views.py:86
 msgid "General"
 msgstr "Allgemeines"
 
-#: core/admin.py:20 core/forms.py:103 core/views.py:85
+#: core/admin.py:20 core/forms.py:103 core/views.py:88
 msgid "Personal"
 msgstr "Persönliches"
 
@@ -88,7 +88,8 @@ msgstr "Ungültiges Bildseitenverhältnis."
 msgid ""
 "Image size needs to be within %(min_width)sx%(min_height)s and "
 "%(max_width)sx%(max_height)s"
-msgstr "Die Bildgröße muss sich innerhalb von %(min_width)sx%(min_height)s und "
+msgstr ""
+"Die Bildgröße muss sich innerhalb von %(min_width)sx%(min_height)s und "
 "%(max_width)sx%(max_height)s befinden"
 
 #: core/models.py:49
@@ -166,22 +167,6 @@ msgstr "Darin bin ich gut"
 #: core/models.py:102
 msgid "I wish for"
 msgstr "Was ich mir wünsche"
-
-#: core/models.py:106
-msgid "Everyone logged in"
-msgstr "Alle, die eingeloggt sind."
-
-#: core/models.py:107
-msgid "Only my friends"
-msgstr "Nur meine Freunde"
-
-#: core/models.py:113
-msgid "Who can see your page?"
-msgstr "Wer darf meine Seite sehen?"
-
-#: core/models.py:119
-msgid "Who can send you messages?"
-msgstr "Wer darf mir Nachrichten schicken?"
 
 #: core/templates/base-login.html:7
 msgid "Find people"
@@ -321,6 +306,32 @@ msgstr[1] "%(count)s gemeinsame Freunde."
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
 
+#: core/templates/core/index_login.html:58
+msgid "Privacy"
+msgstr "Privatsphäre"
+
+#: core/templates/core/index_login.html:58
+msgid "change"
+msgstr "ändern"
+
+#: core/templates/core/index_login.html:62
+#: core/templates/core/index_login.html:70
+msgid "Everyone logged in"
+msgstr "Alle, die eingeloggt sind"
+
+#: core/templates/core/index_login.html:64
+#: core/templates/core/index_login.html:72
+msgid "Only your friends"
+msgstr "Nur deine Freunde"
+
+#: core/templates/core/index_login.html:66
+msgid "can see your profile"
+msgstr "dürfen dein Profil sehen"
+
+#: core/templates/core/index_login.html:74
+msgid "can send you messages"
+msgstr "dürfen dir Nachrichten senden."
+
 #: core/templates/core/user_detail.html:7
 #, python-format
 msgid "%(name)s's page"
@@ -428,9 +439,15 @@ msgstr ""
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: core/views.py:132
+#: core/views.py:135
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."
+
+#~ msgid "Privacy settings"
+#~ msgstr "Privatsphäreeinstellungen"
+
+#~ msgid "Who can see your page?"
+#~ msgstr "Wer darf meine Seite sehen?"
 
 #~ msgid "Lost password?"
 #~ msgstr "Passwort vergessen?"

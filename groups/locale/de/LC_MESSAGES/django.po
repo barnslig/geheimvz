@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 21:09+0100\n"
+"POT-Creation-Date: 2024-11-15 12:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,7 +167,6 @@ msgid "All topics"
 msgstr "Alle Themen"
 
 #: groups/templates/groups/forumthread_detail.html:17
-#: groups/templates/groups/forumthread_detail.html:23
 msgid "Write post"
 msgstr "Beitrag schreiben"
 
@@ -258,7 +257,7 @@ msgstr "Zur Gruppe \"%(name)s\" einladen"
 msgid "Invite a friend to the group!"
 msgstr "Lade Freunde in die Gruppe ein!"
 
-#: groups/templates/groups/group_join.html:7 groups/views.py:184
+#: groups/templates/groups/group_join.html:7 groups/views.py:188
 #, python-format
 msgid "Join group \"%(name)s\"?"
 msgstr "Gruppe \"%(name)s\" beitreten?"
@@ -282,47 +281,47 @@ msgstr "Gruppen finden"
 msgid "You have no open group invites."
 msgstr "Du hast keine offenen Gruppeneinladungen."
 
-#: groups/views.py:106
+#: groups/views.py:110
 #, python-format
 msgid "Group \"%(name)s\" successfully created!"
 msgstr "Gruppe \"%(name)s\" erfolgreich erstellt."
 
-#: groups/views.py:125
+#: groups/views.py:129
 #, python-format
 msgid "Group \"%(name)s\" successfully updated!"
 msgstr "Gruppe \"%(name)s\" erfolgreich geändert."
 
-#: groups/views.py:142
+#: groups/views.py:146
 msgid "Group successfully left"
 msgstr "Gruppe erfolgreich verlassen."
 
-#: groups/views.py:148
+#: groups/views.py:152
 #, python-format
 msgid "Leave group \"%(name)s\"?"
 msgstr "Gruppe \"%(name)s\" verlassen?"
 
-#: groups/views.py:149
+#: groups/views.py:153
 #, python-format
 msgid "Do you want to leave the group \"%(name)s\"?"
 msgstr "Möchtest du die Gruppe \"%(name)s\" verlassen?"
 
-#: groups/views.py:178
+#: groups/views.py:182
 msgid "Group successfully joined"
 msgstr "Gruppe erfolgreich beigetreten."
 
-#: groups/views.py:185
+#: groups/views.py:189
 #, python-format
 msgid "Do you want to join the group \"%(name)s\"?"
 msgstr "Möchtest du der Gruppe \"%(name)s\" beitreten?"
 
-#: groups/views.py:213
+#: groups/views.py:217
 msgid "User successfully invited"
 msgstr "Die Einladung wurde versendet!"
 
-#: groups/views.py:308
+#: groups/views.py:312
 msgid "Thread successfully created"
 msgstr "Thema erfolgreich erstellt"
 
-#: groups/views.py:346
+#: groups/views.py:350
 msgid "Post successfully created"
 msgstr "Beitrag erfolgreich erstellt."
