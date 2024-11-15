@@ -98,6 +98,10 @@ class GroupListAllView(TabsMixin, LoginRequiredMixin, ListView):
     tabs = tabs
     tab_current = "all"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.exclude(members=self.request.user)
+
 
 @method_decorator(ratelimit(key="user", rate="2/d", method="POST"), name="post")
 class GroupCreateView(TabsMixin, LoginRequiredMixin, CreateView):
