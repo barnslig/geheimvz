@@ -47,7 +47,7 @@ COPY --from=builder --chown=app:app ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY --chown=app:app . .
 COPY --from=app --chown=app:app /app/core/static/core/assets /app/core/static/core/assets
 
-RUN python manage.py compilemessages
+RUN python manage.py compilemessages --ignore=venv
 RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000
