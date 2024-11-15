@@ -142,7 +142,8 @@ affinity: {}
 
 redis:
   architecture: standalone
-
+  auth:
+    enabled: false
 minio:
   provisioning:
     buckets: "geheimvz"
