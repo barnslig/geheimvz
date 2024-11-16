@@ -37,7 +37,7 @@
         {% for user in friend_suggestions %}
           <li class="flex flex-col">
             <a class="my-auto" href="{{ user.get_absolute_url }}">
-              {% component "profile_image" user.image_profile_small user.image_width user.image_height / %}
+              {% component "profile_image" user.profile.image_profile_small user.profile.image_width user.profile.image_height / %}
               <span class="hyphens-auto">{{ user.display_name }}</span>
             </a>
             <span class="mt-1 text-sm">{% blocktranslate count count=user.mutual_friends_count %}One mutual friend.{% plural %}{{ count }} mutual friends.{% endblocktranslate %}</span>

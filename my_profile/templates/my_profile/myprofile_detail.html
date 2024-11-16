@@ -10,7 +10,7 @@
 {% block content %}
 <div class="grid grid-cols-10 gap-4">
   <div class="col-span-3 my-4">
-    {% component "profile_image" user.image_profile_medium user.image_width user.image_height / %}
+    {% component "profile_image" user.profile.image_profile_medium user.profile.image_width user.profile.image_height / %}
 
     <ul aria-label="{% translate 'Actions' %}" class="my-4 actions">
       {% if current %}
@@ -63,7 +63,7 @@
         <div class="flex items-center gap-2">
           {% for u in connection %}
             <a class="flex flex-col items-center justify-center max-w-24" href="{% url 'profile' u.pk %}">
-              {% component "profile_image" u.image_profile_small u.image_width u.image_height / %}
+              {% component "profile_image" u.profile.image_profile_small u.profile.image_width u.profile.image_height / %}
               <div class="mt-1 text-center hyphens-auto">{{ u.display_name }}</div>
             </a>
             {% if not forloop.last %} ↔ {% endif %}

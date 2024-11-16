@@ -90,6 +90,7 @@ INSTALLED_APPS = [
     "groups.apps.GroupsConfig",
     "invites.apps.InvitesConfig",
     "motd.apps.MotdConfig",
+    "my_profile.apps.MyProfileConfig",
     "pinboard.apps.PinboardConfig",
     "private_messages.apps.PrivateMessagesConfig",
     "search.apps.SearchConfig",

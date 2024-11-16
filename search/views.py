@@ -23,7 +23,9 @@ def search(request: HttpRequest):
     if form.is_valid():
         q = form.cleaned_data["q"]
 
-        users = User.objects.filter(Q(full_name__contains=q) | Q(username__contains=q))
+        users = User.objects.filter(
+            Q(profile__full_name__contains=q) | Q(username__contains=q)
+        )
 
         table = UserTable(users)
 
