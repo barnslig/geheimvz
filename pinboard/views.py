@@ -20,11 +20,11 @@ User = get_user_model()
 def pinboard_list(request: HttpRequest, pk: str):
     user = get_object_or_404(User, pk=pk)
 
-    if not user.get_can_see_profile(request.user):
+    if not user.privacy_settings.get_can_see_profile(request.user):
         raise PermissionDenied()
 
     posts = user.pinboard.order_by("-created_at")
-    posts_paginator = Paginator(posts, 5)
+    posts_paginator = Paginator(posts, 20)
     posts_page_obj = posts_paginator.get_page(request.GET.get("page", 1))
 
     ctx = {
@@ -41,7 +41,7 @@ def pinboard_list(request: HttpRequest, pk: str):
 def pinboard_create(request: HttpRequest, pk: str):
     user = get_object_or_404(User, pk=pk)
 
-    if not user.get_can_see_profile(request.user):
+    if not user.privacy_settings.get_can_see_profile(request.user):
         raise PermissionDenied()
 
     if request.method == "POST":

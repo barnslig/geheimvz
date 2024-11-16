@@ -13,7 +13,9 @@ class Post(Component):
             current_user = request.user
 
         return {
-            "can_send_messages": created_by.get_can_send_messages(current_user),
+            "can_send_messages": created_by.privacy_settings.get_can_send_messages(
+                current_user
+            ),
             "created_at": created_at,
             "created_by": created_by,
             "post": post,

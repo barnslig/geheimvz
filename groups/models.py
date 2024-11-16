@@ -1,21 +1,39 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField, ImageSpecField
 import uuid
 
-from core.helpers import UploadToUuidFilename, ValidateMaxFilesize
+from core.helpers import (
+    UploadToUuidFilename,
+    ValidateImageAspectRatio,
+    ValidateImageSize,
+    ValidateMaxFilesize,
+)
 from core.imagegenerators import ProfileKeep
 
 
 User = get_user_model()
 
 
+class GroupManager(models.Manager):
+    def popular(self, for_user):
+        return (
+            Group.objects.exclude(members__in=[for_user])
+            .annotate(friends_count=Count(Q(members__friends__from_user=for_user)))
+            .annotate(members_count=Count("members"))
+            .order_by("-friends_count", "-members_count")
+        )
+
+
 class Group(models.Model):
     class Meta:
         verbose_name = _("Group")
         verbose_name_plural = _("Groups")
+
+    objects = GroupManager()
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,7 +54,11 @@ class Group(models.Model):
         width_field="image_width",
         height_field="image_height",
         upload_to=UploadToUuidFilename("groups/"),
-        validators=[ValidateMaxFilesize(10)],
+        validators=[
+            ValidateMaxFilesize(10),
+            ValidateImageSize(100, 100, 4000, 4000),
+            ValidateImageAspectRatio(0.5, 1.8),
+        ],
         verbose_name=_("Group picture"),
     )
     image_profile_medium = ImageSpecField(
@@ -64,7 +86,7 @@ class Group(models.Model):
         return self.members.contains(user) or self.admins.contains(user)
 
     def get_can_invite(self, user):
-        return self.admins.contains(user)
+        return self.members.contains(user) or self.admins.contains(user)
 
     def get_absolute_url(self):
         return reverse("group", kwargs={"pk": self.pk})

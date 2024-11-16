@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-13 17:10+0100\n"
+"POT-Creation-Date: 2024-11-14 15:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,16 +172,20 @@ msgstr "Freundschaftsanfragen"
 msgid "Sent friend requests"
 msgstr "Verschickte Freundschaftsanfragen"
 
-#: friends/views.py:86
+#: friends/views.py:57
+msgid "Friendship request sent."
+msgstr "Freundschaftsanfrage verschickt!"
+
+#: friends/views.py:92
 msgid "Friendship ended."
 msgstr "Freundschaft beendet."
 
-#: friends/views.py:92
+#: friends/views.py:98
 #, python-format
 msgid "End friendship with %(name)s"
 msgstr "Freundschaft mit %(name)s beenden"
 
-#: friends/views.py:94
+#: friends/views.py:100
 #, python-format
 msgid "Are you sure that you want to end the friendship with %(name)s?"
 msgstr ""

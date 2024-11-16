@@ -9,8 +9,6 @@ RUN npm ci && npm run build
 
 FROM python:3.12-alpine AS builder
 
-RUN apk add postgresql-dev
-
 RUN pip install poetry==1.8.4
 
 ENV POETRY_NO_INTERACTION=1 \
@@ -49,7 +47,7 @@ COPY --from=builder --chown=app:app ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY --chown=app:app . .
 COPY --from=app --chown=app:app /app/core/static/core/assets /app/core/static/core/assets
 
-RUN python manage.py compilemessages
+RUN python manage.py compilemessages --ignore=.venv
 RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000

@@ -28,8 +28,6 @@ from .forms import (
     GroupCreateForm,
     GroupForm,
     GroupInviteForm,
-    GroupJoinForm,
-    GroupLeaveForm,
 )
 
 User = get_user_model()
@@ -63,25 +61,26 @@ class GroupDetailView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
         latest_threads_table = ThreadsTable(latest_threads)
 
         is_member = self.object.members.contains(self.request.user)
+        is_invited = (
+            not is_member
+            and self.request.user.group_invitations_received.filter(
+                for_group=self.object
+            ).exists()
+        )
 
         context = super().get_context_data(**kwargs)
         context["can_invite"] = self.object.get_can_invite(self.request.user)
-        context["can_join"] = not is_member and not self.object.is_private
+        context["can_join"] = not self.object.is_private or is_invited
         context["is_admin"] = self.object.admins.contains(self.request.user)
         context["is_member"] = is_member
-        context["is_invited"] = (
-            not is_member
-            and GroupInvitation.objects.filter(to_user=self.request.user)
-            .filter(for_group=self.object)
-            .first()
-        )
+        context["is_invited"] = is_invited
         context["latest_threads_table"] = latest_threads_table
         return context
 
 
 class GroupListView(TabsMixin, LoginRequiredMixin, ListView):
     model = Group
-    paginate_by = 5
+    paginate_by = 20
     ordering = ["name"]
     tabs = tabs
     tab_current = "list"
@@ -93,11 +92,15 @@ class GroupListView(TabsMixin, LoginRequiredMixin, ListView):
 
 class GroupListAllView(TabsMixin, LoginRequiredMixin, ListView):
     model = Group
-    paginate_by = 5
+    paginate_by = 20
     template_name_suffix = "_list_all"
     ordering = ["name"]
     tabs = tabs
     tab_current = "all"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.exclude(members=self.request.user)
 
 
 @method_decorator(ratelimit(key="user", rate="2/d", method="POST"), name="post")
@@ -125,63 +128,74 @@ class GroupUpdateView(LoginRequiredMixin, UpdateView):
     model = Group
     success_message = _('Group "%(name)s" successfully updated!')
 
+    def get_queryset(self):
+        return super().get_queryset().filter(admins__in=[self.request.user.pk])
+
 
 @login_required
 def group_leave(request: HttpRequest, pk: str):
-    group = get_object_or_404(Group, pk=pk)
+    group = get_object_or_404(request.user.groups_member, pk=pk)
 
     if request.method == "POST":
-        form = GroupLeaveForm(request.POST)
+        group.members.remove(request.user)
+        group.admins.remove(request.user)
 
-        if form.is_valid():
-            group.members.remove(request.user)
-            group.admins.remove(request.user)
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            _("Group successfully left"),
+        )
 
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                _("Group successfully left"),
-            )
+        return redirect("group", pk=group.pk)
 
-            return redirect("group", pk=group.pk)
-    else:
-        form = GroupLeaveForm()
+    ctx = {
+        "headline": _('Leave group "%(name)s"?') % {"name": group.name},
+        "copy": _('Do you want to leave the group "%(name)s"?') % {"name": group.name},
+        "cancel_href": reverse_lazy("group", kwargs={"pk": group.pk}),
+    }
 
-    ctx = {"group": group, "form": form}
-    return render(request, "groups/group_leave.html", ctx)
+    return render(request, "core/confirmation.html", ctx)
 
 
 @login_required
 def group_join(request: HttpRequest, pk: str):
     group = get_object_or_404(Group, pk=pk)
 
+    try:
+        invitation = request.user.group_invitations_received.get(for_group=group)
+    except GroupInvitation.DoesNotExist:
+        invitation = None
+
+    if group.is_private and not invitation:
+        raise PermissionDenied()
+
     if request.method == "POST":
-        form = GroupJoinForm(request.POST)
-
-        if form.is_valid():
+        with transaction.atomic():
             group.members.add(request.user)
-            group.admins.add(request.user)
 
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                _("Group successfully joined"),
-            )
+            if invitation:
+                invitation.delete()
 
-            return redirect("group", pk=group.pk)
-    else:
-        form = GroupJoinForm()
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            _("Group successfully joined"),
+        )
 
-    ctx = {"group": group, "form": form}
-    return render(request, "groups/group_join.html", ctx)
+        return redirect("group", pk=group.pk)
+
+    ctx = {
+        "headline": _('Join group "%(name)s"?') % {"name": group.name},
+        "copy": _('Do you want to join the group "%(name)s"?') % {"name": group.name},
+        "cancel_href": reverse_lazy("group-invitations"),
+    }
+
+    return render(request, "core/confirmation.html", ctx)
 
 
 @login_required
 def group_invite(request: HttpRequest, pk: str):
-    group = get_object_or_404(Group, pk=pk)
-
-    if not group.get_can_invite(request.user):
-        raise PermissionDenied()
+    group = get_object_or_404(request.user.groups_member, pk=pk)
 
     to_user_queryset = User.objects.filter(friends__from_user=request.user).filter(
         ~Q(groups_member__pk=group.pk)
@@ -255,7 +269,7 @@ def forumthread_detail(request: HttpRequest, pk: str):
         raise PermissionDenied()
 
     posts = thread.posts.order_by("created_at")
-    posts_paginator = Paginator(posts, 5)
+    posts_paginator = Paginator(posts, 20)
     posts_page_obj = posts_paginator.get_page(request.GET.get("page", 1))
 
     ctx = {

@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _, gettext
 
-from .models import NotificationSettings
+from .models import AppearanceSettings, NotificationSettings, PrivacySettings
 from core.models import User
 from core.forms import RightColumn
 
@@ -53,31 +53,31 @@ class UserForm(forms.ModelForm):
 
 class AppearanceForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = AppearanceSettings
         fields = [
-            "appearance_color",
-            "appearance_font",
-            "appearance_size",
-            "appearance_background",
-            "appearance_logo",
+            "color",
+            "font",
+            "size",
+            "background",
+            "logo",
         ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-            Field("appearance_color"),
-            Field("appearance_font"),
-            Field("appearance_size"),
-            Field("appearance_background"),
-            Field("appearance_logo"),
+            Field("color"),
+            Field("font"),
+            Field("size"),
+            Field("background"),
+            Field("logo"),
             RightColumn(Submit("submit", _("save"))),
         )
 
 
 class PrivacyForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = PrivacySettings
         fields = [
             "can_see_profile",
             "can_send_messages",

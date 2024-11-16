@@ -49,19 +49,9 @@ class GroupForm(ModelForm):
             RightColumn(Submit("submit", _("Update the group"))),
         )
 
-
-class GroupLeaveForm(Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(Submit("submit", _("Leave group")))
-
-
-class GroupJoinForm(Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(Submit("submit", _("Join group")))
+        self.fields["admins"].queryset = User.objects.filter(
+            groups_member__in=[self.instance]
+        )
 
 
 class GroupInviteForm(ModelForm):

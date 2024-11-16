@@ -40,7 +40,7 @@ tabs = {
 class PrivateMessageListView(TabsMixin, LoginRequiredMixin, SingleTableView):
     model = PrivateMessage
     table_class = PrivateMessagesTable
-    paginate_by = 5
+    paginate_by = 20
     ordering = ["-created_at"]
     tabs = tabs
     tab_current = "list"
@@ -53,7 +53,7 @@ class PrivateMessageListView(TabsMixin, LoginRequiredMixin, SingleTableView):
 class PrivateMessageListSentView(TabsMixin, LoginRequiredMixin, SingleTableView):
     model = PrivateMessage
     table_class = PrivateMessagesSentTable
-    paginate_by = 5
+    paginate_by = 20
     ordering = ["-created_at"]
     template_name_suffix = "_list_sent"
     tabs = tabs

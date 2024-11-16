@@ -25,6 +25,7 @@ from account import urls as account_urls
 from friends import urls as friends_urls
 from groups import urls as groups_urls
 from invites import urls as invites_urls
+from my_profile import urls as my_profile_urls
 from pinboard import urls as pinboard_urls
 from private_messages import urls as private_messages_urls
 from search import urls as search_urls
@@ -62,6 +63,7 @@ urlpatterns += account_urls.urlpatterns
 urlpatterns += friends_urls.urlpatterns
 urlpatterns += groups_urls.urlpatterns
 urlpatterns += invites_urls.urlpatterns
+urlpatterns += my_profile_urls.urlpatterns
 urlpatterns += pinboard_urls.urlpatterns
 urlpatterns += private_messages_urls.urlpatterns
 urlpatterns += search_urls.urlpatterns

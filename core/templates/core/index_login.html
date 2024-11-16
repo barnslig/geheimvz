@@ -30,6 +30,31 @@
     <p>{% blocktranslate count count=group_invites %}You have one open group invite.{% plural %}You have {{ count }} open group invites.{% endblocktranslate %}</p>
     <p><a href="{% url 'group-invitations' %}">[ {% translate 'View group invites' %} ]</a></p>
     {% endif %}
+
+    {% if friend_suggestions %}
+      <h2>{% translate 'Do you know ...?' %} <a class="ml-2 text-base font-normal" href="{% url 'friend-suggestions' %}">[{% translate 'Show all' %}]</a></h2>
+      <ul class="grid grid-cols-4 gap-4">
+        {% for user in friend_suggestions %}
+          <li class="flex flex-col">
+            <a class="my-auto" href="{{ user.get_absolute_url }}">
+              {% component "profile_image" user.profile.image_profile_small user.profile.image_width user.profile.image_height / %}
+              <span class="hyphens-auto">{{ user.display_name }}</span>
+            </a>
+            <span class="mt-1 text-sm">{% blocktranslate count count=user.mutual_friends_count %}One mutual friend.{% plural %}{{ count }} mutual friends.{% endblocktranslate %}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <p></p>
+    {% endif %}
+
+    {% if popular_groups %}
+      <h2>{% translate 'Popular groups' %} <a class="ml-2 text-base font-normal" href="{% url 'groups-all' %}">[{% translate 'Show all' %}]</a></h2>
+      <ul class="px-5 list-disc">
+        {% for group in popular_groups %}
+          <li><a href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 
 </div>

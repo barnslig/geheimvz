@@ -51,6 +51,12 @@ def friend_add(request: HttpRequest, pk: str):
             message = form.cleaned_data["message"]
             Friend.objects.add_friend(request.user, other_user, message)
 
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                _("Friendship request sent."),
+            )
+
             if other_user.notification_settings.on_new_friend_request:
                 send_on_friend_request.delay(
                     request.user.display_name,
@@ -110,7 +116,7 @@ def friend_list(request: HttpRequest):
     )
     table = FriendsTable(friends)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,
@@ -127,7 +133,7 @@ def friend_suggestions(request: HttpRequest):
     fof = request.user.get_friends_of_friends()
     table = FriendSuggestionsTable(fof)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,
@@ -148,7 +154,7 @@ def friend_requests(request: HttpRequest):
     )
     table = FriendRequestsTable(friend_requests)
 
-    table.paginate(page=request.GET.get("page", 1), per_page=5)
+    table.paginate(page=request.GET.get("page", 1), per_page=20)
 
     ctx = {
         "table": table,
@@ -179,7 +185,7 @@ def friendship_accept(request: HttpRequest, pk: int):
     if request.method == "POST":
         f_request = get_object_or_404(request.user.friendship_requests_received, id=pk)
         f_request.accept()
-        return redirect("friends")
+        return redirect("profile", id=f_request.to_user.id)
 
     return redirect("friend-requests")
 
