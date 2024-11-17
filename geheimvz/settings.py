@@ -109,6 +109,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "csp.middleware.CSPMiddleware",
+    "django_ratelimit.middleware.RatelimitMiddleware",
 ]
 
 ROOT_URLCONF = "geheimvz.urls"
@@ -145,6 +146,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "geheimvz.wsgi.application"
+
+SESSION_COOKIE_SECURE = not DEBUG
+
+CSRF_COOKIE_SECURE = not DEBUG
 
 
 # Database
@@ -356,3 +361,8 @@ if env("S3_PUBLIC_URL"):
     CSP_IMG_SRC.append(env("S3_PUBLIC_URL"))
 
 CSP_REPORT_ONLY = DEBUG
+
+# Ratelimiting
+# https://django-ratelimit.readthedocs.io/en/stable/settings.html
+
+RATELIMIT_VIEW = "core.views.ratelimited_error"

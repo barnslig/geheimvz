@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block aside %}
+<div></div>
+{% endblock %}
+
+{% block headernav %}
+<div></div>
+{% endblock %}
+
+{% block headertitle %}
+{% translate 'Oh my!' %}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-sm mx-auto my-6 mixed-copy">
+  <h2>{% translate "You're going pretty fast!" %}</h2>
+  <p>{% translate 'This function is available again to you after a short cool down delay.' %}</p>
+  <p><a href="{% url 'index' %}">[ {% translate 'Go back to homepage' %} ]</a></p>
+</div>
+{% endblock %}

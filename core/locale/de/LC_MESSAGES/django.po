@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 19:05+0100\n"
+"POT-Creation-Date: 2024-11-17 20:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,3 +223,19 @@ msgstr[1] "%(count)s gemeinsame Freunde."
 #: core/templates/core/index_login.html:74
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
+
+#: core/templates/core/ratelimited.html:14
+msgid "Oh my!"
+msgstr "Oha!"
+
+#: core/templates/core/ratelimited.html:19
+msgid "You're going pretty fast!"
+msgstr "Du bist ganz schön schnell unterwegs!"
+
+#: core/templates/core/ratelimited.html:20
+msgid "This function is available again to you after a short cool down delay."
+msgstr "Diese Funktion steht dir erst wieder nach einer kurzen Wartezeit zur Verfügung."
+
+#: core/templates/core/ratelimited.html:21
+msgid "Go back to homepage"
+msgstr "Zurück zur Startseite"

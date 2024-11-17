@@ -4,6 +4,7 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.cache import cache_page
 from friendship.models import Friend
 
 from groups.models import Group
@@ -28,6 +29,11 @@ def index_login(request: HttpRequest):
     ctx["friend_suggestions"] = request.user.get_friends_of_friends()[:4]
     ctx["popular_groups"] = Group.objects.popular(request.user)[:5]
     return render(request, "core/index_login.html", ctx)
+
+
+@cache_page(60 * 15)
+def ratelimited_error(request: HttpRequest, exception):
+    return render(request, "core/ratelimited.html", status=429)
 
 
 @csp_exempt
