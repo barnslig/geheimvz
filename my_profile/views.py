@@ -119,7 +119,7 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 @login_required
-@ratelimit(key="user", rate="1/m", method="POST")
+@ratelimit(key="user", rate="4/m", method="POST")
 @ratelimit(key="user", rate="40/d", method="POST")
 @require_POST
 def greeting_create(request: HttpRequest, pk: str):
