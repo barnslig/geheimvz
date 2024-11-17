@@ -13,6 +13,7 @@ class ProfileForm(forms.ModelForm):
         model = MyProfile
         fields = [
             "image",
+            "greeting_word",
             "full_name",
             "nickname",
             "pronouns",
@@ -48,6 +49,7 @@ class ProfileForm(forms.ModelForm):
                 Field("nickname"),
                 Field("pronouns"),
                 Field("birthday"),
+                Field("greeting_word"),
             ),
             Fieldset(
                 _("Personal"),

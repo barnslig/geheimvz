@@ -1,17 +1,21 @@
+from django_ratelimit.decorators import ratelimit
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.http import HttpRequest
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.http import require_POST
 from django.views.generic.edit import UpdateView
 from friendship.models import Friend
 
 from .forms import ProfileForm
-from .models import MyProfile
+from .models import Greeting, MyProfile
+from .tasks import send_on_greeting_mail
 
 User = get_user_model()
 
@@ -112,3 +116,45 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     def get_object(self):
         return self.request.user.profile
+
+
+@login_required
+@ratelimit(key="user", rate="1/m", method="POST")
+@ratelimit(key="user", rate="40/d", method="POST")
+@require_POST
+def greeting_create(request: HttpRequest, pk: str):
+    to_friend = get_object_or_404(request.user.friends, from_user__pk=pk)
+    to_user = to_friend.from_user
+
+    already_greeted = to_user.greetings_received.filter(from_user=request.user).exists()
+
+    if already_greeted:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            request.user.profile.greeting_i18n["error"](to_user.display_name),
+        )
+    else:
+        greeting = Greeting()
+        greeting.from_user = request.user
+        greeting.to_user = to_user
+        greeting.save()
+
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            request.user.profile.greeting_i18n["success"](to_user.display_name),
+        )
+
+        if to_user.notification_settings.on_new_greeting:
+            send_on_greeting_mail.delay(request.user.pk, to_user.pk)
+
+    return redirect("profile", id=to_user.pk)
+
+
+@login_required
+@require_POST
+def greeting_remove(request: HttpRequest, pk: int):
+    greeting = get_object_or_404(request.user.greetings_received, pk=pk)
+    greeting.delete()
+    return redirect("index-login")

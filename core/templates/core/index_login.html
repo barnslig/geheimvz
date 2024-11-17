@@ -25,6 +25,29 @@
     <p><a href="{% url 'messages' %}">[ {% translate 'View messages' %} ]</a></p>
     {% endif %}
 
+    {% if request.user.greetings_received.count > 0 %}
+      <h2>{% translate 'Have a look!' %}</h2>
+      <ul class="space-y-2">
+      {% for greeting in request.user.greetings_received.all %}
+        <li class="grid grid-cols-2 gap-2">
+          <div>
+            <a href="{% url 'profile' greeting.from_user.pk %}">{{ greeting.from_user.display_name }}</a><br>{{ greeting.from_user.profile.greeting_i18n.message }}
+          </div>
+          <div>
+            <form action="{% url 'greeting_create' greeting.from_user.pk %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="link">[ {{ request.user.profile.greeting_i18n.return }} ]</button>
+            </form>
+            <form action="{% url 'greeting_remove' greeting.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="link">[ {% translate 'hide' %} ]</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
     {% if group_invites > 0 %}
     <h2>{% translate 'You are invited!' %}</h2>
     <p>{% blocktranslate count count=group_invites %}You have one open group invite.{% plural %}You have {{ count }} open group invites.{% endblocktranslate %}</p>

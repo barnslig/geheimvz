@@ -105,6 +105,10 @@ class NotificationSettings(models.Model):
         default=True,
         verbose_name=_("On new group invitation"),
     )
+    on_new_greeting = models.BooleanField(
+        default=True,
+        verbose_name=_("On new greetings"),
+    )
 
     def __str__(self):
         return f"Settings for {self.owner.display_name}"

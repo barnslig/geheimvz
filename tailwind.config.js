@@ -54,6 +54,11 @@ export default {
               200: "#4ade80", // green-400 -- background
               content: "#000", // black
             },
+
+            error: {
+              200: "#f87171", // red-400 -- background
+              content: "#000", // black
+            },
           },
         },
       },

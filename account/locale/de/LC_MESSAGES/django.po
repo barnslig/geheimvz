@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 13:01+0100\n"
+"POT-Creation-Date: 2024-11-17 19:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,19 +164,23 @@ msgstr "Bei neuen Freundschaftsanfragen"
 msgid "On new group invitation"
 msgstr "Bei neuen Gruppeneinladungen"
 
-#: account/models.py:115
+#: account/models.py:110
+msgid "On new greetings"
+msgstr "Bei neuen Grüßen"
+
+#: account/models.py:119
 msgid "Everyone logged in"
 msgstr "Alle, die eingeloggt sind."
 
-#: account/models.py:116
+#: account/models.py:120
 msgid "Only my friends"
 msgstr "Nur meine Freunde"
 
-#: account/models.py:128
+#: account/models.py:132
 msgid "Who can see your page?"
 msgstr "Wer darf meine Seite sehen?"
 
-#: account/models.py:134
+#: account/models.py:138
 msgid "Who can send you messages?"
 msgstr "Wer darf mir Nachrichten schicken?"
 

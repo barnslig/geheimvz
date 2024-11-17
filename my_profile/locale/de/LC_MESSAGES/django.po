@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 13:00+0100\n"
+"POT-Creation-Date: 2024-11-17 18:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,97 +18,221 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: my_profile/forms.py:42 my_profile/models.py:39
+#: my_profile/forms.py:43 my_profile/models.py:40
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: my_profile/forms.py:46 my_profile/views.py:61
+#: my_profile/forms.py:47 my_profile/views.py:64
 msgid "General"
 msgstr "Allgemeines"
 
-#: my_profile/forms.py:53 my_profile/views.py:63
+#: my_profile/forms.py:55 my_profile/views.py:66
 msgid "Personal"
 msgstr "Persönliches"
 
-#: my_profile/forms.py:70
+#: my_profile/forms.py:72
 msgid "save"
 msgstr "speichern"
 
-#: my_profile/models.py:52
+#: my_profile/models.py:53 my_profile/models.py:126
+msgid "Gruscheln"
+msgstr "Gruscheln"
+
+#: my_profile/models.py:54 my_profile/models.py:135
+msgid "Nudge"
+msgstr "Anstupsen"
+
+#: my_profile/models.py:55 my_profile/models.py:143
+msgid "Meow"
+msgstr "Anmaunzen"
+
+#: my_profile/models.py:56 my_profile/models.py:151
+msgid "Wave"
+msgstr "Winken"
+
+#: my_profile/models.py:62
+msgid "Greeting word"
+msgstr "Grußwort"
+
+#: my_profile/models.py:67
 msgid "Full name"
 msgstr "Voller Name"
 
-#: my_profile/models.py:55
+#: my_profile/models.py:70
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: my_profile/models.py:58
+#: my_profile/models.py:73
 msgid "Pronouns"
 msgstr "Pronomen"
 
-#: my_profile/models.py:60
+#: my_profile/models.py:75
 msgid "Birthday"
 msgstr "Geburtstag"
 
-#: my_profile/models.py:67
+#: my_profile/models.py:82
 msgid "Your mother's maiden name"
 msgstr "Mädchenname der Mutter"
 
-#: my_profile/models.py:70
+#: my_profile/models.py:85
 msgid "Name of your first pet"
 msgstr "Name des ersten Haustiers"
 
-#: my_profile/models.py:76
+#: my_profile/models.py:91
 msgid "Street where you grew up"
 msgstr "In dieser Straße bin ich aufgewachsen"
 
-#: my_profile/models.py:79
+#: my_profile/models.py:94
 msgid "Make of your first car"
 msgstr "Marke des ersten Autos"
 
-#: my_profile/models.py:81
+#: my_profile/models.py:96
 msgid "Looking for"
 msgstr "Auf der Suche nach"
 
-#: my_profile/models.py:83
+#: my_profile/models.py:98
 msgid "Relationship"
 msgstr "Beziehungsstatus"
 
-#: my_profile/models.py:85
+#: my_profile/models.py:100
 msgid "Hobbies"
 msgstr "Hobbys"
 
-#: my_profile/models.py:86
+#: my_profile/models.py:101
 msgid "What I like"
 msgstr "Was ich mag"
 
-#: my_profile/models.py:88
+#: my_profile/models.py:103
 msgid "What I don't like"
 msgstr "Was ich nicht mag"
 
-#: my_profile/models.py:91
+#: my_profile/models.py:106
 msgid "Favourite music"
 msgstr "Lieblingsmusik"
 
-#: my_profile/models.py:94
+#: my_profile/models.py:109
 msgid "Favourite movies"
 msgstr "Lieblingsfilme"
 
-#: my_profile/models.py:97
+#: my_profile/models.py:112
 msgid "Favourite books"
 msgstr "Lieblingsbücher"
 
-#: my_profile/models.py:100
+#: my_profile/models.py:115
 msgid "Favourite food"
 msgstr "Lieblingsessen"
 
-#: my_profile/models.py:103
+#: my_profile/models.py:118
 msgid "I am good at"
 msgstr "Darin bin ich gut"
 
-#: my_profile/models.py:105
+#: my_profile/models.py:120
 msgid "I wish for"
 msgstr "Was ich mir wünsche"
+
+#: my_profile/models.py:124
+msgid "You have been gruscheled!"
+msgstr "Du wurdest gegruschelt!"
+
+#: my_profile/models.py:125
+msgid "has gruscheled you!"
+msgstr "hat dich gegruschelt!"
+
+#: my_profile/models.py:127
+msgid "gruschel back"
+msgstr "zurückgruscheln"
+
+#: my_profile/models.py:128
+#, python-format
+msgid "You gruscheled %(name)s."
+msgstr "Du hast %(name)s gegruschelt."
+
+#: my_profile/models.py:129
+#, python-format
+msgid "You already gruscheled %(name)s!"
+msgstr "Du hast %(name)s schon gegruschelt!"
+
+#: my_profile/models.py:133
+msgid "You have been nudged!"
+msgstr "Du wurdest angestupst!"
+
+#: my_profile/models.py:134
+msgid "has nudged you!"
+msgstr "hat dich angestupst!"
+
+#: my_profile/models.py:136
+msgid "nudge back"
+msgstr "zurückstupsen"
+
+#: my_profile/models.py:137
+#, python-format
+msgid "You nudged %(name)s."
+msgstr "Du hast %(name)s angestupst."
+
+#: my_profile/models.py:138
+#, python-format
+msgid "You already nudged %(name)s!"
+msgstr "Du hast %(name)s schon angestupst!"
+
+#: my_profile/models.py:141
+msgid "You have been meowed at!"
+msgstr "Du wurdest angemaunzt!"
+
+#: my_profile/models.py:142
+msgid "has meowed at you!"
+msgstr "hat dich angemaunzt!"
+
+#: my_profile/models.py:144
+msgid "meow back"
+msgstr "zurückmaunzen"
+
+#: my_profile/models.py:145
+#, python-format
+msgid "You meowed at %(name)s."
+msgstr "Du hast %(name)s angemaunzt."
+
+#: my_profile/models.py:146
+#, python-format
+msgid "You already meowed at %(name)s!"
+msgstr "Du hast %(name)s schon angemaunzt!"
+
+#: my_profile/models.py:149
+msgid "You have been waved at!"
+msgstr "Du wurdest angewunken!"
+
+#: my_profile/models.py:150
+msgid "has waved at you!"
+msgstr "hat dich angewunken!"
+
+#: my_profile/models.py:152
+msgid "wave back"
+msgstr "zurückwinken"
+
+#: my_profile/models.py:153
+#, python-format
+msgid "You waved at %(name)s."
+msgstr "Du hast %(name)s gewunken."
+
+#: my_profile/models.py:154
+#, python-format
+msgid "You already waved at %(name)s!"
+msgstr "Du hast %(name)s schon gewunken."
+
+#: my_profile/models.py:168
+msgid "Greeting"
+msgstr "Gruß"
+
+#: my_profile/models.py:169
+msgid "Greetings"
+msgstr "Grüße"
+
+#: my_profile/models.py:175
+msgid "Sender"
+msgstr "Absender"
+
+#: my_profile/models.py:181
+msgid "Recipient"
+msgstr "Empfänger"
 
 #: my_profile/templates/my_profile/myprofile_detail.html:7
 #, python-format
@@ -127,93 +251,93 @@ msgstr "Meine Seite bearbeiten"
 msgid "Send message"
 msgstr ""
 
-#: my_profile/templates/my_profile/myprofile_detail.html:23
+#: my_profile/templates/my_profile/myprofile_detail.html:29
 msgid "End friendship"
 msgstr "Freundschaft beenden"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:25
+#: my_profile/templates/my_profile/myprofile_detail.html:31
 msgid "Add friend"
 msgstr "Freundschaftsanfrage stellen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:30
+#: my_profile/templates/my_profile/myprofile_detail.html:36
 msgid "Cancel friend request"
 msgstr "Freundschaftsanfrage zurückziehen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:38
+#: my_profile/templates/my_profile/myprofile_detail.html:44
 msgid "Friends"
 msgstr "Freunde"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:41
+#: my_profile/templates/my_profile/myprofile_detail.html:47
 msgid "You have no friends."
 msgstr "Du hast keine Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:43
+#: my_profile/templates/my_profile/myprofile_detail.html:49
 #, python-format
 msgid "%(name)s has no friends."
 msgstr "%(name)s hat keine Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:57
+#: my_profile/templates/my_profile/myprofile_detail.html:63
 msgid "Connection"
 msgstr "Verbindung"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:59
+#: my_profile/templates/my_profile/myprofile_detail.html:65
 msgid "It's you!"
 msgstr "Das bist Du!"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:61
+#: my_profile/templates/my_profile/myprofile_detail.html:67
 msgid "You are friends."
 msgstr "Ihr seid Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:71
+#: my_profile/templates/my_profile/myprofile_detail.html:77
 msgid "No connection found."
 msgstr "Keine Verbindung gefunden."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:77
+#: my_profile/templates/my_profile/myprofile_detail.html:83
 msgid "Informations"
 msgstr "Informationen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:78
+#: my_profile/templates/my_profile/myprofile_detail.html:84
 msgid "Account"
 msgstr "Account"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:82
+#: my_profile/templates/my_profile/myprofile_detail.html:88
 msgid "Name"
 msgstr "Name"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:87
+#: my_profile/templates/my_profile/myprofile_detail.html:93
 msgid "Member since"
 msgstr "Mitglied seit"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:92
+#: my_profile/templates/my_profile/myprofile_detail.html:98
 msgid "Last update"
 msgstr "Letztes Update"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:114
+#: my_profile/templates/my_profile/myprofile_detail.html:120
 msgid "Groups"
 msgstr "Gruppen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:124
+#: my_profile/templates/my_profile/myprofile_detail.html:130
 msgid "Pinboard"
 msgstr "Pinnwand"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:127
+#: my_profile/templates/my_profile/myprofile_detail.html:133
 #, python-format
 msgid "Showing %(showing)s of %(total)s"
 msgstr "Zeige %(showing)s von %(total)s"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:133
+#: my_profile/templates/my_profile/myprofile_detail.html:139
 msgid "Write something"
 msgstr "Etwas schreiben"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:134
+#: my_profile/templates/my_profile/myprofile_detail.html:140
 msgid "Show all"
 msgstr ""
 
-#: my_profile/templates/my_profile/myprofile_detail.html:142
+#: my_profile/templates/my_profile/myprofile_detail.html:148
 msgid "Delete post"
 msgstr "Post löschen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:146
+#: my_profile/templates/my_profile/myprofile_detail.html:152
 msgid "Be the first to write something!"
 msgstr "Schreib den ersten Beitrag!"
 
@@ -225,6 +349,6 @@ msgstr ""
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: my_profile/views.py:110
+#: my_profile/views.py:113
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."
