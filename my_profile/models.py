@@ -34,7 +34,7 @@ class MyProfile(models.Model):
         upload_to=UploadToUuidFilename("profiles/"),
         validators=[
             ValidateMaxFilesize(10),
-            ValidateImageSize(100, 100, 4000, 4000),
+            ValidateImageSize(100, 100, 10000, 10000),
             ValidateImageAspectRatio(0.5, 1.8),
         ],
         verbose_name=_("Profile picture"),
