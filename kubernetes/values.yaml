@@ -7,7 +7,7 @@ config:
   EMAIL_FROM: "vz@example.com"
   EMAIL_URL: "smtp://localhost"
   BASE_URL: "http://localhost:8000"
-  CELERY_BROKER_URL: "redis://geheimvz-redis-master:6379/0"
+  QUEUE_BROKER_URL: "redis://geheimvz-redis-master:6379/0"
   CACHE_URL: "redis://geheimvz-redis-master:6379/1"
   #S3_ACCESS_KEY_ID: "geheim"
   #S3_SECRET_ACCESS_KEY: "geheim"
@@ -103,7 +103,7 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+# This is to setup THE liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
     path: /healthz/
