@@ -79,10 +79,6 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          livenessProbe:
-            {{- toYaml .Values.livenessProbe | nindent 12 }}
-          readinessProbe:
-            {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -95,10 +91,18 @@ spec:
               readOnly: true
           {{- with .Values.volumeMounts }}
           {{- toYaml . | nindent 12 }}{{- end }}
-          command: [ "/app/.venv/bin/python "]
+          command: [ "/app/.venv/bin/python" ]
           args:
             - manage.py
             - rundramatiq
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9191
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9191
           env:
             - name: S3_ACCESS_KEY_ID
               valueFrom:

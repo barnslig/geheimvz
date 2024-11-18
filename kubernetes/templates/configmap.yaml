@@ -13,7 +13,7 @@ data:
     EMAIL_FROM={{ .Values.config.EMAIL_FROM }}
     EMAIL_URL={{ .Values.config.EMAIL_URL }}
     BASE_URL={{ .Values.config.BASE_URL }}
-    QUEUE_BROKER_URL={{ .Values.config.CELERY_BROKER_URL }}
+    QUEUE_BROKER_URL={{ .Values.config.QUEUE_BROKER_URL }}
     CACHE_URL={{ .Values.config.CACHE_URL }}
     # S3_ACCESS_KEY_ID={{ .Values.config.S3_ACCESS_KEY_ID }}
     # S3_SECRET_ACCESS_KEY={{ .Values.config.S3_SECRET_ACCESS_KEY }}
