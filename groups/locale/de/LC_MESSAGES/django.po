@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 12:59+0100\n"
+"POT-Creation-Date: 2024-11-16 22:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,7 +167,6 @@ msgid "All topics"
 msgstr "Alle Themen"
 
 #: groups/templates/groups/forumthread_detail.html:17
-#: groups/templates/groups/forumthread_detail.html:23
 msgid "Write post"
 msgstr "Beitrag schreiben"
 

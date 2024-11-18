@@ -44,7 +44,8 @@ body {
   @apply bg-base-100 theme-dark:bg-base-200;
 }
 
-a {
+a,
+.link {
   @apply text-primary-accent hover:underline;
 }
 
@@ -84,4 +85,8 @@ a {
 
 .message.success {
   @apply bg-success-200 text-success-content;
+}
+
+.message.error {
+  @apply bg-error-200 text-error-content;
 }

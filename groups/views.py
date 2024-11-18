@@ -218,7 +218,7 @@ def group_invite(request: HttpRequest, pk: str):
             )
 
             if invitation.to_user.notification_settings.on_new_group_invitation:
-                send_on_group_invitation.delay(
+                send_on_group_invitation.send(
                     invitation.from_user.display_name,
                     invitation.to_user.display_name,
                     invitation.for_group.name,

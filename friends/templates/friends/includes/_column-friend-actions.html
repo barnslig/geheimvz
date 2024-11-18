@@ -4,6 +4,12 @@
 <ul class="actions">
   <li><a class="action" href="{% url 'friend-remove' friend.pk  %}">{% translate 'End friendship' %}</a></li>
   <li><a class="action" href="{% url 'profile' friend.pk %}">{% blocktranslate with name=friend.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li>
+    <form class="flex flex-1" action="{% url 'greeting_create' friend.pk %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="action">{{ request.user.profile.greeting_i18n.action }}</button>
+    </form>
+  </li>
   <li><a class="action" href="{% url 'message_create_to' friend.pk %}">{% translate 'Send message' %}</a></li>
 </ul>
 {% endwith %}

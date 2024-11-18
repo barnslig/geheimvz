@@ -58,7 +58,7 @@ def friend_add(request: HttpRequest, pk: str):
             )
 
             if other_user.notification_settings.on_new_friend_request:
-                send_on_friend_request.delay(
+                send_on_friend_request.send(
                     request.user.display_name,
                     other_user.display_name,
                     other_user.email,
@@ -185,7 +185,7 @@ def friendship_accept(request: HttpRequest, pk: int):
     if request.method == "POST":
         f_request = get_object_or_404(request.user.friendship_requests_received, id=pk)
         f_request.accept()
-        return redirect("profile", id=f_request.to_user.id)
+        return redirect("profile", id=f_request.from_user.id)
 
     return redirect("friend-requests")
 

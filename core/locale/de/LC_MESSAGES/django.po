@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 12:59+0100\n"
+"POT-Creation-Date: 2024-11-17 20:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,36 +182,60 @@ msgid "View messages"
 msgstr "Nachrichten anzeigen"
 
 #: core/templates/core/index_login.html:29
+msgid "Have a look!"
+msgstr "Schau mal!"
+
+#: core/templates/core/index_login.html:43
+msgid "hide"
+msgstr "ausblenden"
+
+#: core/templates/core/index_login.html:52
 msgid "You are invited!"
 msgstr "Du bist eingeladen!"
 
-#: core/templates/core/index_login.html:30
+#: core/templates/core/index_login.html:53
 #, python-format
 msgid "You have one open group invite."
 msgid_plural "You have %(count)s open group invites."
 msgstr[0] "Du hast eine offene Gruppeneinladung."
 msgstr[1] "Du hast %(count)s offene Gruppeneinladungen."
 
-#: core/templates/core/index_login.html:31
+#: core/templates/core/index_login.html:54
 msgid "View group invites"
 msgstr "Gruppeneinladungen ansehen"
 
-#: core/templates/core/index_login.html:35
+#: core/templates/core/index_login.html:58
 msgid "Do you know ...?"
 msgstr "Kennst du schon ...?"
 
-#: core/templates/core/index_login.html:35
-#: core/templates/core/index_login.html:51
+#: core/templates/core/index_login.html:58
+#: core/templates/core/index_login.html:74
 msgid "Show all"
 msgstr "Alle ansehen"
 
-#: core/templates/core/index_login.html:43
+#: core/templates/core/index_login.html:66
 #, python-format
 msgid "One mutual friend."
 msgid_plural "%(count)s mutual friends."
 msgstr[0] "Ein gemeinsamer Freund."
 msgstr[1] "%(count)s gemeinsame Freunde."
 
-#: core/templates/core/index_login.html:51
+#: core/templates/core/index_login.html:74
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
+
+#: core/templates/core/ratelimited.html:14
+msgid "Oh my!"
+msgstr "Oha!"
+
+#: core/templates/core/ratelimited.html:19
+msgid "You're going pretty fast!"
+msgstr "Du bist ganz schön schnell unterwegs!"
+
+#: core/templates/core/ratelimited.html:20
+msgid "This function is available again to you after a short cool down delay."
+msgstr "Diese Funktion steht dir erst wieder nach einer kurzen Wartezeit zur Verfügung."
+
+#: core/templates/core/ratelimited.html:21
+msgid "Go back to homepage"
+msgstr "Zurück zur Startseite"

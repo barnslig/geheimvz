@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-14 15:56+0100\n"
+"POT-Creation-Date: 2024-11-17 19:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,7 +110,7 @@ msgstr "Freundschaft beenden"
 msgid "%(name)s's page"
 msgstr "Seite von %(name)s"
 
-#: friends/templates/friends/includes/_column-friend-actions.html:7
+#: friends/templates/friends/includes/_column-friend-actions.html:13
 #: friends/templates/friends/includes/_column-friend-request-actions.html:18
 #: friends/templates/friends/includes/_column-friend-request-sent-actions.html:12
 msgid "Send message"

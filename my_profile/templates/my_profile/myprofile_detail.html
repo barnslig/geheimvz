@@ -20,6 +20,12 @@
           <li><a class="action" href="{% url 'message_create_to' user.id %}">{% translate 'Send message' %}</a></li>
         {% endif %}
         {% if are_friends %}
+          <li>
+            <form class="flex flex-1" action="{% url 'greeting_create' user.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="action">{{ request.user.profile.greeting_i18n.action }}</button>
+            </form>
+          </li>
           <li><a class="action" href="{% url 'friend-remove' user.id %}">{% translate 'End friendship' %}</a></li>
         {% elif not friend_request_sent %}
           <li><a class="action" href="{% url 'friend-add' user.id %}">{% translate 'Add friend' %}</a></li>

@@ -17,6 +17,7 @@ class NotificationSettingsForm(forms.ModelForm):
             "on_new_private_message",
             "on_new_friend_request",
             "on_new_group_invitation",
+            "on_new_greeting",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -27,6 +28,7 @@ class NotificationSettingsForm(forms.ModelForm):
             Field("on_new_private_message"),
             Field("on_new_friend_request"),
             Field("on_new_group_invitation"),
+            Field("on_new_greeting"),
             RightColumn(Submit("submit", _("save"))),
         )
 

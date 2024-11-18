@@ -1,0 +1,10 @@
+Hey {{ to_user.display_name }},
+
+{{ from_user.display_name }} {{ from_user.profile.greeting_i18n.message }}
+
+Schnell einloggen und {{ to_user.profile.greeting_i18n.return }}:
+
+{{ action_url }}
+
+Viel Spaß!
+Dein geheimVZ-Team
