@@ -48,7 +48,7 @@ class ProfileUpdateView(
     form_class = UserForm
     model = User
     success_message = _("Profile successfully updated")
-    template_name = "account/user_form.html"
+    template_name = "my_account/user_form.html"
     tabs = tabs
     tab_current = "account"
 
@@ -65,7 +65,7 @@ class AppearanceUpdateView(
     form_class = AppearanceForm
     model = AppearanceSettings
     success_message = _("Profile successfully updated")
-    template_name = "account/appearance_form.html"
+    template_name = "my_account/appearance_form.html"
     success_url = reverse_lazy("account-appearance")
     tabs = tabs
     tab_current = "appearance"
@@ -101,7 +101,7 @@ class PrivacyUpdateView(
     model = PrivacySettings
     success_message = _("Profile successfully updated")
     success_url = reverse_lazy("account-privacy")
-    template_name = "account/privacy_form.html"
+    template_name = "my_account/privacy_form.html"
     tabs = tabs
     tab_current = "privacy"
 
@@ -114,7 +114,7 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     success_message = _("Account successfully deleted")
     success_url = reverse_lazy("index")
-    template_name = "account/user_confirm_delete.html"
+    template_name = "my_account/user_confirm_delete.html"
 
     def get_object(self):
         return self.request.user
@@ -122,11 +122,11 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
 
 class PasswordChangeView(SuccessMessageMixin, auth_views.PasswordChangeView):
     form_class = PasswordChangeForm
-    template_name = "account/password_change_form.html"
+    template_name = "my_account/password_change_form.html"
     success_message = _("Password change successful")
     success_url = reverse_lazy("account")
 
 
 class LoginView(auth_views.LoginView):
     form_class = AuthenticationForm
-    template_name = "account/login.html"
+    template_name = "my_account/login.html"

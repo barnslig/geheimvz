@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("core", "0002_user_image_height_user_image_width_alter_user_image"),
-        ("account", "0002_appearancesettings"),
+        ("my_account", "0002_appearancesettings"),
     ]
 
     operations = [

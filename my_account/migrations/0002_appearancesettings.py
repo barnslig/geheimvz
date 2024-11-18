@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("account", "0001_initial"),
+        ("my_account", "0001_initial"),
         ("core", "0002_user_image_height_user_image_width_alter_user_image"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
