@@ -60,7 +60,7 @@ def pinboard_create(request: HttpRequest, pk: str):
             )
 
             if user.notification_settings.on_new_pinboard_message:
-                send_on_create_mail.delay(
+                send_on_create_mail.send(
                     request.user.display_name,
                     user.display_name,
                     user.email,

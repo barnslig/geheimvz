@@ -1,4 +1,5 @@
-from celery import shared_task
+import dramatiq
+
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -7,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from core.models import User
 
 
-@shared_task
+@dramatiq.actor
 def send_on_greeting_mail(from_id: str, to_id: str):
     from_user = User.objects.get(pk=from_id)
     to_user = User.objects.get(pk=to_id)

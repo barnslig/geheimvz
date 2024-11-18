@@ -58,7 +58,7 @@ def friend_add(request: HttpRequest, pk: str):
             )
 
             if other_user.notification_settings.on_new_friend_request:
-                send_on_friend_request.delay(
+                send_on_friend_request.send(
                     request.user.display_name,
                     other_user.display_name,
                     other_user.email,

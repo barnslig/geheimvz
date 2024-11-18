@@ -20,7 +20,7 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
     BASE_URL=(str, "http://localhost:8000"),
     CACHE_URL=(str, "locmemcache://"),
-    CELERY_BROKER_URL=(str, "amqp://"),
+    QUEUE_BROKER_URL=(str, "redis://localhost:6379/1"),
     CSRF_TRUSTED_ORIGINS=(list, []),
     DATABASE_URL=(str, None),
     DEBUG=(bool, False),
@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_vite",
     "django_components",
+    "django_dramatiq",
     "annoying",
     "csp",
     "crispy_forms",
@@ -169,16 +170,25 @@ CACHES = {
 
 
 # Queue
-# https://docs.celeryq.dev/en/stable/userguide/configuration.html
-# https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html
+# https://github.com/Bogdanp/django_dramatiq
+# https://dramatiq.io/
 
-CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+DRAMATIQ_BROKER = {
+    "BROKER": "dramatiq.brokers.redis.RedisBroker",
+    "OPTIONS": {
+        "url": env("QUEUE_BROKER_URL"),
+    },
+    "MIDDLEWARE": [
+        "dramatiq.middleware.Prometheus",
+        "dramatiq.middleware.AgeLimit",
+        "dramatiq.middleware.TimeLimit",
+        "dramatiq.middleware.Callbacks",
+        "dramatiq.middleware.Retries",
+        "django_dramatiq.middleware.DbConnectionsMiddleware",
+        # "django_dramatiq.middleware.AdminMiddleware",
+    ],
+}
 
-CELERY_TIMEZONE = env("TIME_ZONE")
-
-CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-
-CELERY_ACCEPT_CONTENT = ["json", "application/x-python-serialize"]  # for ImageKit
 
 # Mail
 # https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-EMAIL_BACKEND
@@ -348,7 +358,7 @@ COMPONENTS = {
 # Image Transforms
 # https://django-imagekit.readthedocs.io/en/latest/
 
-IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = "imagekit.cachefiles.backends.Async"
+IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = "core.imagekit_queue.Dramatiq"
 
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic"
 

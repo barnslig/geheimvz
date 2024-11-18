@@ -110,7 +110,7 @@ class PrivateMessageCreateView(
         self.object.from_user = self.request.user
 
         if self.object.to_user.notification_settings.on_new_private_message:
-            send_on_receive_mail.delay(
+            send_on_receive_mail.send(
                 self.object.from_user.display_name,
                 self.object.to_user.display_name,
                 self.object.to_user.email,

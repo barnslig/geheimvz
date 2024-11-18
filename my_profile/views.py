@@ -147,7 +147,7 @@ def greeting_create(request: HttpRequest, pk: str):
         )
 
         if to_user.notification_settings.on_new_greeting:
-            send_on_greeting_mail.delay(request.user.pk, to_user.pk)
+            send_on_greeting_mail.send(str(request.user.pk), str(to_user.pk))
 
     return redirect("profile", id=to_user.pk)
 

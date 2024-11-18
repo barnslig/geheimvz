@@ -6,4 +6,5 @@ class CoreConfig(AppConfig):
     name = "core"
 
     def ready(self):
+        import core.imagekit_queue
         import core.signals
