@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     "search.apps.SearchConfig",
     "debug_toolbar",
     "django_cleanup.apps.CleanupConfig",
+    "health_check",
 ]
 
 MIDDLEWARE = [

@@ -17,7 +17,7 @@ Including another URLconf
 
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 from core import urls as core_urls
@@ -55,6 +55,7 @@ urlpatterns = [
     ),
     # Admin
     path("admin/", admin.site.urls),
+    path("healthz/", include('health_check.urls')),
 ]
 
 urlpatterns += core_urls.urlpatterns
