@@ -66,6 +66,7 @@ BASE_URL = env("BASE_URL")
 # Application definition
 
 INSTALLED_APPS = [
+    "django_rename_app",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -84,7 +85,7 @@ INSTALLED_APPS = [
     "imagekit",
     "friendship",
     "django_tables2",
-    "account.apps.AccountConfig",
+    "my_account.apps.MyAccountConfig",
     "core.apps.CoreConfig",
     "emoticons.apps.EmoticonsConfig",
     "friends.apps.FriendsConfig",

@@ -18,250 +18,250 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/forms.py:30 account/forms.py:48 account/forms.py:74
-#: account/forms.py:96
+#: my_account/forms.py:30 my_account/forms.py:48 my_account/forms.py:74
+#: my_account/forms.py:96
 msgid "save"
 msgstr "speichern"
 
-#: account/forms.py:101
+#: my_account/forms.py:101
 #, python-format
 msgid "Type \"%s\" to confirm."
 msgstr "Schreibe: \"%s\""
 
-#: account/forms.py:101 account/forms.py:106
+#: my_account/forms.py:101 my_account/forms.py:106
 msgid "yes, i want"
 msgstr "Ja, ich will"
 
-#: account/forms.py:107
+#: my_account/forms.py:107
 msgid "Not correct!"
 msgstr "Nicht richtig!"
 
-#: account/forms.py:116 account/templates/account/user_form.html:22
+#: my_account/forms.py:116 my_account/templates/my_account/user_form.html:22
 msgid "Delete account"
 msgstr "Konto löschen"
 
-#: account/forms.py:128 account/templates/account/user_form.html:21
+#: my_account/forms.py:128 my_account/templates/my_account/user_form.html:21
 msgid "Change password"
 msgstr "Passwort ändern"
 
-#: account/forms.py:141 account/templates/account/login.html:7
+#: my_account/forms.py:141 my_account/templates/my_account/login.html:7
 msgid "Login"
 msgstr "Anmelden"
 
-#: account/models.py:12
+#: my_account/models.py:12
 msgid "Rose"
 msgstr "Rosa"
 
-#: account/models.py:13
+#: my_account/models.py:13
 msgid "Blue"
 msgstr "Blau"
 
-#: account/models.py:14
+#: my_account/models.py:14
 msgid "Green"
 msgstr "Grün"
 
-#: account/models.py:15
+#: my_account/models.py:15
 msgid "Dark Mode"
 msgstr "Dark Mode"
 
-#: account/models.py:16
+#: my_account/models.py:16
 msgid "High Contrast"
 msgstr "Hoher Kontrast"
 
-#: account/models.py:19
+#: my_account/models.py:19
 msgid "Sans-Serif"
 msgstr "Sans-Serif"
 
-#: account/models.py:20
+#: my_account/models.py:20
 msgid "Serif"
 msgstr "Serif"
 
-#: account/models.py:21
+#: my_account/models.py:21
 msgid "Monospace"
 msgstr "Monospace"
 
-#: account/models.py:22
+#: my_account/models.py:22
 msgid "Comic"
 msgstr "Comic"
 
-#: account/models.py:29
+#: my_account/models.py:29
 msgid "None"
 msgstr "Keiner"
 
-#: account/models.py:30
+#: my_account/models.py:30
 msgid "Clouds"
 msgstr "Wolken"
 
-#: account/models.py:31
+#: my_account/models.py:31
 msgid "Charlie Brown"
 msgstr "Charlie Brown"
 
-#: account/models.py:32
+#: my_account/models.py:32
 msgid "Waves"
 msgstr "Wellen"
 
-#: account/models.py:35
+#: my_account/models.py:35
 msgid "Simple"
 msgstr "Einfach"
 
-#: account/models.py:36
+#: my_account/models.py:36
 msgid "Pride"
 msgstr "Pride"
 
-#: account/models.py:37
+#: my_account/models.py:37
 msgid "All-Seeing Eye"
 msgstr "Allsehendes Auge"
 
-#: account/models.py:40
+#: my_account/models.py:40
 msgid "Extra Small"
 msgstr "Extra klein"
 
-#: account/models.py:41
+#: my_account/models.py:41
 msgid "Small"
 msgstr "Klein"
 
-#: account/models.py:42
+#: my_account/models.py:42
 msgid "Default"
 msgstr "Normal"
 
-#: account/models.py:43
+#: my_account/models.py:43
 msgid "Large"
 msgstr "Größer"
 
-#: account/models.py:54
+#: my_account/models.py:54
 msgid "Theme color"
 msgstr "Farbe"
 
-#: account/models.py:60
+#: my_account/models.py:60
 msgid "Theme font"
 msgstr "Schriftart"
 
-#: account/models.py:66
+#: my_account/models.py:66
 msgid "Theme size"
 msgstr "Schriftgröße"
 
-#: account/models.py:72
+#: my_account/models.py:72
 msgid "Theme background"
 msgstr "Hintergrund"
 
-#: account/models.py:78
+#: my_account/models.py:78
 msgid "Theme logo"
 msgstr "Logo"
 
-#: account/models.py:94
+#: my_account/models.py:94
 msgid "On new pinboard message"
 msgstr "Bei neuen Nachrichten auf deiner Pinnwand"
 
-#: account/models.py:98
+#: my_account/models.py:98
 msgid "On new private message"
 msgstr "Bei neuen Nachrichten"
 
-#: account/models.py:102
+#: my_account/models.py:102
 msgid "On new friend request"
 msgstr "Bei neuen Freundschaftsanfragen"
 
-#: account/models.py:106
+#: my_account/models.py:106
 msgid "On new group invitation"
 msgstr "Bei neuen Gruppeneinladungen"
 
-#: account/models.py:110
+#: my_account/models.py:110
 msgid "On new greetings"
 msgstr "Bei neuen Grüßen"
 
-#: account/models.py:119
+#: my_account/models.py:119
 msgid "Everyone logged in"
 msgstr "Alle, die eingeloggt sind."
 
-#: account/models.py:120
+#: my_account/models.py:120
 msgid "Only my friends"
 msgstr "Nur meine Freunde"
 
-#: account/models.py:132
+#: my_account/models.py:132
 msgid "Who can see your page?"
 msgstr "Wer darf meine Seite sehen?"
 
-#: account/models.py:138
+#: my_account/models.py:138
 msgid "Who can send you messages?"
 msgstr "Wer darf mir Nachrichten schicken?"
 
-#: account/templates/account/appearance_form.html:7
-#: account/templates/account/notificationsettings_form.html:7
-#: account/templates/account/password_change_form.html:7
-#: account/templates/account/privacy_form.html:7
-#: account/templates/account/user_confirm_delete.html:7
-#: account/templates/account/user_form.html:7
+#: my_account/templates/my_account/appearance_form.html:7
+#: my_account/templates/my_account/notificationsettings_form.html:7
+#: my_account/templates/my_account/password_change_form.html:7
+#: my_account/templates/my_account/privacy_form.html:7
+#: my_account/templates/my_account/user_confirm_delete.html:7
+#: my_account/templates/my_account/user_form.html:7
 msgid "This is me"
 msgstr "Das bin ich"
 
-#: account/templates/account/appearance_form.html:14
+#: my_account/templates/my_account/appearance_form.html:14
 msgid "Customise the page to match your style!"
 msgstr "Passe die Seite an deinen Style an!"
 
-#: account/templates/account/login.html:31
+#: my_account/templates/my_account/login.html:31
 msgid "Lost password?"
 msgstr "Passwort vergessen?"
 
-#: account/templates/account/notificationsettings_form.html:13
+#: my_account/templates/my_account/notificationsettings_form.html:13
 msgid "Update your notification settings."
 msgstr "Hier kannst du anpassen, worüber wir dich per E-Mail informieren."
 
-#: account/templates/account/password_change_form.html:11
+#: my_account/templates/my_account/password_change_form.html:11
 msgid "Change your password."
 msgstr "Ändere dein Passwort."
 
-#: account/templates/account/password_change_form.html:11
-#: account/templates/account/user_confirm_delete.html:11
+#: my_account/templates/my_account/password_change_form.html:11
+#: my_account/templates/my_account/user_confirm_delete.html:11
 msgid "Go to account settings"
 msgstr "Zurück zu den Account-Einstellungen"
 
-#: account/templates/account/privacy_form.html:14
+#: my_account/templates/my_account/privacy_form.html:14
 msgid "Customise who can know what about you!"
 msgstr "Passe an, wer was von dir wissen darf!"
 
-#: account/templates/account/user_confirm_delete.html:11
+#: my_account/templates/my_account/user_confirm_delete.html:11
 msgid "Delete your account."
 msgstr "Hier kannst du dein Konto löschen."
 
-#: account/templates/account/user_form.html:13
+#: my_account/templates/my_account/user_form.html:13
 msgid "Update your account."
 msgstr "Hier kannst du dein Konto anpassen."
 
-#: account/templates/account/user_form.html:13
+#: my_account/templates/my_account/user_form.html:13
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: account/templates/account/user_form.html:19
+#: my_account/templates/my_account/user_form.html:19
 msgid "Other actions"
 msgstr "Weitere Aktionen"
 
-#: account/views.py:25
+#: my_account/views.py:25
 msgid "Account settings"
 msgstr "Konto"
 
-#: account/views.py:29
+#: my_account/views.py:29
 msgid "Appearance"
 msgstr "Style"
 
-#: account/views.py:33
+#: my_account/views.py:33
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
-#: account/views.py:37
+#: my_account/views.py:37
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: account/views.py:50 account/views.py:67 account/views.py:102
+#: my_account/views.py:50 my_account/views.py:67 my_account/views.py:102
 msgid "Profile successfully updated"
 msgstr "Konto erfolgreich geändert"
 
-#: account/views.py:87
+#: my_account/views.py:87
 msgid "Notification settings successfully updated"
 msgstr "Benachrichtigungseinstellungen erfolgreich geändert"
 
-#: account/views.py:115
+#: my_account/views.py:115
 msgid "Account successfully deleted"
 msgstr "Konto erfolgreich gelöscht"
 
-#: account/views.py:126
+#: my_account/views.py:126
 msgid "Password change successful"
 msgstr "Passwort erfolgreich geändert"

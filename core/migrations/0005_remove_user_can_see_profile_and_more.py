@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('core', '0004_alter_user_image'),
-        ("account", "0003_privacysettings"),
+        ("my_account", "0003_privacysettings"),
 
     ]
 

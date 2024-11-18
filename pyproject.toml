@@ -34,6 +34,7 @@ django-annoying = "^0.10.7"
 psycopg = {extras = ["binary"], version = "^3.2.3"}
 dramatiq = {extras = ["redis", "watch"], version = "^1.17.1"}
 django-dramatiq = "^0.11.6"
+django-rename-app = "^0.1.7"
 
 
 [build-system]

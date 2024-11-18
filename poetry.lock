@@ -666,6 +666,20 @@ files = [
 ]
 
 [[package]]
+name = "django-rename-app"
+version = "0.1.7"
+description = "A Django Management Command to rename existing Django Applications."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_rename_app-0.1.7-py2.py3-none-any.whl", hash = "sha256:68ed0dbc9fc167b72cf2f3ba6b464d7981a42a0e09070476cf94f1f603f7a433"},
+    {file = "django_rename_app-0.1.7.tar.gz", hash = "sha256:f1236dacfbaf06d63aa53a665333c9e0b4943ef41019aae7626dd5fb5ffa69b5"},
+]
+
+[package.dependencies]
+django = "*"
+
+[[package]]
 name = "django-s3-storage"
 version = "0.15.0"
 description = "Django Amazon S3 file storage."
@@ -1669,4 +1683,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "4a7b774a24d3e40b4aea994507fd5ca3ded0df275e9b20a059fecd09288aaf35"
+content-hash = "5060ee77effdd2ffb9e8a783bc22ac0db5d6677db8c51693690fe4cd34185589"
