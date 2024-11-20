@@ -73,7 +73,7 @@ msgstr "Beitrag löschen"
 
 #: pinboard/views.py:59
 msgid "Successfully posted to pinboard"
-msgstr "Erfolgreich auf die Pinnward geschrieben"
+msgstr "Erfolgreich auf die Pinnwand geschrieben"
 
 #: pinboard/views.py:94
 msgid "Post successfully deleted"
