@@ -54,6 +54,7 @@ class MyProfile(models.Model):
         NUDGE = "NUDGE", _("Nudge")  # Anstupsen
         MEOW = "MEOW", _("Meow")  # Maunzen
         WAVE = "WAVE", _("Wave")  # Winken
+        FUCK = "FUCK", _("Fuck")  # Anficken
 
     greeting_word = models.CharField(
         max_length=255,
@@ -152,6 +153,14 @@ class MyProfile(models.Model):
             "return": _("wave back"),
             "success": lambda name: _("You waved at %(name)s.") % {"name": name},
             "error": lambda name: _("You already waved at %(name)s!") % {"name": name},
+        },
+        GreetingChoices.FUCK: {
+            "subject": _("You have been fucked on!"),
+            "message": _("has fuck you on!"),
+            "action": _("Fuckon"),
+            "return": _("Fuck back"),
+            "success": lambda name: _("You fucked on %(name)s.") % {"name": name},
+            "error": lambda name: _("You already Fucked on %(name)s!") % {"name": name},
         },
     }
 
