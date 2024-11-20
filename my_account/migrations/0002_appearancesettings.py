@@ -108,7 +108,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RunSQL(
             """
-            INSERT INTO account_appearancesettings (
+            INSERT INTO my_account_appearancesettings (
                 owner_id,
                 color,
                 font,
@@ -140,9 +140,9 @@ class Migration(migrations.Migration):
                     background AS appearance_background,
                     logo AS appearance_logo
                 FROM
-                    account_appearancesettings
+                    my_account_appearancesettings
                 WHERE
-                    core_user.id = account_appearancesettings.owner_id
+                    core_user.id = my_account_appearancesettings.owner_id
             """,
         ),
     ]

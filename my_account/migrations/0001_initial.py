@@ -7,7 +7,7 @@ from django.db import migrations, models
 
 def create_notification_settings_for_existing_users(apps, schema_editor):
     User = apps.get_model("core", "User")
-    NotificationSettings = apps.get_model("account", "NotificationSettings")
+    NotificationSettings = apps.get_model("my_account", "NotificationSettings")
     for u in User.objects.all():
         s = NotificationSettings(owner=u)
         s.save()

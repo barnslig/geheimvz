@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RunSQL(
             """
-            INSERT INTO account_privacysettings (
+            INSERT INTO my_account_privacysettings (
                 owner_id,
                 can_see_profile,
                 can_send_messages
@@ -45,9 +45,9 @@ class Migration(migrations.Migration):
                     can_see_profile,
                     can_send_messages
                 FROM
-                    account_privacysettings
+                    my_account_privacysettings
                 WHERE
-                    core_user.id = account_privacysettings.owner_id
+                    core_user.id = my_account_privacysettings.owner_id
             """,
         ),
     ]
