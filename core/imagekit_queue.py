@@ -21,7 +21,7 @@ def imagekit_dumps(i: ImageCacheFile):
 
     return {
         "source_model": f"{source.instance._meta.app_label}.{source.instance._meta.object_name}",
-        "source_pk": source.instance.pk,
+        "source_pk": str(source.instance.pk),
         "source_field": source.field.attname,
         "generator": generator_id,
         "name": i.name,
