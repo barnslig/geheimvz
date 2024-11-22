@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 20:38+0100\n"
+"POT-Creation-Date: 2024-11-22 13:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,6 +223,32 @@ msgstr[1] "%(count)s gemeinsame Freunde."
 #: core/templates/core/index_login.html:74
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
+
+#: core/templates/core/index_login.html:81
+msgid "Privacy"
+msgstr "Privatsphäre"
+
+#: core/templates/core/index_login.html:81
+msgid "change"
+msgstr "Ändern"
+
+#: core/templates/core/index_login.html:85
+#: core/templates/core/index_login.html:93
+msgid "Everyone logged in"
+msgstr "Alle, die eingeloggt sind"
+
+#: core/templates/core/index_login.html:87
+#: core/templates/core/index_login.html:95
+msgid "Only your friends"
+msgstr "Nur deine Freunde"
+
+#: core/templates/core/index_login.html:89
+msgid "can see your profile"
+msgstr "dürfen dein Profil sehen"
+
+#: core/templates/core/index_login.html:97
+msgid "can send you messages"
+msgstr "dürfen dir Nachrichten senden"
 
 #: core/templates/core/ratelimited.html:14
 msgid "Oh my!"
