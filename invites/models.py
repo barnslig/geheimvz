@@ -10,7 +10,7 @@ class InviteCode(models.Model):
         verbose_name = _("Invite code")
         verbose_name_plural = _("Invite codes")
 
-    code = models.CharField(max_length=255, unique=True, verbose_name=_("Code"))
+    code = models.CharField(max_length=255, unique=True, verbose_name=_("Invite code"))
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

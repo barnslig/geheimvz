@@ -17,8 +17,44 @@
 </form>
 
 <p class="my-4">{% translate 'Other actions' %}</p>
-<p class="flex gap-2 my-4">
-  <a class="btn" href="{% url 'password_change' %}">{% translate 'Change password' %}</a>
-  <a class="btn" href="{% url 'account-delete' %}">{% translate 'Delete account' %}</a>
-</p>
+<ul class="flex gap-2 my-4">
+  {% url 'account_email' as email_url_ %}
+  {% if email_url_ %}
+    <li>
+      <a class="btn" href="{{ email_url_ }}">{% trans "Change Email" %}</a>
+    </li>
+  {% endif %}
+
+  {% url 'account_change_password' as change_password_url_ %}
+  {% if change_password_url_ %}
+    <li>
+      <a class="btn" href="{{ change_password_url_ }}">{% trans "Change Password" %}</a>
+    </li>
+  {% endif %}
+
+  {% url 'socialaccount_connections' as connections_url_ %}
+  {% if connections_url_ %}
+    <li>
+      <a class="btn" href="{{ connections_url_ }}">{% trans "Account Connections" %}</a>
+    </li>
+  {% endif %}
+
+  {% url 'mfa_index' as mfa_url_ %}
+  {% if mfa_url_ %}
+    <li>
+      <a class="btn" href="{{ mfa_url_ }}">{% trans "Two-Factor Authentication" %}</a>
+    </li>
+  {% endif %}
+
+  {% url 'usersessions_list' as usersessions_list_url_ %}
+  {% if usersessions_list_url_ %}
+    <li>
+      <a class="btn" href="{{ usersessions_list_url_ }}">{% trans "Sessions" %}</a>
+    </li>
+  {% endif %}
+
+  <li>
+    <a class="btn" href="{% url 'account-delete' %}">{% translate 'Delete account' %}</a>
+  </li>
+</ul>
 {% endblock %}

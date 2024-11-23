@@ -5,6 +5,8 @@ from os.path import splitext, join
 from uuid import uuid4
 from django.utils.deconstruct import deconstructible
 
+from core.models import User
+
 
 @deconstructible
 class UploadToUuidFilename:
@@ -86,3 +88,7 @@ class ValidateImageSize:
                     "max_height": self.max_height,
                 }
             )
+
+
+def get_user_display_name(user: User):
+    return user.display_name

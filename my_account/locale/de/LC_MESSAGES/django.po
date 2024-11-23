@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-22 13:50+0100\n"
+"POT-Creation-Date: 2024-11-24 20:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,33 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: my_account/forms.py:32 my_account/forms.py:50 my_account/forms.py:76
-#: my_account/forms.py:98
+#: my_account/forms.py:32 my_account/forms.py:48 my_account/forms.py:72
+#: my_account/forms.py:94
 msgid "save"
 msgstr "speichern"
 
-#: my_account/forms.py:103
+#: my_account/forms.py:99
 #, python-format
 msgid "Type \"%s\" to confirm."
 msgstr "Schreibe: \"%s\""
 
-#: my_account/forms.py:103 my_account/forms.py:108
+#: my_account/forms.py:99 my_account/forms.py:104
 msgid "yes, i want"
 msgstr "Ja, ich will"
 
-#: my_account/forms.py:109
+#: my_account/forms.py:105
 msgid "Not correct!"
 msgstr "Nicht richtig!"
 
-#: my_account/forms.py:118 my_account/templates/my_account/user_form.html:22
+#: my_account/forms.py:114 my_account/templates/my_account/user_form.html:57
 msgid "Delete account"
 msgstr "Konto löschen"
 
-#: my_account/forms.py:130 my_account/templates/my_account/user_form.html:21
-msgid "Change password"
-msgstr "Passwort ändern"
-
-#: my_account/forms.py:143 my_account/templates/my_account/login.html:7
+#: my_account/forms.py:128
 msgid "Login"
 msgstr "Anmelden"
 
@@ -186,7 +182,6 @@ msgstr "Wer darf mir Nachrichten schicken?"
 
 #: my_account/templates/my_account/appearance_form.html:7
 #: my_account/templates/my_account/notificationsettings_form.html:7
-#: my_account/templates/my_account/password_change_form.html:7
 #: my_account/templates/my_account/privacy_form.html:7
 #: my_account/templates/my_account/user_confirm_delete.html:7
 #: my_account/templates/my_account/user_form.html:7
@@ -197,22 +192,9 @@ msgstr "Das bin ich"
 msgid "Customise the page to match your style!"
 msgstr "Passe die Seite an deinen Style an!"
 
-#: my_account/templates/my_account/login.html:31
-msgid "Lost password?"
-msgstr "Passwort vergessen?"
-
 #: my_account/templates/my_account/notificationsettings_form.html:13
 msgid "Update your notification settings."
 msgstr "Hier kannst du anpassen, worüber wir dich per E-Mail informieren."
-
-#: my_account/templates/my_account/password_change_form.html:11
-msgid "Change your password."
-msgstr "Ändere dein Passwort."
-
-#: my_account/templates/my_account/password_change_form.html:11
-#: my_account/templates/my_account/user_confirm_delete.html:11
-msgid "Go to account settings"
-msgstr "Zurück zu den Account-Einstellungen"
 
 #: my_account/templates/my_account/privacy_form.html:14
 msgid "Customise who can know what about you!"
@@ -221,6 +203,10 @@ msgstr "Passe an, wer was von dir wissen darf!"
 #: my_account/templates/my_account/user_confirm_delete.html:11
 msgid "Delete your account."
 msgstr "Hier kannst du dein Konto löschen."
+
+#: my_account/templates/my_account/user_confirm_delete.html:11
+msgid "Go to account settings"
+msgstr "Zurück zu den Account-Einstellungen"
 
 #: my_account/templates/my_account/user_form.html:13
 msgid "Update your account."
@@ -234,34 +220,53 @@ msgstr "Zurück zu deiner Seite"
 msgid "Other actions"
 msgstr "Weitere Aktionen"
 
-#: my_account/views.py:25
+#: my_account/templates/my_account/user_form.html:24
+msgid "Change Email"
+msgstr "Email ändern"
+
+#: my_account/templates/my_account/user_form.html:31
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: my_account/templates/my_account/user_form.html:38
+msgid "Account Connections"
+msgstr "Konto-Verknüpfungen"
+
+#: my_account/templates/my_account/user_form.html:45
+msgid "Two-Factor Authentication"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: my_account/templates/my_account/user_form.html:52
+msgid "Sessions"
+msgstr "Sitzungen"
+
+#: my_account/views.py:22
 msgid "Account settings"
 msgstr "Konto"
 
-#: my_account/views.py:29
+#: my_account/views.py:26
 msgid "Appearance"
 msgstr "Style"
 
-#: my_account/views.py:33
+#: my_account/views.py:30
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
-#: my_account/views.py:37
+#: my_account/views.py:34
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: my_account/views.py:50 my_account/views.py:67 my_account/views.py:102
+#: my_account/views.py:47 my_account/views.py:64 my_account/views.py:99
 msgid "Profile successfully updated"
 msgstr "Konto erfolgreich geändert"
 
-#: my_account/views.py:87
+#: my_account/views.py:84
 msgid "Notification settings successfully updated"
 msgstr "Benachrichtigungseinstellungen erfolgreich geändert"
 
-#: my_account/views.py:115
+#: my_account/views.py:112
 msgid "Account successfully deleted"
 msgstr "Konto erfolgreich gelöscht"
 
-#: my_account/views.py:126
-msgid "Password change successful"
-msgstr "Passwort erfolgreich geändert"
+#~ msgid "Change password"
+#~ msgstr "Passwort ändern"

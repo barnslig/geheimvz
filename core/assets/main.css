@@ -50,7 +50,7 @@ a,
 }
 
 .btn {
-  @apply px-2 border-2 cursor-pointer text-primary-content bg-primary-200 border-l-primary-100 border-t-primary-100 border-r-primary-300 border-b-primary-300 active:border-l-primary-300 active:border-t-primary-300 active:border-r-primary-100 active:border-b-primary-100 hover:text-primary-content hover:no-underline;
+  @apply inline-flex px-2 border-2 cursor-pointer text-primary-content bg-primary-200 border-l-primary-100 border-t-primary-100 border-r-primary-300 border-b-primary-300 active:border-l-primary-300 active:border-t-primary-300 active:border-r-primary-100 active:border-b-primary-100 hover:text-primary-content hover:no-underline;
 }
 
 .mixed-copy h2 {
@@ -83,7 +83,8 @@ a,
   @apply flex-initial;
 }
 
-.message.success {
+.message.success,
+.message.info {
   @apply bg-success-200 text-success-content;
 }
 

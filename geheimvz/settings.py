@@ -74,6 +74,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
+    "allauth",
+    "allauth.account",
     "django_vite",
     "django_components",
     "django_dramatiq",
@@ -113,6 +115,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "csp.middleware.CSPMiddleware",
     "django_ratelimit.middleware.RatelimitMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "geheimvz.urls"
@@ -120,7 +123,9 @@ ROOT_URLCONF = "geheimvz.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "core/templates",
+        ],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -219,10 +224,34 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# Authentication
+# https://docs.djangoproject.com/en/5.1/ref/settings/#auth
+# https://docs.allauth.org/en/latest/account/configuration.html
+
 AUTH_USER_MODEL = "core.User"
 LOGIN_REDIRECT_URL = "index-login"
-LOGIN_URL = "login"
+LOGIN_URL = "account_login"
 LOGOUT_REDIRECT_URL = "index"
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by email
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_CHANGE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "[geheimVZ] "
+ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_USER_DISPLAY = "core.helpers.get_user_display_name"
+
+ACCOUNT_FORMS = {
+    "signup": "invites.forms.SignupForm",
+}
 
 
 # Internationalization
@@ -235,6 +264,10 @@ TIME_ZONE = env("TIME_ZONE")
 USE_I18N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = [
+    BASE_DIR / "geheimvz/locale",  # Translation overrides for external modules
+]
 
 
 # Static files (CSS, JavaScript, Images)

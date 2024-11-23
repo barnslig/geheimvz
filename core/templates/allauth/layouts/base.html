@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block headertitle %}
+{% block head_title %}{% endblock %}
+{% endblock %}
+
+{% block vz_content %}
+<div class="grid grid-cols-10 gap-4 my-4 -mx-4">
+  <div class="col-span-6 col-start-3 mixed-copy">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

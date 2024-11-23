@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-22 13:50+0100\n"
+"POT-Creation-Date: 2024-11-24 20:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,16 +61,16 @@ msgstr "Nachricht schicken"
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: core/helpers.py:36
+#: core/helpers.py:38
 #, python-format
 msgid "Maximum file size of %(value)s MB exceeded!"
 msgstr "Maximale Dateigröße von %(value)s MB überschritten!"
 
-#: core/helpers.py:54
+#: core/helpers.py:56
 msgid "Invalid image aspect ratio."
 msgstr "Ungültiges Bildseitenverhältnis."
 
-#: core/helpers.py:80
+#: core/helpers.py:82
 #, python-format
 msgid ""
 "Image size needs to be within %(min_width)sx%(min_height)s and "
@@ -79,51 +79,106 @@ msgstr ""
 "Die Bildgröße muss sich innerhalb von %(min_width)sx%(min_height)s und "
 "%(max_width)sx%(max_height)s befinden"
 
-#: core/templates/base-login.html:7
+#: core/templates/account/email_change.html:5
+msgid "Email Address"
+msgstr ""
+
+#: core/templates/account/email_change.html:9
+msgid "Change your email address."
+msgstr "Hier kannst du deine E-Mail-Adresse ändern."
+
+#: core/templates/account/email_change.html:9
+#: core/templates/account/password_change.html:8
+msgid "Go to account settings"
+msgstr "Zurück zu den Account-Einstellungen"
+
+#: core/templates/account/email_change.html:21
+#: core/templates/account/email_change.html:29
+msgid "Current email"
+msgstr "Aktuelle E-Mail-Adresse"
+
+#: core/templates/account/email_change.html:31
+msgid "Changing to"
+msgstr "Ändern zu"
+
+#: core/templates/account/email_change.html:35
+msgid "Your email address is still pending verification."
+msgstr "Deine E-Mail-Adresse muss noch bestätigt werden."
+
+#: core/templates/account/email_change.html:37
+msgid "Re-send Verification"
+msgstr "Bestätigungsmail nochmal verschicken"
+
+#: core/templates/account/email_change.html:41
+msgid "Cancel Change"
+msgstr "Änderung abbrechen"
+
+#: core/templates/account/email_change.html:49
+msgid "Change to"
+msgstr "Ändern nach"
+
+#: core/templates/account/email_change.html:55
+msgid "Change Email"
+msgstr "E-Mail ändern"
+
+#: core/templates/account/password_change.html:4
+#: core/templates/account/password_change.html:20
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: core/templates/account/password_change.html:8
+msgid "Change your password."
+msgstr "Hier kannst du dein Passwort ändern."
+
+#: core/templates/account/password_change.html:22
+msgid "Forgot Password?"
+msgstr "Passwort vergessen?"
+
+#: core/templates/base.html:31
 msgid "Find people"
 msgstr "Leute finden"
 
-#: core/templates/base-login.html:12
+#: core/templates/base.html:35
 msgid "Start"
 msgstr "Start"
 
-#: core/templates/base-login.html:14
+#: core/templates/base.html:37
 msgid "My page"
 msgstr "Meine Seite"
 
-#: core/templates/base-login.html:15
+#: core/templates/base.html:38
 msgid "edit"
 msgstr "ändern"
 
-#: core/templates/base-login.html:17
+#: core/templates/base.html:40
 msgid "My friends"
 msgstr "Meine Freunde"
 
-#: core/templates/base-login.html:18
+#: core/templates/base.html:41
 msgid "My groups"
 msgstr "Meine Gruppen"
 
-#: core/templates/base-login.html:19
+#: core/templates/base.html:42
 msgid "Messages"
 msgstr "Nachrichten"
 
-#: core/templates/base-login.html:20
+#: core/templates/base.html:43
 msgid "My account"
 msgstr "Mein Account"
 
-#: core/templates/base-login.html:22
+#: core/templates/base.html:45
 msgid "Admin"
 msgstr ""
 
-#: core/templates/base-login.html:30
+#: core/templates/base.html:61
 msgid "invite"
 msgstr "einladen"
 
-#: core/templates/base-login.html:31
+#: core/templates/base.html:62
 msgid "help"
 msgstr "hilfe"
 
-#: core/templates/base-login.html:34
+#: core/templates/base.html:65
 msgid "get out"
 msgstr "raus hier"
 
@@ -250,18 +305,20 @@ msgstr "dürfen dein Profil sehen"
 msgid "can send you messages"
 msgstr "dürfen dir Nachrichten senden"
 
-#: core/templates/core/ratelimited.html:14
+#: core/templates/core/ratelimited.html:6
 msgid "Oh my!"
 msgstr "Oha!"
 
-#: core/templates/core/ratelimited.html:19
+#: core/templates/core/ratelimited.html:11
 msgid "You're going pretty fast!"
 msgstr "Du bist ganz schön schnell unterwegs!"
 
-#: core/templates/core/ratelimited.html:20
+#: core/templates/core/ratelimited.html:12
 msgid "This function is available again to you after a short cool down delay."
-msgstr "Diese Funktion steht dir erst wieder nach einer kurzen Wartezeit zur Verfügung."
+msgstr ""
+"Diese Funktion steht dir erst wieder nach einer kurzen Wartezeit zur "
+"Verfügung."
 
-#: core/templates/core/ratelimited.html:21
+#: core/templates/core/ratelimited.html:13
 msgid "Go back to homepage"
 msgstr "Zurück zur Startseite"

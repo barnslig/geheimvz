@@ -1,41 +1,36 @@
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Field, Submit
+from allauth.account.forms import SignupForm as AllauthSignupForm
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
-from core.forms import RightColumn
-from core.models import User
 from .models import InviteCode
 
 
-class RegisterForm(UserCreationForm):
-    code = forms.CharField(label=_("Code"))
+class SignupForm(AllauthSignupForm):
+    field_order = ["code"]
+
+    code = forms.CharField(label=_("Invite code"))
 
     def clean_code(self):
         code = self.cleaned_data["code"]
 
         try:
-            InviteCode.objects.get(code=code)
+            invite = InviteCode.objects.get(code=code)
+            if invite.remaining < 1:
+                raise forms.ValidationError(_("Invite code is not valid!"))
         except InviteCode.DoesNotExist:
-            raise forms.ValidationError(_("Code is not valid!"))
+            raise forms.ValidationError(_("Invite code is not valid!"))
 
         return code
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-            Field("code"),
-            Field("username"),
-            Field("email"),
-            Field("password1"),
-            Field("password2"),
-            RightColumn(Submit("submit", _("Register"))),
-        )
+    def save(self, request):
+        code = self.cleaned_data.get("code")
 
-        self.fields["email"].required = True
+        with transaction.atomic():
+            invite = InviteCode.objects.get(code=code)
+            invite.remaining -= 1
+            invite.save()
 
-    class Meta:
-        model = User
-        fields = ["email", "username", "password1", "password2"]
+            user = super(SignupForm, self).save(request)
+
+        return user

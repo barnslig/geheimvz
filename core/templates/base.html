@@ -7,7 +7,7 @@
 <html lang="de" class="{% if request.user.is_authenticated %}{{ request.user.appearance_settings.size }}{% else %}size-base{% endif %}">
   <head>
     <meta charset="utf-8" />
-    <title>geheimVZ</title>
+    <title>{% block head_title %}{% endblock %}geheimVZ</title>
     <meta name="viewport" content="width=768" />
 
     {% vite_hmr_client %}
@@ -15,6 +15,8 @@
 
     <link rel="icon" href="{% static 'core/favicon/icon-32x32.png' %}" sizes="32x32" />
     <link rel="icon" href="{% static 'core/favicon/icon-192x192.png' %}" sizes="192x192" />
+
+    {% block extra_head %}{% endblock %}
   </head>
   <body{% if request.user.is_authenticated %} class="{{ request.user.appearance_settings.color }} {{ request.user.appearance_settings.font }}"{% endif %}>
     <div class="mx-auto my-5 size-container">
@@ -45,9 +47,7 @@
               </ul>
             </nav>
           {% else %}
-            <form method="post" action="{% url 'login' %}">
-              {% login_form %}
-            </form>
+            {% login_form %}
           {% endif %}
 
           {% component "motd" / %}
@@ -65,8 +65,8 @@
                     <button type="submit" class="px-2 py-1 hover:bg-primary-100">{% translate 'get out' %}</button>
                   </form>
                 {% else %}
-                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'login' %}">einloggen</a>
-                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'register' %}">hier anmelden</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'account_login' %}">einloggen</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'account_signup' %}">hier anmelden</a>
                   <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="">hilfe</a>
                 {% endif %}
               </nav>
@@ -91,13 +91,15 @@
               <div class="container my-4">
                 <ul>
                   {% for message in messages %}
-                  <li class="px-4 py-2 message{% if message.tags %} {{ message.tags }}{% endif %}">{{ message }}</li>
+                  <li role="alert" class="px-4 py-2 message{% if message.tags %} {{ message.tags }}{% endif %}">{{ message }}</li>
                   {% endfor %}
                 </ul>
               </div>
               {% endif %}
 
-              {% block content %}{% endblock %}
+              {% block vz_content %}
+                {% block content %}{% endblock %}
+              {% endblock %}
             </div>
           </main>
           <div class="flex justify-center gap-2 my-4 image-pixelated">
@@ -113,5 +115,8 @@
       </div>
     </div>
     {% include "_background.html" %}
+
+    {% block extra_body %}
+    {% endblock extra_body %}
   </body>
 </html>

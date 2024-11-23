@@ -1,0 +1,16 @@
+{% load allauth %}
+
+{% for err in attrs.form.non_field_errors %}
+  <div role="alert" class="px-4 py-2 my-4 message error">{{ err }}</div>
+{% endfor %}
+
+<form method="{{ attrs.method }}" action="{{ attrs.action }}">
+  {% slot body %}
+  {% endslot %}
+  <div class="grid grid-cols-10 gap-4 mb-4">
+    <div class="flex items-center col-span-7 col-start-4 gap-2">
+      {% slot actions %}
+      {% endslot %}
+    </div>
+  </div>
+</form>
