@@ -1,6 +1,7 @@
 {% load django_vite %}
-{% load static %}
+{% load i18n %}
 {% load login %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="de" class="{% if request.user.is_authenticated %}{{ request.user.appearance_settings.size }}{% else %}size-base{% endif %}">
@@ -22,11 +23,32 @@
           <a class="block py-1 mb-4 border-b border-primary-300" href="/">
             {% include "_logo.html" %}
           </a>
-          {% block aside %}
+
+          {% if request.user.is_authenticated %}
+            <form action="{% url 'search' %}">
+              <input class="w-full px-1 mb-4 border appearance-none border-primary-300" type="search" name="q" placeholder="{% translate 'Find people' %}" />
+            </form>
+            <nav>
+              <ul class="actions bg-base-100">
+                <li><a class="action" href="{% url 'index' %}">{% translate 'Start' %}</a></li>
+                <li>
+                  <a class="action" href="{% url 'profile' request.user.id %}">{% translate 'My page' %}</a>
+                  <a class="action" href="{% url 'profile-update' %}">{% translate 'edit' %}</a>
+                </li>
+                <li><a class="action" href="{% url 'friends' %}">{% translate 'My friends' %}</a></li>
+                <li><a class="action" href="{% url 'groups' %}">{% translate 'My groups' %}</a></li>
+                <li><a class="action" href="{% url 'messages' %}">{% translate 'Messages' %}</a></li>
+                <li><a class="action" href="{% url 'account' %}">{% translate 'My account' %}</a></li>
+                {% if request.user.is_superuser %}
+                <li><a class="action" href="{% url 'admin:index' %}">{% translate 'Admin' %}</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+          {% else %}
             <form method="post" action="{% url 'login' %}">
               {% login_form %}
             </form>
-          {% endblock %}
+          {% endif %}
 
           {% component "motd" / %}
         </aside>
@@ -34,13 +56,20 @@
           <header>
             <div class="flex items-center justify-between px-4 py-3 border text-primary-content border-primary-300 rounded-tr-2xl bg-gradient-to-t from-primary-200 to-primary-100">
               <div class="text-xl uppercase"><span class="font-bold">Geheim</span>Verzeichnis</div>
-              {% block headernav %}
-                <nav>
+              <nav class="flex">
+                {% if request.user.is_authenticated %}
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'invite_code_list' %}">{% translate 'invite' %}</a>
+                  <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="">{% translate 'help' %}</a>
+                  <form action="{% url 'account_logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="px-2 py-1 hover:bg-primary-100">{% translate 'get out' %}</button>
+                  </form>
+                {% else %}
                   <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'login' %}">einloggen</a>
                   <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="{% url 'register' %}">hier anmelden</a>
                   <a class="px-2 py-1 text-primary-content hover:text-primary-content hover:no-underline hover:bg-primary-100" href="">hilfe</a>
-                </nav>
-              {% endblock %}
+                {% endif %}
+              </nav>
             </div>
           </header>
           <main class="border border-t-0 border-primary-300 bg-base-100 text-base-content">
