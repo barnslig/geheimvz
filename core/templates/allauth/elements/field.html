@@ -1,0 +1,44 @@
+{% load allauth %}
+<div class="grid grid-cols-10 mb-4 gap-x-4">
+  <label for="{{ attrs.id }}" class="block col-span-3 mb-2 text-base-accent">
+    {% slot label %}
+    {% endslot %}
+  </label>
+
+  <div class="col-span-7">
+  {% if attrs.type == "textarea" %}
+    <textarea class="block w-full px-1 leading-normal border appearance-none text-base-content bg-base-100 border-secondary-300 focus:outline-none"
+      {% if attrs.required %}required{% endif %}
+      {% if attrs.rows %}rows="{{ attrs.rows }}"{% endif %}
+      {% if attrs.disabled %}disabled{% endif %}
+      {% if attrs.readonly %}readonly{% endif %}
+      {% if attrs.checked %}checked{% endif %}
+      {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+      {% if attrs.id %}id="{{ attrs.id }}"{% endif %}>{% slot value %}{% endslot %}</textarea>
+  {% else %}
+    <input {% if attrs.type != "checkbox" and attrs.type != "radio" %}class="block w-full px-1 leading-normal border appearance-none text-base-content bg-base-100 border-secondary-300 focus:outline-none"{% endif %}
+      {% if attrs.required %}required{% endif %}
+      {% if attrs.disabled %}disabled{% endif %}
+      {% if attrs.readonly %}readonly{% endif %}
+      {% if attrs.checked %}checked{% endif %}
+      {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+      {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
+      {% if attrs.autocomplete %}autocomplete="{{ attrs.autocomplete }}"{% endif %}
+      {% if attrs.value is not None %}value="{{ attrs.value }}"{% endif %}
+      type="{{ attrs.type }}">
+  {% endif %}
+
+  {% if attrs.errors %}
+  <div class="mt-2 text-error-200">
+    {{ attrs.errors }}
+  </div>
+  {% endif %}
+
+  {% if slots.help_text %}
+    <div class="mt-1 text-xs text-gray-600">
+      {% slot help_text %}
+      {% endslot %}
+    </div>
+  {% endif %}
+  </div>
+</div>

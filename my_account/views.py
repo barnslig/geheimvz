@@ -3,7 +3,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import UpdateView, DeleteView
-from django.contrib.auth import views as auth_views
 
 from .models import AppearanceSettings, NotificationSettings, PrivacySettings
 from core.components.tabs.tabs import TabsMixin
@@ -11,10 +10,8 @@ from core.models import User
 
 from .forms import (
     AppearanceForm,
-    AuthenticationForm,
     DeleteForm,
     NotificationSettingsForm,
-    PasswordChangeForm,
     PrivacyForm,
     UserForm,
 )
@@ -118,15 +115,3 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_object(self):
         return self.request.user
-
-
-class PasswordChangeView(SuccessMessageMixin, auth_views.PasswordChangeView):
-    form_class = PasswordChangeForm
-    template_name = "my_account/password_change_form.html"
-    success_message = _("Password change successful")
-    success_url = reverse_lazy("account")
-
-
-class LoginView(auth_views.LoginView):
-    form_class = AuthenticationForm
-    template_name = "my_account/login.html"

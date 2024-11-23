@@ -1,7 +1,7 @@
+from allauth.account.forms import LoginForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Submit
 from django import forms
-from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _, gettext
 
 from .models import AppearanceSettings, NotificationSettings, PrivacySettings
@@ -38,7 +38,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = [
             "username",
-            "email",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -46,11 +45,8 @@ class UserForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Field("username"),
-            Field("email"),
             RightColumn(Submit("submit", _("save"))),
         )
-
-        self.fields["email"].required = True
 
 
 class AppearanceForm(forms.ModelForm):
@@ -119,28 +115,18 @@ class DeleteForm(forms.Form):
         )
 
 
-class PasswordChangeForm(auth_forms.PasswordChangeForm):
+class AuthenticationForm(LoginForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.layout = Layout(
-            Field("old_password"),
-            Field("new_password1"),
-            Field("new_password2"),
-            RightColumn(Submit("submit", _("Change password"))),
-        )
-
-
-class AuthenticationForm(auth_forms.AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
+        self.helper.form_action = "account_login"
         self.helper.field_class = "mb-2"
         self.helper.label_class = "block text-base-accent"
         self.helper.layout = Layout(
-            Field("username"),
+            Field("login"),
             Field("password"),
             Submit("submit", _("Login")),
         )
 
-        self.fields["username"].widget = forms.TextInput()  # disable autofocus
+        del self.fields["login"].widget.attrs["placeholder"]
+        del self.fields["password"].widget.attrs["placeholder"]

@@ -54,8 +54,9 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # Admin
+    path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
-    path("healthz/", include('health_check.urls')),
+    path("healthz/", include("health_check.urls")),
 ]
 
 urlpatterns += core_urls.urlpatterns

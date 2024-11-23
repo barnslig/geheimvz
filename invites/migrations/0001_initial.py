@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='InviteCode',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=255, unique=True, verbose_name='Code')),
+                ('code', models.CharField(max_length=255, unique=True, verbose_name='Invite code')),
                 ('remaining', models.IntegerField(verbose_name='Remaining invites')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invite_codes', to=settings.AUTH_USER_MODEL, verbose_name='Owner')),
             ],

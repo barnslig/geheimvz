@@ -1,0 +1,8 @@
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+msgid "Login"
+msgstr "Anmelden"
