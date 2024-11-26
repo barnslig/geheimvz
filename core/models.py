@@ -13,7 +13,7 @@ class User(AbstractUser):
     @property
     def display_name(self):
         full_name = self.profile.full_name
-        if full_name and len(full_name) > 0:
+        if full_name and len(full_name.strip()) > 0:
             return full_name
         else:
             return self.username
