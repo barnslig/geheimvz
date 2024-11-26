@@ -77,7 +77,7 @@ class Group(models.Model):
     )
 
     # Meta
-    name = models.CharField(max_length=255, unique=True, verbose_name=_("Name"))
+    name = models.CharField(max_length=100, unique=True, verbose_name=_("Name"))
     description = models.TextField(verbose_name=_("Description"))
     has_forum = models.BooleanField(default=True, verbose_name=_("Enable forum"))
     is_private = models.BooleanField(default=False, verbose_name=_("Is invite-only"))

@@ -64,10 +64,10 @@ class MyProfile(models.Model):
 
     # Account
     full_name = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_("Full name")
+        max_length=100, null=True, blank=True, verbose_name=_("Full name")
     )
     nickname = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_("Nickname")
+        max_length=100, null=True, blank=True, verbose_name=_("Nickname")
     )
     pronouns = models.CharField(
         max_length=255, null=True, blank=True, verbose_name=_("Pronouns")
