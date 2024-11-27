@@ -79,25 +79,25 @@
         {% endfor %}
       {% endcomponent %}
     {% endif %}
-		<h2>{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
+    <h2>{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
     {% component "list" %}
-			<li>
-			{% if can_see_profile %}
-				{% translate 'Everyone logged in' %}
-			{% else %}
-				{% translate 'Only your friends' %}
-			{% endif %}
-					{% translate 'can see your profile' %}
-			</li>
-			<li>
-			{% if can_send_messages %}
-				{% translate 'Everyone logged in' %}
-			{% else %}
-				{% translate 'Only your friends' %}
-			{% endif %}
-				{% translate 'can send you messages' %}
-			</li>
-		{% endcomponent %}
+      <li>
+      {% if can_see_profile %}
+        {% translate 'Everyone logged in' %}
+      {% else %}
+        {% translate 'Only your friends' %}
+      {% endif %}
+          {% translate 'can see your profile' %}
+      </li>
+      <li>
+      {% if can_send_messages %}
+        {% translate 'Everyone logged in' %}
+      {% else %}
+        {% translate 'Only your friends' %}
+      {% endif %}
+        {% translate 'can send you messages' %}
+      </li>
+    {% endcomponent %}
   </div>
 </div>
 {% endblock %}
