@@ -88,6 +88,8 @@ def profile(request: HttpRequest, id: str):
 
         friends = Friend.objects.friends(user)
 
+        groups = user.groups_member.order_by("name")
+
         pinboard_items = user.pinboard.order_by("-created_at")
         pinboard_paginator = Paginator(pinboard_items, 5)
         pinboard_page_obj = pinboard_paginator.get_page(1)
@@ -100,6 +102,7 @@ def profile(request: HttpRequest, id: str):
         "are_friends": are_friends,
         "friend_request_sent": friend_request_sent,
         "connection": connection,
+        "groups": groups,
         "pinboard_page_obj": pinboard_page_obj,
         "can_see_profile": can_see_profile,
         "can_send_messages": can_send_messages,
