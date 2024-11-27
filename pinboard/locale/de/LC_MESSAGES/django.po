@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-13 17:10+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,8 +40,8 @@ msgstr "Erstellt für"
 
 #: pinboard/templates/pinboard/pinboardmessage_form.html:7
 #, python-format
-msgid "Write onto the pinboard of %(name)s"
-msgstr "Schreibe auf die Pinnwand von %(name)s"
+msgid "Write onto the pinboard of <span dir=\"auto\">%(name)s</span>"
+msgstr "Schreibe auf die Pinnwand von <span dir=\"auto\">%(name)s</span>"
 
 #: pinboard/templates/pinboard/pinboardmessage_form.html:13
 msgid "Leave a nice message!"
@@ -50,18 +50,18 @@ msgstr "Lass eine nette Nachricht da!"
 #: pinboard/templates/pinboard/pinboardmessage_form.html:14
 #: pinboard/templates/pinboard/pinboardmessage_list.html:10
 #, python-format
-msgid "Back to %(name)s's page"
-msgstr "Zur Seite von %(name)s"
+msgid "Back to <span dir=\"auto\">%(name)s</span>'s page"
+msgstr "Zur Seite von <span dir=\"auto\">%(name)s</span>"
 
 #: pinboard/templates/pinboard/pinboardmessage_form.html:15
 #, python-format
-msgid "Back to %(name)s's pinboard"
-msgstr "Zur Pinnwand von %(name)s"
+msgid "Back to <span dir=\"auto\">%(name)s</span>'s pinboard"
+msgstr "Zur Pinnwand von <span dir=\"auto\">%(name)s</span>"
 
 #: pinboard/templates/pinboard/pinboardmessage_list.html:12
 #, python-format
-msgid "Pinboard of %(name)s"
-msgstr "Pinnwand von %(name)s"
+msgid "Pinboard of <span dir=\"auto\">%(name)s</span>"
+msgstr "Pinnwand von <span dir=\"auto\">%(name)s</span>"
 
 #: pinboard/templates/pinboard/pinboardmessage_list.html:14
 msgid "Write something"

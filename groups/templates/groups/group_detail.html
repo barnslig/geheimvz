@@ -19,11 +19,11 @@
       <dl>
         <div class="grid grid-cols-7 gap-4">
           <dt class="col-span-3 text-base-accent">{% translate 'Name' %}:</dt>
-          <dd class="col-span-4">{{ group.name }}</dd>
+          <dd class="col-span-4 text-contain">{{ group.name }}</dd>
         </div>
         <div class="grid grid-cols-7 gap-4">
           <dt class="col-span-3 text-base-accent">{% translate 'Founder' %}:</dt>
-          <dd class="col-span-4"><a href="{% url 'profile' group.created_by.id %}">{{ group.created_by.display_name }}</a></dd>
+          <dd class="col-span-4 text-contain"><a href="{% url 'profile' group.created_by.id %}">{{ group.created_by.display_name }}</a></dd>
         </div>
         <div class="grid grid-cols-7 gap-4">
           <dt class="col-span-3 text-base-accent">{% translate 'Created at' %}:</dt>
@@ -43,9 +43,9 @@
         {% endfill %}
 
         {% fill "content" %}
-          <ul class="list-disc list-inside text-primary-accent">
+          <ul class="px-5 list-disc text-primary-accent">
             {% for member in group.members.all %}
-              <li><a href="{% url 'profile' member.id %}">{{ member.display_name }}</a></li>
+              <li><a class="block text-contain" href="{% url 'profile' member.id %}">{{ member.display_name }}</a></li>
             {% endfor %}
           </ul>
         {% endfill %}

@@ -2,5 +2,5 @@
 
 <ul class="actions">
   <li><a class="action" href="{% url 'friend-add' record.id %}">{% translate 'Add friend' %}</a></li>
-  <li><a class="action" href="{% url 'profile' record.pk %}">{% blocktranslate with name=record.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'profile' record.pk %}">{% blocktranslate with name=record.display_name %}<span dir="auto">{{ name }}</span>'s page{% endblocktranslate %}</a></li>
 </ul>

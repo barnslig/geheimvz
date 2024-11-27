@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-22 13:50+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,8 +236,8 @@ msgstr "Empfänger"
 
 #: my_profile/templates/my_profile/myprofile_detail.html:7
 #, python-format
-msgid "%(name)s's page"
-msgstr "Seite von %(name)s"
+msgid "<span dir=\"auto\">%(name)s</span>'s page"
+msgstr "Seite von <span dir=\"auto\">%(name)s</span>"
 
 #: my_profile/templates/my_profile/myprofile_detail.html:15
 msgid "Actions"
@@ -273,8 +273,8 @@ msgstr "Du hast keine Freunde."
 
 #: my_profile/templates/my_profile/myprofile_detail.html:49
 #, python-format
-msgid "%(name)s has no friends."
-msgstr "%(name)s hat keine Freunde."
+msgid "<span dir=\"auto\">%(name)s</span> has no friends."
+msgstr "<span dir=\"auto\">%(name)s</span> hat keine Freunde."
 
 #: my_profile/templates/my_profile/myprofile_detail.html:63
 msgid "Connection"
@@ -343,12 +343,12 @@ msgstr "Schreib den ersten Beitrag!"
 
 #: my_profile/templates/my_profile/myprofile_form.html:7
 msgid "This is me"
-msgstr ""
+msgstr "Das bin ich"
 
 #: my_profile/templates/my_profile/myprofile_form.html:12
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: my_profile/views.py:114
+#: my_profile/views.py:117
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."

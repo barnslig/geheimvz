@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block content %}
-<p class="my-4"><a href="{% url 'profile' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to {{ name }}'s page{% endblocktranslate %}]</a></p>
+<p class="my-4"><a href="{% url 'profile' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to <span dir="auto">{{ name }}</span>'s page{% endblocktranslate %}]</a></p>
 
-<h2 class="mt-4 mb-2 text-lg font-bold">{% blocktranslate with name=user.display_name trimmed %}Pinboard of {{ name }}{% endblocktranslate %}</h2>
+<h2 class="mt-4 mb-2 text-lg font-bold">{% blocktranslate with name=user.display_name trimmed %}Pinboard of <span dir="auto">{{ name }}</span>{% endblocktranslate %}</h2>
 
 <p class="mb-4"><a href="{% url 'pinboard-create' user.pk %}">{% translate 'Write something' %}</a></p>
 

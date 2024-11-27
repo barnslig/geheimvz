@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block headertitle %}
-{% blocktranslate with name=other_user.display_name %}Send a friend request to {{ name }}{% endblocktranslate %}
+{% blocktranslate with name=other_user.display_name %}Send a friend request to <span dir="auto">{{ name }}</span>{% endblocktranslate %}
 {% endblock %}
 
 {% block content %}

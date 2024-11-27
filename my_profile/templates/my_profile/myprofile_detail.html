@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block headertitle %}
-{% blocktranslate with name=user.display_name %}{{ name }}'s page{% endblocktranslate %}
+{% blocktranslate with name=user.display_name %}<span dir="auto">{{ name }}</span>'s page{% endblocktranslate %}
 {% endblock %}
 
 {% block content %}
@@ -46,12 +46,12 @@
           {% if current %}
             <p>{% translate 'You have no friends.' %}</p>
           {% else %}
-            <p>{% blocktranslate with name=user.display_name %}{{ name }} has no friends.{% endblocktranslate %}</p>
+            <p>{% blocktranslate with name=user.display_name %}<span dir="auto">{{ name }}</span> has no friends.{% endblocktranslate %}</p>
           {% endif %}
         {% else %}
-          <ul class="px-3 list-disc list-inside text-primary-accent">
+          <ul class="px-5 list-disc text-primary-accent">
             {% for friend in friends %}
-              <li><a href="{% url 'profile' friend.id %}">{{ friend.display_name }}</a></li>
+              <li><a class="block text-contain" href="{% url 'profile' friend.id %}">{{ friend.display_name }}</a></li>
             {% endfor %}
           </ul>
         {% endif %}
@@ -70,7 +70,7 @@
           {% for u in connection %}
             <a class="flex flex-col items-center justify-center max-w-24" href="{% url 'profile' u.pk %}">
               {% component "profile_image" u.profile.image_profile_small u.profile.image_width u.profile.image_height / %}
-              <div class="mt-1 text-center hyphens-auto">{{ u.display_name }}</div>
+              <div class="mt-1 text-center text-contain">{{ u.display_name }}</div>
             </a>
             {% if not forloop.last %} ↔ {% endif %}
           {% empty %}
@@ -86,7 +86,7 @@
       <dl>
         <div class="grid grid-cols-7 gap-4">
           <dt class="col-span-3 text-base-accent">{% translate 'Name' %}:</dt>
-          <dd class="col-span-4">{{ user.display_name }}</dd>
+          <dd class="col-span-4 text-contain">{{ user.display_name }}</dd>
         </div>
 
         <div class="grid grid-cols-7 gap-4">
@@ -116,11 +116,11 @@
       {% endif %}
     {% endcomponent %}
 
-    {% if can_see_profile and user.groups_member.count > 0 %}
+    {% if can_see_profile and groups.count > 0 %}
       {% component "section" headline=_("Groups") %}
-        <ul class="px-3 list-disc list-inside text-primary-accent">
-        {% for group in user.groups_member.all %}
-          <li><a href="{% url 'group' group.id %}">{{ group.name }}</a></li>
+        <ul class="px-5 list-disc text-primary-accent">
+        {% for group in groups.all %}
+          <li><a class="block text-contain" href="{% url 'group' group.id %}">{{ group.name }}</a></li>
         {% endfor %}
         </ul>
       {% endcomponent %}

@@ -8,7 +8,7 @@
       <button type="submit" class="action">{% translate 'Cancel friend request' %}</button>
     </form>
   </li>
-  <li><a class="action" href="{% url 'profile' user.id %}">{% blocktranslate with name=user.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'profile' user.id %}">{% blocktranslate with name=user.display_name %}<span dir="auto">{{ name }}</span>'s page{% endblocktranslate %}</a></li>
   <li><a class="action" href="{% url 'message_create_to' user.pk %}">{% translate 'Send message' %}</a></li>
 </ul>
 {% endwith %}

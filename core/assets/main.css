@@ -38,6 +38,13 @@
   .size-lg .size-container {
     width: 1280px;
   }
+
+  .text-contain {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    unicode-bidi: isolate;
+  }
 }
 
 body {

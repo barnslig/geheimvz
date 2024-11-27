@@ -3,7 +3,7 @@
 {% with friend=record.from_user %}
 <ul class="actions">
   <li><a class="action" href="{% url 'friend-remove' friend.pk  %}">{% translate 'End friendship' %}</a></li>
-  <li><a class="action" href="{% url 'profile' friend.pk %}">{% blocktranslate with name=friend.display_name %}{{ name }}'s page{% endblocktranslate %}</a></li>
+  <li><a class="action" href="{% url 'profile' friend.pk %}">{% blocktranslate with name=friend.display_name %}<span dir="auto">{{ name }}</span>'s page{% endblocktranslate %}</a></li>
   <li>
     <form class="flex flex-1" action="{% url 'greeting_create' friend.pk %}" method="post">
       {% csrf_token %}

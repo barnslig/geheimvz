@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-13 17:10+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,8 +59,8 @@ msgstr "Ungelesen"
 
 #: private_messages/templates/private_messages/privatemessage_detail.html:7
 #, python-format
-msgid "Message from %(name)s"
-msgstr "Nachricht von %(name)s"
+msgid "Message from <span dir=\"auto\">%(name)s</span>"
+msgstr "Nachricht von <span dir=\"auto\">%(name)s</span>"
 
 #: private_messages/templates/private_messages/privatemessage_detail.html:15
 #: private_messages/views.py:31

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-24 20:37+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,11 @@ msgstr "Letzte Seite"
 
 #: core/components/post/post.html:13
 #, python-format
-msgid "<a class=\"font-bold\" href=\"%(href)s\">%(name)s</a> has written"
-msgstr "<a class=\"font-bold\" href=\"%(href)s\">%(name)s</a> schrieb"
+msgid ""
+"<a class=\"font-bold text-contain\" href=\"%(href)s\">%(name)s</a> has "
+"written"
+msgstr ""
+"<a class=\"font-bold text-contain\" href=\"%(href)s\">%(name)s</a> schrieb"
 
 #: core/components/post/post.html:17
 #, python-format
@@ -197,8 +200,8 @@ msgstr "Seite:"
 #: core/templates/core/index_login.html:6
 #: core/templates/core/index_login.html:13
 #, python-format
-msgid "Hey %(name)s!"
-msgstr "Hey %(name)s!"
+msgid "Hey <span dir=\"auto\">%(name)s</span>!"
+msgstr "Hey <span dir=\"auto\">%(name)s</span>!"
 
 #: core/templates/core/index_login.html:17
 msgid "New friends"
@@ -240,68 +243,68 @@ msgstr "Nachrichten anzeigen"
 msgid "Have a look!"
 msgstr "Schau mal!"
 
-#: core/templates/core/index_login.html:43
+#: core/templates/core/index_login.html:44
 msgid "hide"
 msgstr "ausblenden"
 
-#: core/templates/core/index_login.html:52
+#: core/templates/core/index_login.html:53
 msgid "You are invited!"
 msgstr "Du bist eingeladen!"
 
-#: core/templates/core/index_login.html:53
+#: core/templates/core/index_login.html:54
 #, python-format
 msgid "You have one open group invite."
 msgid_plural "You have %(count)s open group invites."
 msgstr[0] "Du hast eine offene Gruppeneinladung."
 msgstr[1] "Du hast %(count)s offene Gruppeneinladungen."
 
-#: core/templates/core/index_login.html:54
+#: core/templates/core/index_login.html:55
 msgid "View group invites"
 msgstr "Gruppeneinladungen ansehen"
 
-#: core/templates/core/index_login.html:58
+#: core/templates/core/index_login.html:59
 msgid "Do you know ...?"
 msgstr "Kennst du schon ...?"
 
-#: core/templates/core/index_login.html:58
-#: core/templates/core/index_login.html:74
+#: core/templates/core/index_login.html:59
+#: core/templates/core/index_login.html:75
 msgid "Show all"
 msgstr "Alle ansehen"
 
-#: core/templates/core/index_login.html:66
+#: core/templates/core/index_login.html:67
 #, python-format
 msgid "One mutual friend."
 msgid_plural "%(count)s mutual friends."
 msgstr[0] "Ein gemeinsamer Freund."
 msgstr[1] "%(count)s gemeinsame Freunde."
 
-#: core/templates/core/index_login.html:74
+#: core/templates/core/index_login.html:75
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
 
-#: core/templates/core/index_login.html:81
+#: core/templates/core/index_login.html:82
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: core/templates/core/index_login.html:81
+#: core/templates/core/index_login.html:82
 msgid "change"
 msgstr "Ändern"
 
-#: core/templates/core/index_login.html:85
-#: core/templates/core/index_login.html:93
+#: core/templates/core/index_login.html:86
+#: core/templates/core/index_login.html:94
 msgid "Everyone logged in"
 msgstr "Alle, die eingeloggt sind"
 
-#: core/templates/core/index_login.html:87
-#: core/templates/core/index_login.html:95
+#: core/templates/core/index_login.html:88
+#: core/templates/core/index_login.html:96
 msgid "Only your friends"
 msgstr "Nur deine Freunde"
 
-#: core/templates/core/index_login.html:89
+#: core/templates/core/index_login.html:90
 msgid "can see your profile"
 msgstr "dürfen dein Profil sehen"
 
-#: core/templates/core/index_login.html:97
+#: core/templates/core/index_login.html:98
 msgid "can send you messages"
 msgstr "dürfen dir Nachrichten senden"
 

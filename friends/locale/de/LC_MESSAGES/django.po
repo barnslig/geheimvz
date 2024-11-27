@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 19:17+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,8 +49,8 @@ msgstr "An"
 
 #: friends/templates/friends/friend_add.html:7
 #, python-format
-msgid "Send a friend request to %(name)s"
-msgstr "Eine Freundschaftsanfrage an %(name)s senden"
+msgid "Send a friend request to <span dir=\"auto\">%(name)s</span>"
+msgstr "Eine Freundschaftsanfrage an <span dir=\"auto\">%(name)s</span> senden"
 
 #: friends/templates/friends/friend_list.html:7
 #: friends/templates/friends/friend_requests.html:7
@@ -107,8 +107,8 @@ msgstr "Freundschaft beenden"
 #: friends/templates/friends/includes/_column-friend-request-sent-actions.html:11
 #: friends/templates/friends/includes/_column-suggestion-actions.html:5
 #, python-format
-msgid "%(name)s's page"
-msgstr "Seite von %(name)s"
+msgid "<span dir=\"auto\">%(name)s</span>'s page"
+msgstr "Seite von <span dir=\"auto\">%(name)s</span>"
 
 #: friends/templates/friends/includes/_column-friend-actions.html:13
 #: friends/templates/friends/includes/_column-friend-request-actions.html:18

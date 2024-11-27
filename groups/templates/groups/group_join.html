@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block headertitle %}
-{% blocktranslate with name=group.name %}Join group "{{ name }}"?{% endblocktranslate %}
+{% blocktranslate with name=group.name %}Join group <span dir="auto">{{ name }}</span>?{% endblocktranslate %}
 {% endblock %}
 
 {% block content %}

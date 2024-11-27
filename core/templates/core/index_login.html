@@ -3,14 +3,14 @@
 {% load i18n %}
 
 {% block headertitle %}
-{% blocktranslate with name=request.user.display_name %}Hey {{ name }}!{% endblocktranslate %}
+{% blocktranslate with name=request.user.display_name %}Hey <span dir="auto">{{ name }}</span>!{% endblocktranslate %}
 {% endblock %}
 
 {% block content %}
 <div class="grid grid-cols-10 gap-4 my-4 -mx-4">
 
   <div class="col-span-6 col-start-3 mixed-copy">
-    <h2>{% blocktranslate with name=request.user.display_name %}Hey {{ name }}!{% endblocktranslate %}</h2>
+    <h2 class="text-contain">{% blocktranslate with name=request.user.display_name %}Hey <span dir="auto">{{ name }}</span>!{% endblocktranslate %}</h2>
     <p>Deine Startseite! Damit du immer den Überblick behältst, was es Neues für dich gibt... Ob dich jemand gegruschelt hat oder du neue Freunde hast, ob du Nachrichten bekommen hast und wer als letztes deine Seite angeschaut hat.</p>
 
     {% if friend_requests > 0 %}
@@ -31,7 +31,8 @@
       {% for greeting in request.user.greetings_received.all %}
         <li class="grid grid-cols-2 gap-2">
           <div>
-            <a href="{% url 'profile' greeting.from_user.pk %}">{{ greeting.from_user.display_name }}</a><br>{{ greeting.from_user.profile.greeting_i18n.message }}
+            <div class="block text-contain"><a href="{% url 'profile' greeting.from_user.pk %}">{{ greeting.from_user.display_name }}</a></div>
+            {{ greeting.from_user.profile.greeting_i18n.message }}
           </div>
           <div>
             <form action="{% url 'greeting_create' greeting.from_user.pk %}" method="post">
@@ -61,7 +62,7 @@
           <li class="flex flex-col">
             <a class="my-auto" href="{{ user.get_absolute_url }}">
               {% component "profile_image" user.profile.image_profile_small user.profile.image_width user.profile.image_height / %}
-              <span class="hyphens-auto">{{ user.display_name }}</span>
+              <div class="text-contain">{{ user.display_name }}</div>
             </a>
             <span class="mt-1 text-sm">{% blocktranslate count count=user.mutual_friends_count %}One mutual friend.{% plural %}{{ count }} mutual friends.{% endblocktranslate %}</span>
           </li>
@@ -74,7 +75,7 @@
       <h2>{% translate 'Popular groups' %} <a class="ml-2 text-base font-normal" href="{% url 'groups-all' %}">[{% translate 'Show all' %}]</a></h2>
       <ul class="px-5 list-disc">
         {% for group in popular_groups %}
-          <li><a href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
+          <li><a class="block text-contain" href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
         {% endfor %}
       </ul>
     {% endif %}

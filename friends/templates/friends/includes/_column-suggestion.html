@@ -7,7 +7,7 @@
   <dl>
     <div class="grid grid-cols-3 gap-4">
       <dt class="col-span-1 text-base-accent">{% translate 'Name' %}:</dt>
-      <dd class="col-span-2"><a href="{% url 'profile' record.id %}">{{ record.display_name }}</a></dd>
+      <dd class="col-span-2 text-contain"><a href="{% url 'profile' record.id %}">{{ record.display_name }}</a></dd>
     </div>
 
     <div class="grid grid-cols-3 gap-4">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 22:49+0100\n"
+"POT-Creation-Date: 2024-11-27 20:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,22 +245,22 @@ msgstr "Um dieser Gruppe beizutreten benötigst du eine Einladung."
 
 #: groups/templates/groups/group_form.html:7
 #, python-format
-msgid "Edit group %(name)s"
-msgstr "Gruppe %(name)s bearbeiten"
+msgid "Edit group <span dir=\"auto\">%(name)s</span>"
+msgstr "Gruppe <span dir=\"auto\">%(name)s</span> bearbeiten"
 
 #: groups/templates/groups/group_invite.html:7
 #, python-format
-msgid "Invite to group \"%(name)s\""
-msgstr "Zur Gruppe \"%(name)s\" einladen"
+msgid "Invite to group <span dir=\"auto\">%(name)s</span>"
+msgstr "Zur Gruppe <span dir=\"auto\">%(name)s</span> einladen"
 
 #: groups/templates/groups/group_invite.html:11
 msgid "Invite a friend to the group!"
 msgstr "Lade Freunde in die Gruppe ein!"
 
-#: groups/templates/groups/group_join.html:7 groups/views.py:188
+#: groups/templates/groups/group_join.html:7
 #, python-format
-msgid "Join group \"%(name)s\"?"
-msgstr "Gruppe \"%(name)s\" beitreten?"
+msgid "Join group <span dir=\"auto\">%(name)s</span>?"
+msgstr "Gruppe <span dir=\"auto\">%(name)s</span> beitreten?"
 
 #: groups/templates/groups/group_list.html:6 groups/views.py:38
 msgid "My groups"
@@ -308,6 +308,11 @@ msgstr "Möchtest du die Gruppe \"%(name)s\" verlassen?"
 #: groups/views.py:182
 msgid "Group successfully joined"
 msgstr "Gruppe erfolgreich beigetreten."
+
+#: groups/views.py:188
+#, python-format
+msgid "Join group \"%(name)s\"?"
+msgstr "Gruppe \"%(name)s\" beitreten?"
 
 #: groups/views.py:189
 #, python-format
