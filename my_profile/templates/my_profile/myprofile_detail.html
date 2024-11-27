@@ -49,11 +49,11 @@
             <p>{% blocktranslate with name=user.display_name %}<span dir="auto">{{ name }}</span> has no friends.{% endblocktranslate %}</p>
           {% endif %}
         {% else %}
-          <ul class="px-5 list-disc text-primary-accent">
+          {% component "list" %}
             {% for friend in friends %}
               <li><a class="block text-contain" href="{% url 'profile' friend.id %}">{{ friend.display_name }}</a></li>
             {% endfor %}
-          </ul>
+          {% endcomponent %}
         {% endif %}
       {% endcomponent %}
     {% endif %}
@@ -118,11 +118,11 @@
 
     {% if can_see_profile and groups.count > 0 %}
       {% component "section" headline=_("Groups") %}
-        <ul class="px-5 list-disc text-primary-accent">
+        {% component "list" %}
         {% for group in groups.all %}
           <li><a class="block text-contain" href="{% url 'group' group.id %}">{{ group.name }}</a></li>
         {% endfor %}
-        </ul>
+        {% endcomponent %}
       {% endcomponent %}
     {% endif %}
 

@@ -9,11 +9,13 @@
 {% block content %}
 {% component "tabs" tabs=tabs / %}
 
-<ul class="px-5 mb-4 list-disc text-primary-accent">
-  {% for group in page_obj %}
-    <li><a class="block text-contain" href="{% url 'group' group.pk %}">{{ group.name }}</a></li>
-  {% endfor %}
-</ul>
+<div class="mb-4">
+  {% component "list" %}
+    {% for group in page_obj %}
+      <li><a class="block text-contain" href="{% url 'group' group.pk %}">{{ group.name }}</a></li>
+    {% endfor %}
+  {% endcomponent %}
+</div>
 
 {% component "page_pagination" page_obj=page_obj %}{% endcomponent %}
 

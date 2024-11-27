@@ -3,20 +3,24 @@
 {% block content %}
 <div class="mx-6">
   <h2 class="mt-6 text-lg font-bold">Lass dich einladen!</h2>
-  <ul class="my-4 ml-4 list-disc">
-    <li>Vernetze dich online!</li>
-    <li>Wer kennt wen über wen?</li>
-    <li>Was machen alte Freunde heute?</li>
-    <li>Wann hat wer Geburtstag?</li>
-  </ul>
+  <div class="my-4">
+    {% component "list" %}
+      <li>Vernetze dich online!</li>
+      <li>Wer kennt wen über wen?</li>
+      <li>Was machen alte Freunde heute?</li>
+      <li>Wann hat wer Geburtstag?</li>
+    {% endcomponent %}
+  </div>
 
   <h2 class="mt-6 text-lg font-bold">Wozu ist das gut?</h2>
-  <ul class="my-4 ml-4 list-disc">
-    <li><strong>Netzwerken:</strong> Wer kennt wen, über wen, und was sind das für Leute, die man meist vom sehen her schon kennt?</li>
-    <li><strong>Kontaktbuch:</strong> Neue Bekanntschaft im Real Life, aber das obligatorische Nummerntauschen entfällt. Vorname oder weniger(!) genügt und man sieht/findet sich - wenn man mag. Ganz einfach.</li>
-    <li><strong>Interessenschnittmengen:</strong> Interessenschnittmengen: Wer ist noch aus meiner Heimatstadt, wer interessiert sich noch für Raketentechnologie? Wer sind die Freunde meines besten Freundes und warum?</li>
-    <li><strong>Gruppenbildung:</strong> Wer ist noch interessiert an dem wöchentlichen Zirkel „Wahlrecht ab 14“? Wer ist in der Gruppe „Jazz Dance“?</li>
-    <li><strong>Unterhaltung, Ablenkung:</strong> Was ist die Lieblingswebseite von Thomas? Über wen kennt Patrick die Melanie? Was schreibt Daniel über sich? Neue Nachricht von Jenni auf meiner Pinnwand? Wer ist DJ auf der nächsten Feier (Suchfunktion)?</li>
-  </ul>
+  <div class="my-4">
+    {% component "list" %}
+      <li><strong>Netzwerken:</strong> Wer kennt wen, über wen, und was sind das für Leute, die man meist vom sehen her schon kennt?</li>
+      <li><strong>Kontaktbuch:</strong> Neue Bekanntschaft im Real Life, aber das obligatorische Nummerntauschen entfällt. Vorname oder weniger(!) genügt und man sieht/findet sich - wenn man mag. Ganz einfach.</li>
+      <li><strong>Interessenschnittmengen:</strong> Wer ist noch aus meiner Heimatstadt, wer interessiert sich noch für Raketentechnologie? Wer sind die Freunde meines besten Freundes und warum?</li>
+      <li><strong>Gruppenbildung:</strong> Wer ist noch interessiert an dem wöchentlichen Zirkel „Wahlrecht ab 14“? Wer ist in der Gruppe „Jazz Dance“?</li>
+      <li><strong>Unterhaltung, Ablenkung:</strong> Was ist die Lieblingswebseite von Thomas? Über wen kennt Patrick die Melanie? Was schreibt Daniel über sich? Neue Nachricht von Jenni auf meiner Pinnwand? Wer ist DJ auf der nächsten Feier (Suchfunktion)?</li>
+    {% endcomponent %}
+  </div>
 </div>
 {% endblock %}

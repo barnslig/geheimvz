@@ -43,11 +43,11 @@
         {% endfill %}
 
         {% fill "content" %}
-          <ul class="px-5 list-disc text-primary-accent">
+          {% component "list" %}
             {% for member in group.members.all %}
               <li><a class="block text-contain" href="{% url 'profile' member.id %}">{{ member.display_name }}</a></li>
             {% endfor %}
-          </ul>
+          {% endcomponent %}
         {% endfill %}
       {% endcomponent %}
     {% endif %}

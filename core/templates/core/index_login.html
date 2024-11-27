@@ -73,14 +73,14 @@
 
     {% if popular_groups %}
       <h2>{% translate 'Popular groups' %} <a class="ml-2 text-base font-normal" href="{% url 'groups-all' %}">[{% translate 'Show all' %}]</a></h2>
-      <ul class="px-5 list-disc">
+      {% component "list" %}
         {% for group in popular_groups %}
           <li><a class="block text-contain" href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
         {% endfor %}
-      </ul>
+      {% endcomponent %}
     {% endif %}
 		<h2>{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
-		<ul class="px-5 list-disc">
+    {% component "list" %}
 			<li>
 			{% if can_see_profile %}
 				{% translate 'Everyone logged in' %}
@@ -97,7 +97,7 @@
 			{% endif %}
 				{% translate 'can send you messages' %}
 			</li>
-		</ul>
+		{% endcomponent %}
   </div>
 </div>
 {% endblock %}
