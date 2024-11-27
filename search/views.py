@@ -25,8 +25,8 @@ def search(request: HttpRequest):
 
         users = User.objects.filter(
             Q(profile__full_name__contains=q)
+            | Q(profile__nickname__contains=q)
             | Q(username__contains=q)
-            | Q(nickname__contains=q)
         )
 
         table = UserTable(users)
