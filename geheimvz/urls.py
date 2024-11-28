@@ -57,6 +57,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     path("healthz/", include("health_check.urls")),
+    path("", include("static_pages.urls")),
 ]
 
 urlpatterns += core_urls.urlpatterns

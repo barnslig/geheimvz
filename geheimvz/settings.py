@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     "pinboard.apps.PinboardConfig",
     "private_messages.apps.PrivateMessagesConfig",
     "search.apps.SearchConfig",
+    "static_pages.apps.StaticPagesConfig",
     "debug_toolbar",
     "django_cleanup.apps.CleanupConfig",
     "health_check",
