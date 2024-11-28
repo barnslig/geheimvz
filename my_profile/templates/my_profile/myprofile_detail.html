@@ -116,7 +116,7 @@
       {% endif %}
     {% endcomponent %}
 
-    {% if can_see_profile and groups.count > 0 %}
+    {% if can_see_profile and groups|length > 0 %}
       {% component "section" headline=_("Groups") %}
         {% component "list" %}
         {% for group in groups.all %}

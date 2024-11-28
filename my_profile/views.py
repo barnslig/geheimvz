@@ -55,6 +55,7 @@ def profile(request: HttpRequest, id: str):
 
     sections = []
     connection = request.user.get_connection_to(user)
+    groups = None
     friends = None
     pinboard_page_obj = None
 
