@@ -61,12 +61,16 @@ a,
 }
 
 .mixed-copy h2 {
-  @apply text-lg font-bold border-b border-primary-200;
+  @apply mt-6 mb-2 text-lg font-bold;
 }
 
 .mixed-copy p,
 .mixed-copy ul {
-  @apply my-4;
+  @apply mb-2;
+}
+
+.mixed-copy ul {
+  @apply px-5 list-disc marker:text-primary-accent;
 }
 
 .emoticon-picker button,

@@ -7,26 +7,26 @@
 {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-10 gap-4 my-4 -mx-4">
+<div class="grid grid-cols-10 gap-4 -mx-4">
 
-  <div class="col-span-6 col-start-3 mixed-copy">
-    <h2 class="text-contain">{% blocktranslate with name=request.user.display_name %}Hey <span dir="auto">{{ name }}</span>!{% endblocktranslate %}</h2>
+  <div class="col-span-6 col-start-3 mb-4 mixed-copy">
+    <h2 class="border-b text-contain border-primary-200">{% blocktranslate with name=request.user.display_name %}Hey <span dir="auto">{{ name }}</span>!{% endblocktranslate %}</h2>
     <p>Deine Startseite! Damit du immer den Überblick behältst, was es Neues für dich gibt... Ob dich jemand gegruschelt hat oder du neue Freunde hast, ob du Nachrichten bekommen hast und wer als letztes deine Seite angeschaut hat.</p>
 
     {% if friend_requests > 0 %}
-    <h2>{% translate 'New friends'%}</h2>
+    <h2 class="border-b border-primary-200">{% translate 'New friends'%}</h2>
     <p>{% blocktranslate count count=friend_requests %}You have {{ count }} request from someone who wants to add you as a friend.{% plural %}You have {{ count }} requests from someone who wants to add you as a friend.{% endblocktranslate %}</p>
     <p><a href="{% url 'friend-requests' %}">[ {% translate 'View requests and confirm friends' %} ]</a></p>
     {% endif %}
 
     {% if unread_messages > 0 %}
-    <h2>{% translate "You've got mail!" %}</h2>
+    <h2 class="border-b border-primary-200">{% translate "You've got mail!" %}</h2>
     <p>{% blocktranslate count count=unread_messages %}You have one unread messages.{% plural %}You have {{ count }} unread messages.{% endblocktranslate %}</p>
     <p><a href="{% url 'messages' %}">[ {% translate 'View messages' %} ]</a></p>
     {% endif %}
 
     {% if request.user.greetings_received.count > 0 %}
-      <h2>{% translate 'Have a look!' %}</h2>
+      <h2 class="border-b border-primary-200">{% translate 'Have a look!' %}</h2>
       <ul class="space-y-2">
       {% for greeting in request.user.greetings_received.all %}
         <li class="grid grid-cols-2 gap-2">
@@ -50,13 +50,13 @@
     {% endif %}
 
     {% if group_invites > 0 %}
-    <h2>{% translate 'You are invited!' %}</h2>
+    <h2 class="border-b border-primary-200">{% translate 'You are invited!' %}</h2>
     <p>{% blocktranslate count count=group_invites %}You have one open group invite.{% plural %}You have {{ count }} open group invites.{% endblocktranslate %}</p>
     <p><a href="{% url 'group-invitations' %}">[ {% translate 'View group invites' %} ]</a></p>
     {% endif %}
 
     {% if friend_suggestions %}
-      <h2>{% translate 'Do you know ...?' %} <a class="ml-2 text-base font-normal" href="{% url 'friend-suggestions' %}">[{% translate 'Show all' %}]</a></h2>
+      <h2 class="border-b border-primary-200">{% translate 'Do you know ...?' %} <a class="ml-2 text-base font-normal" href="{% url 'friend-suggestions' %}">[{% translate 'Show all' %}]</a></h2>
       <ul class="grid grid-cols-4 gap-4">
         {% for user in friend_suggestions %}
           <li class="flex flex-col">
@@ -72,14 +72,14 @@
     {% endif %}
 
     {% if popular_groups %}
-      <h2>{% translate 'Popular groups' %} <a class="ml-2 text-base font-normal" href="{% url 'groups-all' %}">[{% translate 'Show all' %}]</a></h2>
+      <h2 class="border-b border-primary-200">{% translate 'Popular groups' %} <a class="ml-2 text-base font-normal" href="{% url 'groups-all' %}">[{% translate 'Show all' %}]</a></h2>
       {% component "list" %}
         {% for group in popular_groups %}
           <li><a class="block text-contain" href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
         {% endfor %}
       {% endcomponent %}
     {% endif %}
-    <h2>{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
+    <h2 class="border-b border-primary-200">{% translate 'Privacy' %} <a class="ml-2 text-base font-normal" href="{% url 'account-privacy' %}">[{% translate 'change' %}]</a ></h2>
     {% component "list" %}
       <li>
       {% if can_see_profile %}
