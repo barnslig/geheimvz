@@ -3,12 +3,12 @@ from crispy_forms.layout import Layout, Field, Fieldset, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from core.forms import RightColumn
+from core.forms import RightColumn, SkipUnchangedFileFieldsModelFormMixin
 
 from .models import MyProfile
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(SkipUnchangedFileFieldsModelFormMixin, forms.ModelForm):
     class Meta:
         model = MyProfile
         fields = [

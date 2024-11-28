@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.forms import Form, ModelForm
 from django.utils.translation import gettext_lazy as _
 
-from core.forms import RightColumn
+from core.forms import RightColumn, SkipUnchangedFileFieldsModelFormMixin
 from emoticons.forms import EmoticonPicker
 
 from .models import ForumPost, Group, GroupInvitation
@@ -30,7 +30,7 @@ class GroupCreateForm(ModelForm):
         )
 
 
-class GroupForm(ModelForm):
+class GroupForm(SkipUnchangedFileFieldsModelFormMixin, ModelForm):
     class Meta:
         model = Group
         fields = ["name", "image", "description", "has_forum", "is_private", "admins"]
