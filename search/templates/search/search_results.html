@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block content %}
-<form class="my-4" method="get">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 
 {% if table.data %}
   {% render_table table %}

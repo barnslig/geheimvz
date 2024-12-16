@@ -10,7 +10,7 @@
 {% block content %}
 <p class="my-4">{% translate 'Delete your account.' %} <a href="{% url 'account' %}">[{% translate 'Go to account settings' %}]</a></p>
 
-<form class="my-4" method="post">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 {% endblock %}

@@ -13,7 +13,7 @@
   <a href="{% url 'group' group.pk %}">[{% translate 'Back to group' %}]</a>
 </p>
 
-<form class="my-4" method="post">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 {% endblock %}

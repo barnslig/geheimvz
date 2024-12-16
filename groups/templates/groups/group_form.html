@@ -13,7 +13,7 @@
 <p class="my-4"><a href="{% url 'group' object.pk %}">[{% translate 'Back to group' %}]</a></p>
 {% endif %}
 
-<form class="mb-4 form" enctype="multipart/form-data" method="post">
+<div class="mb-4">
   {% crispy form %}
-</form>
+</div>
 {% endblock %}

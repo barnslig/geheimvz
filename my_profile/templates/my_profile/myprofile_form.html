@@ -12,7 +12,7 @@
   <p>Hier kannst du dein Profil anpassen! <a href="{% url 'profile' request.user.id %}">[{% translate 'Back to your profile' %}]</a></p>
 </div>
 
-<form class="my-4" enctype="multipart/form-data" method="post">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 {% endblock %}

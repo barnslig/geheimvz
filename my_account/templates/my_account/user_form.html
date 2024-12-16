@@ -12,9 +12,9 @@
 
 <p class="my-4">{% translate 'Update your account.' %} <a href="{% url 'profile' request.user.id %}">[{% translate 'Back to your profile' %}]</a></p>
 
-<form class="my-4" method="post">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 
 <p class="my-4">{% translate 'Other actions' %}</p>
 <ul class="flex gap-2 my-4">

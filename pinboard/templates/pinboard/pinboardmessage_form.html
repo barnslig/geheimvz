@@ -15,8 +15,8 @@
   <a href="{% url 'pinboard' user.pk %}">[{% blocktranslate with name=user.display_name %}Back to <span dir="auto">{{ name }}</span>'s pinboard{% endblocktranslate %}]</a>
 </p>
 
-<form class="my-4" method="post">
+<div class="my-4">
   {% crispy form %}
-</form>
+</div>
 
 {% endblock %}
