@@ -290,7 +290,7 @@ def forumthread_create(request: HttpRequest, pk: str):
         raise PermissionDenied()
 
     if request.method == "POST":
-        form = ForumThreadCreateForm(request.POST)
+        form = ForumThreadCreateForm(request.POST, request.FILES)
 
         if form.is_valid():
             with transaction.atomic():
@@ -304,6 +304,7 @@ def forumthread_create(request: HttpRequest, pk: str):
                 post.created_by = request.user
                 post.thread = thread
                 post.post = form.cleaned_data["post"]
+                post.attachment = form.cleaned_data["attachment"]
                 post.save()
 
             messages.add_message(
@@ -339,7 +340,7 @@ def forumpost_create(request: HttpRequest, pk: str):
         post.created_by = request.user
         post.thread = thread
 
-        form = ForumPostForm(request.POST, instance=post)
+        form = ForumPostForm(request.POST, request.FILES, instance=post)
 
         if form.is_valid():
             form.save()

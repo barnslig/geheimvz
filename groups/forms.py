@@ -74,6 +74,7 @@ class GroupInviteForm(ModelForm):
 class ForumThreadCreateForm(Form):
     topic = forms.CharField(label=_("Topic"))
     post = forms.CharField(widget=forms.Textarea, label=_("Post"))
+    attachment = forms.ImageField(required=False, label=_("Attachment"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -82,6 +83,7 @@ class ForumThreadCreateForm(Form):
             Field("topic"),
             Field("post"),
             EmoticonPicker("post"),
+            Field("attachment"),
             RightColumn(Submit("submit", _("Create thread"))),
         )
 
