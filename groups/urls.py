@@ -6,6 +6,7 @@ from .views import (
     GroupListAllView,
     GroupListView,
     GroupUpdateView,
+    forumpost_attachment,
     forumpost_create,
     forumthread_create,
     forumthread_detail,
@@ -32,4 +33,5 @@ urlpatterns = [
     path("viewtopic.php/<str:pk>", forumthread_detail, name="forumthread_detail"),
     path("new-thread.php/<str:pk>", forumthread_create, name="forumthread_create"),
     path("new-post.php/<str:pk>", forumpost_create, name="forumpost_create"),
+    path("forum-bild.php/<str:pk>", forumpost_attachment, name="forumpost_attachment"),
 ]

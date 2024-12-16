@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,11 +31,11 @@ msgstr "Änderungen speichern"
 msgid "Send invitation"
 msgstr "Einladung verschicken"
 
-#: groups/forms.py:75 groups/models.py:146
+#: groups/forms.py:75 groups/models.py:147
 msgid "Topic"
 msgstr "Thema"
 
-#: groups/forms.py:76 groups/models.py:160 groups/models.py:179
+#: groups/forms.py:76 groups/models.py:161 groups/models.py:180
 msgid "Post"
 msgstr "Beitrag"
 
@@ -43,78 +43,82 @@ msgstr "Beitrag"
 msgid "Create thread"
 msgstr "Thema erstellen"
 
-#: groups/forms.py:100
+#: groups/forms.py:101
 msgid "Create post"
 msgstr "Beitrag schreiben"
 
-#: groups/models.py:33 groups/models.py:143
+#: groups/models.py:34 groups/models.py:144
 msgid "Group"
 msgstr "Gruppe"
 
-#: groups/models.py:34
+#: groups/models.py:35
 msgid "Groups"
 msgstr "Gruppen"
 
-#: groups/models.py:45 groups/models.py:137 groups/models.py:170
+#: groups/models.py:46 groups/models.py:138 groups/models.py:171
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: groups/models.py:62
+#: groups/models.py:63
 msgid "Group picture"
 msgstr "Gruppenbild"
 
-#: groups/models.py:71 groups/templates/groups/group_detail.html:40
+#: groups/models.py:72 groups/templates/groups/group_detail.html:40
 msgid "Members"
 msgstr "Mitglieder"
 
-#: groups/models.py:76
+#: groups/models.py:77
 msgid "Admins"
 msgstr "Admins"
 
-#: groups/models.py:80 groups/templates/groups/group_detail.html:21
+#: groups/models.py:81 groups/templates/groups/group_detail.html:21
 msgid "Name"
 msgstr "Name"
 
-#: groups/models.py:81 groups/templates/groups/group_detail.html:14
+#: groups/models.py:82 groups/templates/groups/group_detail.html:14
 msgid "Description"
 msgstr "Beschreibung"
 
-#: groups/models.py:82
+#: groups/models.py:83
 msgid "Enable forum"
 msgstr "Forum aktivieren?"
 
-#: groups/models.py:83
+#: groups/models.py:84
 msgid "Is invite-only"
 msgstr "Nur per Einladung zugänglich"
 
-#: groups/models.py:100
+#: groups/models.py:101
 msgid "Group invitation"
 msgstr "Gruppeneinladung"
 
-#: groups/models.py:101 groups/templates/groups/group_list_invitations.html:7
+#: groups/models.py:102 groups/templates/groups/group_list_invitations.html:7
 #: groups/views.py:46
 msgid "Group invitations"
 msgstr "Gruppeneinladungen"
 
-#: groups/models.py:107
+#: groups/models.py:108
 msgid "Sender"
 msgstr "Absender"
 
-#: groups/models.py:113
+#: groups/models.py:114
 msgid "Recipient"
 msgstr "Empfänger"
 
-#: groups/models.py:127 groups/models.py:176
+#: groups/models.py:128 groups/models.py:177
 msgid "Thread"
 msgstr "Thema"
 
-#: groups/models.py:128
+#: groups/models.py:129
 msgid "Threads"
 msgstr "Themen"
 
-#: groups/models.py:161 groups/tables.py:15
+#: groups/models.py:162 groups/tables.py:15
 msgid "Posts"
 msgstr "Beiträge"
+
+#: groups/models.py:196
+msgid "Attachment"
+msgstr "Anhang"
 
 #: groups/tables.py:16 groups/templates/groups/group_detail.html:33
 msgid "Last update"
@@ -137,15 +141,12 @@ msgstr "Einladung annehmen"
 msgid "Reject invitation"
 msgstr "Einladung ablehnen"
 
-#: groups/templates/groups/forumpost_create.html:7
-#, python-format
-msgid "Create new post in %(group)s"
-msgstr "Neuen Beitrag in Gruppe %(group)s schreiben"
-
+#: groups/templates/groups/forumpost_attachment.html:12
 #: groups/templates/groups/forumpost_create.html:12
 msgid "Back to thread"
 msgstr "Zurück zum Thema"
 
+#: groups/templates/groups/forumpost_attachment.html:13
 #: groups/templates/groups/forumpost_create.html:13
 #: groups/templates/groups/forumthread_create.html:11
 #: groups/templates/groups/forumthread_detail.html:11
@@ -154,6 +155,11 @@ msgstr "Zurück zum Thema"
 #: groups/templates/groups/group_invite.html:11
 msgid "Back to group"
 msgstr "Zurück zur Gruppe"
+
+#: groups/templates/groups/forumpost_create.html:7
+#, python-format
+msgid "Create new post in %(group)s"
+msgstr "Neuen Beitrag in Gruppe %(group)s schreiben"
 
 #: groups/templates/groups/forumthread_create.html:7
 #, python-format

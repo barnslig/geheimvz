@@ -18,7 +18,17 @@
   </p>
 
   {% for post in page_obj %}
-    {% component "post" created_at=post.created_at created_by=post.created_by post=post.post %}{% endcomponent %}
+    {% url "forumpost_attachment" post.pk as attachment_url %}
+    {% component "post"
+      id=post.id
+      created_at=post.created_at
+      created_by=post.created_by
+      post=post.post
+      attachment_height=post.attachment_height
+      attachment_url=attachment_url
+      attachment_width=post.attachment_width
+      attachment=post.attachment_thumbnail
+    %}{% endcomponent %}
   {% endfor %}
 
   {% component "page_pagination" page_obj=page_obj %}{% endcomponent %}

@@ -13,6 +13,7 @@ from core.helpers import (
     ValidateMaxFilesize,
 )
 from core.imagegenerators import ProfileKeep
+from .imagegenerators import AttachmentSpec
 
 
 User = get_user_model()
@@ -177,3 +178,24 @@ class ForumPost(models.Model):
     )
 
     post = models.TextField(verbose_name=_("Post"))
+
+    attachment_height = models.PositiveIntegerField(blank=True, null=True)
+    attachment_width = models.PositiveIntegerField(blank=True, null=True)
+    attachment = ProcessedImageField(
+        spec=AttachmentSpec,
+        null=True,
+        blank=True,
+        width_field="attachment_width",
+        height_field="attachment_height",
+        upload_to=UploadToUuidFilename("groups/attachments/"),
+        validators=[
+            ValidateMaxFilesize(10),
+            ValidateImageSize(100, 100, 10000, 10000),
+            ValidateImageAspectRatio(0.5, 1.8),
+        ],
+        verbose_name=_("Attachment"),
+    )
+    attachment_thumbnail = ImageSpecField(
+        source="attachment",
+        id="geheimvz:groups:attachment_thumbnail",
+    )

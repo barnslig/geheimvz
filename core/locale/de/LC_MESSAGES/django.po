@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 msgid "At %(created_at)s"
 msgstr "Am %(created_at)s"
 
-#: core/components/post/post.html:27
+#: core/components/post/post.html:28
 msgid "Send message"
 msgstr "Nachricht schicken"
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "invite"
 msgstr "einladen"
 
-#: core/templates/base.html:62
+#: core/templates/base.html:62 core/templates/base.html:70
 msgid "help"
 msgstr "hilfe"
 

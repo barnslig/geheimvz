@@ -89,7 +89,7 @@ class ForumThreadCreateForm(Form):
 class ForumPostForm(ModelForm):
     class Meta:
         model = ForumPost
-        fields = ["post"]
+        fields = ["post", "attachment"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -97,5 +97,6 @@ class ForumPostForm(ModelForm):
         self.helper.layout = Layout(
             Field("post"),
             EmoticonPicker("post"),
+            Field("attachment"),
             RightColumn(Submit("submit", _("Create post"))),
         )

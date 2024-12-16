@@ -361,3 +361,15 @@ def forumpost_create(request: HttpRequest, pk: str):
     }
 
     return render(request, "groups/forumpost_create.html", ctx)
+
+
+@login_required
+def forumpost_attachment(request: HttpRequest, pk: str):
+    post = get_object_or_404(ForumPost, pk=pk)
+
+    if not request.user.groups_member.contains(post.thread.group):
+        raise PermissionDenied()
+
+    ctx = {"post": post, "thread": post.thread}
+
+    return render(request, "groups/forumpost_attachment.html", ctx)

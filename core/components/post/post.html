@@ -1,7 +1,7 @@
 {% load emoticons %}
 {% load i18n %}
 
-<article class="grid grid-cols-7 gap-4 my-4">
+<article {% if id %}id="{{ id }}" {% endif %}class="grid grid-cols-7 gap-4 my-4">
   <div class="col-span-1">
     {% component "profile_image" created_by.profile.image_profile_small created_by.profile.image_width created_by.profile.image_height / %}
   </div>
@@ -22,6 +22,7 @@
 
     <div class="mx-2 my-3 mixed-copy">
       {{ post|emoticons|linebreaks }}
+
       <p class="text-sm">
         {% if can_send_messages %}
           <a href="{% url 'message_create_to' created_by.pk %}">[{% translate 'Send message' %}]</a>
@@ -31,6 +32,12 @@
           {% slot "actions" %}{% endslot %}
         {% endif %}
       </p>
+
+      {% if attachment and attachment_url %}
+        <a href="{{ attachment_url }}">
+          <img class="w-auto h-auto p-1 border border-neutral-300 max-w-48 max-h-48" alt="{{ alt }}" src="{{ attachment.url }}"{% if attachment_width %} width="{{ attachment_width }}"{% endif %}{% if attachment_height %} height="{{ attachment_height }}"{% endif %} loading="lazy" />
+        </a>
+      {% endif %}
     </div>
   </div>
 </article>
