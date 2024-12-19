@@ -9,8 +9,6 @@ config:
   BASE_URL: "http://localhost:8000"
   QUEUE_BROKER_URL: "redis://geheimvz-redis-master:6379/0"
   CACHE_URL: "redis://geheimvz-redis-master:6379/1"
-  #S3_ACCESS_KEY_ID: "geheim"
-  #S3_SECRET_ACCESS_KEY: "geheim"
   S3_BUCKET_NAME: "geheimvz"
   S3_ENDPOINT_URL: "http://geheimvz-minio:9000"
   S3_CUSTOM_DOMAIN: ""
@@ -142,12 +140,15 @@ affinity: {}
 
 redis:
   architecture: standalone
+  fullnameOverride: geheimvz-redis
   auth:
     enabled: false
 minio:
+  fullnameOverride: geheimvz-minio
   provisioning:
     buckets: "geheimvz"
 
 postgresql:
+  fullnameOverride: geheimvz-postgresql
   auth:
     database: "geheimvz"

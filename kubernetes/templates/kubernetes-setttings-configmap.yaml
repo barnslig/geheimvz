@@ -17,7 +17,7 @@ data:
         "NAME": {{ .Values.config.DATABASE_NAME | quote }},
         "USER": {{ .Values.config.DATABASE_USER  | default "postgres" | quote  }},
         "PASSWORD": env("DATABASE_PASSWORD"),
-        "HOST": {{ .Values.config.DATABASE_HOST | default (printf "%s-postgresql" ( include "geheimvz.fullname" . )) | quote  }},
+        "HOST": {{ .Values.config.DATABASE_HOST | default "geheimvz-postgresql" | quote  }},
         "PORT": {{ .Values.config.DATABASE_PORT | default "5432" | quote }},
       }
     }
