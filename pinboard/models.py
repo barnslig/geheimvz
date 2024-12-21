@@ -1,3 +1,4 @@
+from django_prometheus.models import ExportModelOperationsMixin
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -6,7 +7,7 @@ import uuid
 User = get_user_model()
 
 
-class PinboardMessage(models.Model):
+class PinboardMessage(ExportModelOperationsMixin("pinboard_message"), models.Model):
     class Meta:
         verbose_name = _("Pinboard Message")
         verbose_name_plural = _("Pinboard Messages")

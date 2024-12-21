@@ -1,3 +1,4 @@
+from django_prometheus.models import ExportModelOperationsMixin
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
@@ -7,7 +8,7 @@ import uuid
 User = get_user_model()
 
 
-class PrivateMessage(models.Model):
+class PrivateMessage(ExportModelOperationsMixin("private_message"), models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     created_at = models.DateTimeField(auto_now_add=True)

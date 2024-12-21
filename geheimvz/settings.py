@@ -102,10 +102,12 @@ INSTALLED_APPS = [
     "static_pages.apps.StaticPagesConfig",
     "debug_toolbar",
     "django_cleanup.apps.CleanupConfig",
+    "django_prometheus",
     "health_check",
 ]
 
 MIDDLEWARE = [
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -118,6 +120,7 @@ MIDDLEWARE = [
     "csp.middleware.CSPMiddleware",
     "django_ratelimit.middleware.RatelimitMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
 ROOT_URLCONF = "geheimvz.urls"
@@ -166,7 +169,7 @@ CSRF_COOKIE_SECURE = not DEBUG
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db(),
+    "default": env.db(engine="django_prometheus.db.backends.postgresql"),
 }
 
 

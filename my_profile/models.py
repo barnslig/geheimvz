@@ -1,7 +1,7 @@
 from annoying.fields import AutoOneToOneField
+from django_prometheus.models import ExportModelOperationsMixin
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField, ImageSpecField
 
@@ -163,7 +163,7 @@ class MyProfile(models.Model):
         return f"Profile of {self.owner.display_name}"
 
 
-class Greeting(models.Model):
+class Greeting(ExportModelOperationsMixin("greeting"), models.Model):
     class Meta:
         verbose_name = _("Greeting")
         verbose_name_plural = _("Greetings")
