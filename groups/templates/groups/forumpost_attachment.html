@@ -15,5 +15,5 @@
 
   <h2 class="mt-4 mb-2 text-lg font-bold">{{ thread.topic }}</h2>
 
-  <img class="block w-auto h-auto max-w-[768px] p-1 mt-4 mb-8 border border-neutral-300 max-h-[768px]" src="{{ post.attachment.url }}" width="{{ post.attachment_width }}" height="{{ post.attachment_height }}"  />
+  <img class="block w-full h-auto p-1 mt-4 mb-5 border border-neutral-300" width="{{ post.attachment_width }}" height="{{ post.attachment_height }}" src="{{ post.attachment.url }}" />
 {% endblock %}

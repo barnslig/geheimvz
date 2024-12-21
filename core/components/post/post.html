@@ -35,7 +35,7 @@
 
       {% if attachment and attachment_url %}
         <a href="{{ attachment_url }}">
-          <img class="w-auto h-auto p-1 border border-neutral-300 max-w-48 max-h-48" alt="{{ alt }}" src="{{ attachment.url }}"{% if attachment_width %} width="{{ attachment_width }}"{% endif %}{% if attachment_height %} height="{{ attachment_height }}"{% endif %} loading="lazy" />
+          <img class="w-48 h-auto p-1 border border-neutral-300" alt="{{ alt }}" src="{{ attachment.url }}"{% if attachment_width %} width="{{ attachment_width }}"{% endif %}{% if attachment_height %} height="{{ attachment_height }}"{% endif %} loading="lazy" />
         </a>
       {% endif %}
     </div>
