@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.cache import cache_page
 from friendship.models import Friend
 
-from groups.models import Group
+from groups.models import ForumPost, Group
 from my_account.models import PrivacySettings
 from private_messages.models import PrivateMessage
 
@@ -26,11 +26,26 @@ def index_login(request: HttpRequest):
     ctx["unread_messages"] = (
         PrivateMessage.objects.filter(to_user=request.user).filter(seen=False).count()
     )
+    ctx["greetings"] = request.user.greetings_received.select_related(
+        "from_user", "from_user__profile"
+    )[:10]
     ctx["group_invites"] = request.user.group_invitations_received.count()
     ctx["friend_suggestions"] = request.user.get_friends_of_friends()[:4]
     ctx["popular_groups"] = Group.objects.popular(request.user)[:5]
-    ctx["can_see_profile"] = request.user.privacy_settings.can_see_profile == PrivacySettings.PrivacyChoices.EVERYONE
-    ctx["can_send_messages"] = request.user.privacy_settings.can_send_messages == PrivacySettings.PrivacyChoices.EVERYONE
+    ctx["can_see_profile"] = (
+        request.user.privacy_settings.can_see_profile
+        == PrivacySettings.PrivacyChoices.EVERYONE
+    )
+    ctx["can_send_messages"] = (
+        request.user.privacy_settings.can_send_messages
+        == PrivacySettings.PrivacyChoices.EVERYONE
+    )
+
+    ctx["latest_group_posts"] = (
+        ForumPost.objects.latest_by_thread_for_user(request.user).select_related(
+            "thread", "thread__group", "created_by", "created_by__profile"
+        )
+    )[:5]
 
     return render(request, "core/index_login.html", ctx)
 

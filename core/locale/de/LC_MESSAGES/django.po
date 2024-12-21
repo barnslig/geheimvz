@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 21:53+0100\n"
+"POT-Creation-Date: 2024-12-21 13:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -267,7 +267,7 @@ msgid "Do you know ...?"
 msgstr "Kennst du schon ...?"
 
 #: core/templates/core/index_login.html:59
-#: core/templates/core/index_login.html:75
+#: core/templates/core/index_login.html:87
 msgid "Show all"
 msgstr "Alle ansehen"
 
@@ -279,32 +279,36 @@ msgstr[0] "Ein gemeinsamer Freund."
 msgstr[1] "%(count)s gemeinsame Freunde."
 
 #: core/templates/core/index_login.html:75
+msgid "What is going on in your groups?"
+msgstr "Was geht in deinen Gruppen?"
+
+#: core/templates/core/index_login.html:87
 msgid "Popular groups"
 msgstr "Interessante Gruppen"
 
-#: core/templates/core/index_login.html:82
+#: core/templates/core/index_login.html:94
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: core/templates/core/index_login.html:82
+#: core/templates/core/index_login.html:94
 msgid "change"
 msgstr "Ändern"
 
-#: core/templates/core/index_login.html:86
-#: core/templates/core/index_login.html:94
+#: core/templates/core/index_login.html:98
+#: core/templates/core/index_login.html:106
 msgid "Everyone logged in"
 msgstr "Alle, die eingeloggt sind"
 
-#: core/templates/core/index_login.html:88
-#: core/templates/core/index_login.html:96
+#: core/templates/core/index_login.html:100
+#: core/templates/core/index_login.html:108
 msgid "Only your friends"
 msgstr "Nur deine Freunde"
 
-#: core/templates/core/index_login.html:90
+#: core/templates/core/index_login.html:102
 msgid "can see your profile"
 msgstr "dürfen dein Profil sehen"
 
-#: core/templates/core/index_login.html:98
+#: core/templates/core/index_login.html:110
 msgid "can send you messages"
 msgstr "dürfen dir Nachrichten senden"
 

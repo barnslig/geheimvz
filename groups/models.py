@@ -1,6 +1,7 @@
+import math
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Subquery
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from imagekit.models import ProcessedImageField, ImageSpecField
@@ -156,10 +157,28 @@ class ForumThread(models.Model):
         return self.topic
 
 
+class ForumPostManager(models.Manager):
+    def latest_by_thread_for_user(self, for_user):
+        return (
+            ForumPost.objects.filter(
+                pk__in=Subquery(
+                    ForumPost.objects.filter(thread__group__members=for_user)
+                    .order_by("thread", "-created_at")
+                    .distinct("thread")
+                    .values("pk")
+                )
+            )
+            .annotate(thread_position=Count("thread__posts"))
+            .order_by("-created_at")
+        )
+
+
 class ForumPost(models.Model):
     class Meta:
         verbose_name = _("Post")
         verbose_name_plural = _("Posts")
+
+    objects = ForumPostManager()
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -199,3 +218,19 @@ class ForumPost(models.Model):
         source="attachment",
         id="geheimvz:groups:attachment_thumbnail",
     )
+
+    def get_absolute_url(self):
+        if not hasattr(self, "thread_position") or not self.thread_position:
+            self.thread_position = self.thread.posts.filter(
+                created_at__lte=self.created_at
+            ).count()
+
+        url = reverse("forumthread_detail", kwargs={"pk": self.thread.pk})
+
+        page = math.ceil(self.thread_position / 20)
+        if page > 1:
+            url += f"?page={page}"
+
+        url += f"#{self.pk}"
+
+        return url

@@ -25,10 +25,10 @@
     <p><a href="{% url 'messages' %}">[ {% translate 'View messages' %} ]</a></p>
     {% endif %}
 
-    {% if request.user.greetings_received.count > 0 %}
+    {% if greetings.count > 0 %}
       <h2 class="border-b border-primary-200">{% translate 'Have a look!' %}</h2>
       <ul class="space-y-2">
-      {% for greeting in request.user.greetings_received.all %}
+      {% for greeting in greetings %}
         <li class="grid grid-cols-2 gap-2">
           <div>
             <div class="block text-contain"><a href="{% url 'profile' greeting.from_user.pk %}">{{ greeting.from_user.display_name }}</a></div>
@@ -69,6 +69,18 @@
         {% endfor %}
       </ul>
       <p></p>
+    {% endif %}
+
+    {% if latest_group_posts.count > 0 %}
+    <h2 class="border-b border-primary-200">{% translate 'What is going on in your groups?' %}</h2>
+    <ul>
+      {% for post in latest_group_posts %}
+        <li class="my-2">
+          <div class="mb-1"><a href="{{ post.get_absolute_url }}">{{ post.thread.topic }}</a></div>
+          <div class="text-xs"><a href="{% url 'profile' post.created_by.pk %}"><span dir="auto">{{ post.created_by.display_name }}</span></a> • {{ post.created_at }} • <a href="{{ post.thread.group.get_absolute_url }}"><span dir="auto">{{ post.thread.group.name }}</span></a></div>
+        </li>
+      {% endfor %}
+    </ul>
     {% endif %}
 
     {% if popular_groups %}
