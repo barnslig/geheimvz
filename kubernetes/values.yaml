@@ -5,7 +5,7 @@ config:
   SECRET_KEY: "django-insecure-0vmd)dzp1if@fftcsgaka2y5m5+&r#k^!1yq5d3pq8*w)l3ku^"
   TIME_ZONE: "Europe/Berlin"
   EMAIL_FROM: "vz@example.com"
-  EMAIL_URL: "smtp://localhost"
+  EMAIL_URL: "smtp://haraka:8025"
   BASE_URL: "http://localhost:8000"
   QUEUE_BROKER_URL: "redis://geheimvz-redis-master:6379/0"
   CACHE_URL: "redis://geheimvz-redis-master:6379/1"
@@ -152,3 +152,11 @@ postgresql:
   fullnameOverride: geheimvz-postgresql
   auth:
     database: "geheimvz"
+
+haraka:
+  haraka:
+    env:
+    - name: HARAKA_HOSTLIST
+      value: localhost,localhost.kubero.dev
+    - name: HARAKA_ME
+      value: mynameisnobody

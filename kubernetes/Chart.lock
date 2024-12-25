@@ -8,5 +8,8 @@ dependencies:
 - name: minio
   repository: https://charts.bitnami.com/bitnami
   version: 14.8.5
-digest: sha256:0c1e82db80008aaac87954c91e6ca3e499470d692b341f4c7582ffbb3920587e
-generated: "2024-11-14T14:48:43.50351+01:00"
+- name: haraka
+  repository: https://haraka.kubero.dev
+  version: 0.1.0
+digest: sha256:2fbe75cf4b4a4b1ffaa083052628dbaab44c167ebc1048c2f428dc757263d438
+generated: "2024-12-19T22:06:00.234235546+01:00"
