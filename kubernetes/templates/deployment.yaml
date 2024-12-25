@@ -61,17 +61,17 @@ spec:
             - name: S3_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-minio
+                  name: geheimvz-minio
                   key: root-user
             - name: S3_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-minio
+                  name: geheimvz-minio
                   key: root-password
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-postgresql
+                  name: geheimvz-postgresql
                   key: postgres-password
             - name: DJANGO_SETTINGS_MODULE
               value: "geheimvz.db_settings"
@@ -107,17 +107,17 @@ spec:
             - name: S3_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-minio
+                  name: geheimvz-minio
                   key: root-user
             - name: S3_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-minio
+                  name: geheimvz-minio
                   key: root-password
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "geheimvz.fullname" . }}-postgresql
+                  name: geheimvz-postgresql
                   key: postgres-password
             - name: DJANGO_SETTINGS_MODULE
               value: "geheimvz.db_settings"
@@ -149,17 +149,17 @@ spec:
           - name: S3_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
-                name: {{ include "geheimvz.fullname" . }}-minio
+                name: geheimvz-minio
                 key: root-user
           - name: S3_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
-                name: {{ include "geheimvz.fullname" . }}-minio
+                name: geheimvz-minio
                 key: root-password
           - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ include "geheimvz.fullname" . }}-postgresql
+                name: geheimvz-postgresql
                 key: postgres-password
           - name: DJANGO_SETTINGS_MODULE
             value: "geheimvz.db_settings"

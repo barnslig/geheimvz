@@ -36,3 +36,6 @@ dependencies:
 #  - name: rabbitmq
 #    version: 15.0.6
 #    repository: https://charts.bitnami.com/bitnami
+  - name: haraka
+    version: 0.1.0
+    repository: https://haraka.kubero.dev
