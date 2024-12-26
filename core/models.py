@@ -9,6 +9,12 @@ from uuid import uuid4
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    invited_by = models.ForeignKey(
+        "self",
+        on_delete=models.DO_NOTHING,
+        null=True,
+        verbose_name=_("Invited by"),
+    )
 
     @property
     def display_name(self):

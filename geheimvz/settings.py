@@ -258,6 +258,7 @@ ACCOUNT_FORMS = {
     "signup": "invites.forms.SignupForm",
 }
 
+ACCOUNT_ADAPTER = "core.account_adapter.AccountAdapter"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

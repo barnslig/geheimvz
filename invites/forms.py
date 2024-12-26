@@ -1,6 +1,5 @@
 from allauth.account.forms import SignupForm as AllauthSignupForm
 from django import forms
-from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
 from .models import InviteCode
@@ -22,15 +21,3 @@ class SignupForm(AllauthSignupForm):
             raise forms.ValidationError(_("Invite code is not valid!"))
 
         return code
-
-    def save(self, request):
-        code = self.cleaned_data.get("code")
-
-        with transaction.atomic():
-            invite = InviteCode.objects.get(code=code)
-            invite.remaining -= 1
-            invite.save()
-
-            user = super(SignupForm, self).save(request)
-
-        return user
