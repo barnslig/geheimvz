@@ -280,8 +280,8 @@ def forumthread_detail(request: HttpRequest, pk: str):
     return render(request, "groups/forumthread_detail.html", ctx)
 
 
-@ratelimit(key="user", rate="2/15m", method="POST")
-@ratelimit(key="user", rate="6/d", method="POST")
+@ratelimit(key="user", rate="5/15m", method="POST")
+@ratelimit(key="user", rate="50/d", method="POST")
 @login_required
 def forumthread_create(request: HttpRequest, pk: str):
     group = get_object_or_404(Group, pk=pk)
@@ -326,8 +326,8 @@ def forumthread_create(request: HttpRequest, pk: str):
     return render(request, "groups/forumthread_create.html", ctx)
 
 
-@ratelimit(key="user", rate="10/15m", method="POST")
-@ratelimit(key="user", rate="40/d", method="POST")
+@ratelimit(key="user", rate="5/5m", method="POST")
+@ratelimit(key="user", rate="200/d", method="POST")
 @login_required
 def forumpost_create(request: HttpRequest, pk: str):
     thread = get_object_or_404(ForumThread, pk=pk)

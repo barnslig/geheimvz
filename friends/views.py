@@ -41,7 +41,7 @@ tabs = {
 
 @login_required
 @ratelimit(key="user", rate="1/m", method="POST")
-@ratelimit(key="user", rate="40/d", method="POST")
+@ratelimit(key="user", rate="200/d", method="POST")
 def friend_add(request: HttpRequest, pk: str):
     other_user = get_object_or_404(User, pk=pk)
 
