@@ -103,7 +103,7 @@ class GroupListAllView(TabsMixin, LoginRequiredMixin, ListView):
         return queryset.exclude(members=self.request.user)
 
 
-@method_decorator(ratelimit(key="user", rate="2/d", method="POST"), name="post")
+@method_decorator(ratelimit(key="user", rate="1/h", method="POST"), name="post")
 class GroupCreateView(TabsMixin, LoginRequiredMixin, CreateView):
     form_class = GroupCreateForm
     model = Group

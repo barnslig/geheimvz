@@ -84,7 +84,7 @@ class PrivateMessageDetailView(LoginRequiredMixin, DetailView):
 
 
 @method_decorator(ratelimit(key="user", rate="1/m", method="POST"), name="post")
-@method_decorator(ratelimit(key="user", rate="20/d", method="POST"), name="post")
+@method_decorator(ratelimit(key="user", rate="200/d", method="POST"), name="post")
 class PrivateMessageCreateView(
     TabsMixin, LoginRequiredMixin, SuccessMessageMixin, CreateView
 ):
