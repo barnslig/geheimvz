@@ -15,6 +15,7 @@ class Post(Component):
         attachment_url=None,
         attachment_width=None,
         attachment=None,
+        show_send_message=True,
     ):
         current_user = None
 
@@ -24,9 +25,9 @@ class Post(Component):
 
         return {
             "id": id,
-            "can_send_messages": created_by.privacy_settings.get_can_send_messages(
-                current_user
-            ),
+            "can_send_messages": show_send_message
+            and created_by
+            and created_by.privacy_settings.get_can_send_messages(current_user),
             "created_at": created_at,
             "created_by": created_by,
             "post": post,

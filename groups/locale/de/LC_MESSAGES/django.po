@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 21:53+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,94 +31,94 @@ msgstr "Änderungen speichern"
 msgid "Send invitation"
 msgstr "Einladung verschicken"
 
-#: groups/forms.py:75 groups/models.py:147
+#: groups/forms.py:75 groups/models.py:148
 msgid "Topic"
 msgstr "Thema"
 
-#: groups/forms.py:76 groups/models.py:161 groups/models.py:180
+#: groups/forms.py:76 groups/models.py:178 groups/models.py:199
 msgid "Post"
 msgstr "Beitrag"
 
-#: groups/forms.py:85
+#: groups/forms.py:77 groups/models.py:215
+msgid "Attachment"
+msgstr "Anhang"
+
+#: groups/forms.py:87
 msgid "Create thread"
 msgstr "Thema erstellen"
 
-#: groups/forms.py:101
+#: groups/forms.py:103
 msgid "Create post"
 msgstr "Beitrag schreiben"
 
-#: groups/models.py:34 groups/models.py:144
+#: groups/models.py:35 groups/models.py:145
 msgid "Group"
 msgstr "Gruppe"
 
-#: groups/models.py:35
+#: groups/models.py:36
 msgid "Groups"
 msgstr "Gruppen"
 
-#: groups/models.py:46 groups/models.py:138 groups/models.py:171
+#: groups/models.py:47 groups/models.py:139 groups/models.py:190
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: groups/models.py:63
+#: groups/models.py:64
 msgid "Group picture"
 msgstr "Gruppenbild"
 
-#: groups/models.py:72 groups/templates/groups/group_detail.html:40
+#: groups/models.py:73 groups/templates/groups/group_detail.html:40
 msgid "Members"
 msgstr "Mitglieder"
 
-#: groups/models.py:77
+#: groups/models.py:78
 msgid "Admins"
 msgstr "Admins"
 
-#: groups/models.py:81 groups/templates/groups/group_detail.html:21
+#: groups/models.py:82 groups/templates/groups/group_detail.html:21
 msgid "Name"
 msgstr "Name"
 
-#: groups/models.py:82 groups/templates/groups/group_detail.html:14
+#: groups/models.py:83 groups/templates/groups/group_detail.html:14
 msgid "Description"
 msgstr "Beschreibung"
 
-#: groups/models.py:83
+#: groups/models.py:84
 msgid "Enable forum"
 msgstr "Forum aktivieren?"
 
-#: groups/models.py:84
+#: groups/models.py:85
 msgid "Is invite-only"
 msgstr "Nur per Einladung zugänglich"
 
-#: groups/models.py:101
+#: groups/models.py:102
 msgid "Group invitation"
 msgstr "Gruppeneinladung"
 
-#: groups/models.py:102 groups/templates/groups/group_list_invitations.html:7
+#: groups/models.py:103 groups/templates/groups/group_list_invitations.html:7
 #: groups/views.py:46
 msgid "Group invitations"
 msgstr "Gruppeneinladungen"
 
-#: groups/models.py:108
+#: groups/models.py:109
 msgid "Sender"
 msgstr "Absender"
 
-#: groups/models.py:114
+#: groups/models.py:115
 msgid "Recipient"
 msgstr "Empfänger"
 
-#: groups/models.py:128 groups/models.py:177
+#: groups/models.py:129 groups/models.py:196
 msgid "Thread"
 msgstr "Thema"
 
-#: groups/models.py:129
+#: groups/models.py:130
 msgid "Threads"
 msgstr "Themen"
 
-#: groups/models.py:162 groups/tables.py:15
+#: groups/models.py:179 groups/tables.py:15
 msgid "Posts"
 msgstr "Beiträge"
-
-#: groups/models.py:196
-msgid "Attachment"
-msgstr "Anhang"
 
 #: groups/tables.py:16 groups/templates/groups/group_detail.html:33
 msgid "Last update"
@@ -175,6 +175,10 @@ msgstr "Alle Themen"
 #: groups/templates/groups/forumthread_detail.html:17
 msgid "Write post"
 msgstr "Beitrag schreiben"
+
+#: groups/templates/groups/forumthread_detail.html:33
+msgid "Reply"
+msgstr "Antworten"
 
 #: groups/templates/groups/forumthread_list.html:15
 #: groups/templates/groups/group_detail.html:60
@@ -329,10 +333,10 @@ msgstr "Möchtest du der Gruppe \"%(name)s\" beitreten?"
 msgid "User successfully invited"
 msgstr "Die Einladung wurde versendet!"
 
-#: groups/views.py:312
+#: groups/views.py:313
 msgid "Thread successfully created"
 msgstr "Thema erfolgreich erstellt"
 
-#: groups/views.py:350
+#: groups/views.py:351
 msgid "Post successfully created"
 msgstr "Beitrag erfolgreich erstellt."

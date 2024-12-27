@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,19 +22,19 @@ msgstr ""
 msgid "Write onto pinboard"
 msgstr "Auf die Pinnwand schreiben"
 
-#: pinboard/models.py:11 pinboard/models.py:31
+#: pinboard/models.py:12 pinboard/models.py:32
 msgid "Pinboard Message"
 msgstr "Pinnwand-Nachricht"
 
-#: pinboard/models.py:12
+#: pinboard/models.py:13
 msgid "Pinboard Messages"
 msgstr "Pinnwand-Nachrichten"
 
-#: pinboard/models.py:19
+#: pinboard/models.py:20
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: pinboard/models.py:25
+#: pinboard/models.py:26
 msgid "Created for"
 msgstr "Erstellt für"
 

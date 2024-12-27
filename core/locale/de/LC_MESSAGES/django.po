@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-26 20:39+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "Nächste Seite"
 msgid "last"
 msgstr "Letzte Seite"
 
-#: core/components/post/post.html:13
+#: core/components/post/post.html:14
 #, python-format
 msgid ""
 "<a class=\"font-bold text-contain\" href=\"%(href)s\">%(name)s</a> has "
@@ -51,12 +51,16 @@ msgid ""
 msgstr ""
 "<a class=\"font-bold text-contain\" href=\"%(href)s\">%(name)s</a> schrieb"
 
-#: core/components/post/post.html:17
+#: core/components/post/post.html:18
+msgid "[User deleted] has written"
+msgstr "[Benutzer gelöscht] hat geschrieben"
+
+#: core/components/post/post.html:21
 #, python-format
 msgid "At %(created_at)s"
 msgstr "Am %(created_at)s"
 
-#: core/components/post/post.html:28
+#: core/components/post/post.html:32
 msgid "Send message"
 msgstr "Nachricht schicken"
 
@@ -285,6 +289,10 @@ msgstr[1] "%(count)s gemeinsame Freunde."
 #: core/templates/core/index_login.html:75
 msgid "What is going on in your groups?"
 msgstr "Was geht in deinen Gruppen?"
+
+#: core/templates/core/index_login.html:80
+msgid "User deleted"
+msgstr "Benutzer gelöscht"
 
 #: core/templates/core/index_login.html:87
 msgid "Popular groups"

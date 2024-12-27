@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: my_profile/forms.py:47 my_profile/views.py:65
+#: my_profile/forms.py:47 my_profile/views.py:66
 msgid "General"
 msgstr "Allgemeines"
 
-#: my_profile/forms.py:55 my_profile/views.py:67
+#: my_profile/forms.py:55 my_profile/views.py:68
 msgid "Personal"
 msgstr "Persönliches"
 
@@ -349,6 +349,6 @@ msgstr "Das bin ich"
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: my_profile/views.py:117
+#: my_profile/views.py:118
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."

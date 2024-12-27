@@ -28,7 +28,12 @@
       attachment_url=attachment_url
       attachment_width=post.attachment_width
       attachment=post.attachment_thumbnail
-    %}{% endcomponent %}
+      show_send_message=false
+    %}
+      {% fill "actions" %}
+      <a href="{% url 'forumpost_create' thread.pk %}">[{% translate 'Reply' %}]</a>
+      {% endfill %}
+    {% endcomponent %}
   {% endfor %}
 
   {% component "page_pagination" page_obj=page_obj %}{% endcomponent %}

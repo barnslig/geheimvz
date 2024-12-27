@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,24 +22,24 @@ msgstr ""
 msgid "Send message"
 msgstr "Nachricht schicken"
 
-#: private_messages/models.py:20
+#: private_messages/models.py:21
 msgid "Sender"
 msgstr "Absender"
 
-#: private_messages/models.py:26
+#: private_messages/models.py:27
 msgid "Recipient"
 msgstr "Empfänger"
 
-#: private_messages/models.py:33
+#: private_messages/models.py:34
 #: private_messages/templates/private_messages/privatemessage_detail.html:22
 msgid "Subject"
 msgstr "Betreff"
 
-#: private_messages/models.py:35
+#: private_messages/models.py:36
 msgid "Message"
 msgstr "Nachricht"
 
-#: private_messages/models.py:36
+#: private_messages/models.py:37
 #: private_messages/templates/private_messages/includes/_column-seen.html:4
 msgid "Seen"
 msgstr "Gelesen"

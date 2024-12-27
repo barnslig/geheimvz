@@ -77,7 +77,7 @@
       {% for post in latest_group_posts %}
         <li class="my-2">
           <div class="mb-1"><a href="{{ post.get_absolute_url }}">{{ post.thread.topic }}</a></div>
-          <div class="text-xs"><a href="{% url 'profile' post.created_by.pk %}"><span dir="auto">{{ post.created_by.display_name }}</span></a> • {{ post.created_at }} • <a href="{{ post.thread.group.get_absolute_url }}"><span dir="auto">{{ post.thread.group.name }}</span></a></div>
+          <div class="text-xs">{% if post.created_by %}<a href="{% url 'profile' post.created_by.pk %}"><span dir="auto">{{ post.created_by.display_name }}</span></a>{% else %}[{% translate 'User deleted' %}]{% endif %} • {{ post.created_at }} • <a href="{{ post.thread.group.get_absolute_url }}"><span dir="auto">{{ post.thread.group.name }}</span></a></div>
         </li>
       {% endfor %}
     </ul>

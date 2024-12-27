@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-23 17:47+0100\n"
+"POT-Creation-Date: 2024-12-27 13:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: invites/forms.py:12 invites/models.py:10 invites/models.py:13
+#: invites/forms.py:11 invites/models.py:10 invites/models.py:13
 msgid "Invite code"
 msgstr "Einladungscode"
 
-#: invites/forms.py:20 invites/forms.py:22
+#: invites/forms.py:19 invites/forms.py:21
 msgid "Invite code is not valid!"
 msgstr "Einladungscode ist nicht gültig!"
 

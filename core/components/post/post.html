@@ -9,10 +9,14 @@
   <div class="col-span-6">
     <header class="px-2 py-1 border-y border-neutral-300 bg-neutral-200 text-neutral-content">
       <div class="overflow-hidden">
-        {% url 'profile' created_by.id as href %}
-        {% blocktranslate with href=href name=created_by.display_name trimmed %}
-          <a class="font-bold text-contain" href="{{ href }}">{{ name }}</a> has written
-        {% endblocktranslate %}
+        {% if created_by %}
+          {% url 'profile' created_by.id as href %}
+          {% blocktranslate with href=href name=created_by.display_name trimmed %}
+            <a class="font-bold text-contain" href="{{ href }}">{{ name }}</a> has written
+          {% endblocktranslate %}
+        {% else %}
+          {% translate '[User deleted] has written' %}
+        {% endif %}
       </div>
       <div class="text-sm">{% blocktranslate with created_at=created_at %}At {{ created_at }}{% endblocktranslate %}</div>
       {% if component_vars.is_filled.subline %}
