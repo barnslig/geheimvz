@@ -48,6 +48,39 @@ def friend_add(request: HttpRequest, pk: str):
     if request.method == "POST":
         form = FriendAddForm(request.POST)
         if form.is_valid():
+            are_friends = Friend.objects.are_friends(request.user, other_user)
+            if are_friends:
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You are already friends with this person.")
+                )
+                return redirect(other_user)
+
+            friend_request_sent = False
+            friend_request_sent = request.user.friendship_requests_sent.filter(
+                to_user=other_user
+            ).first()
+            if friend_request_sent:
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("You have already sent this person a friend request.")
+                )
+                return redirect(other_user)
+
+            friend_request_received = False
+            friend_request_received = other_user.friendship_requests_sent.filter(
+                to_user=request.user
+            ).first()
+            if friend_request_received:
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    _("This person has already sent you a friend request.")
+                )
+                return redirect(other_user)
+
             message = form.cleaned_data["message"]
             Friend.objects.add_friend(request.user, other_user, message)
 

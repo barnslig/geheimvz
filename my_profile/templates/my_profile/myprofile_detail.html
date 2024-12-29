@@ -27,13 +27,26 @@
             </form>
           </li>
           <li><a class="action" href="{% url 'friend-remove' user.id %}">{% translate 'End friendship' %}</a></li>
-        {% elif not friend_request_sent %}
+        {% elif not friend_request_sent and not friend_request_received %}
           <li><a class="action" href="{% url 'friend-add' user.id %}">{% translate 'Add friend' %}</a></li>
-        {% else %}
+        {% elif friend_request_sent %}
           <li>
             <form class="flex flex-1" method="post" action="{% url 'friendship_cancel' friend_request_sent.pk %}">
               {% csrf_token %}
               <button type="submit" class="action">{% translate 'Cancel friend request' %}</button>
+            </form>
+          </li>
+        {% elif friend_request_received %}
+          <li>
+            <form class="flex flex-1" method="post" action="{% url 'friendship_accept' friend_request_received.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="action">{% translate 'Confirm friend request' %}</button>
+            </form>
+          </li>
+          <li>
+            <form class="flex flex-1" method="post" action="{% url 'friendship_reject' friend_request_received.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="action">{% translate 'Reject friend request' %}</button>
             </form>
           </li>
         {% endif %}

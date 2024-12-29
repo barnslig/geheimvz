@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 20:24+0100\n"
+"POT-Creation-Date: 2024-12-29 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,36 +156,48 @@ msgid_plural "%(count)s mutual friends."
 msgstr[0] "Ein gemeinsamer Freund."
 msgstr[1] "%(count)s gemeinsame Freunde."
 
-#: friends/views.py:25
+#: friends/views.py:26
 msgid "All friends"
 msgstr "Alle Freunde"
 
-#: friends/views.py:29
+#: friends/views.py:30
 msgid "Find friends"
 msgstr "Freunde finden"
 
-#: friends/views.py:33
+#: friends/views.py:34
 msgid "Friend requests"
 msgstr "Freundschaftsanfragen"
 
-#: friends/views.py:37
+#: friends/views.py:38
 msgid "Sent friend requests"
 msgstr "Verschickte Freundschaftsanfragen"
 
 #: friends/views.py:57
+msgid "You are already friends with this person."
+msgstr "Du bist bereits mit dieser Person befreundet."
+
+#: friends/views.py:69
+msgid "You have already sent this person a friend request."
+msgstr "Du hast dieser Person bereits eine Freundschaftsanfrage gestellt."
+
+#: friends/views.py:81
+msgid "This person has already sent you a friend request."
+msgstr "Diese Person hat dir bereits eine Freundschaftsanfrage gestellt."
+
+#: friends/views.py:91
 msgid "Friendship request sent."
 msgstr "Freundschaftsanfrage verschickt!"
 
-#: friends/views.py:92
+#: friends/views.py:126
 msgid "Friendship ended."
 msgstr "Freundschaft beendet."
 
-#: friends/views.py:98
+#: friends/views.py:132
 #, python-format
 msgid "End friendship with %(name)s"
 msgstr "Freundschaft mit %(name)s beenden"
 
-#: friends/views.py:100
+#: friends/views.py:134
 #, python-format
 msgid "Are you sure that you want to end the friendship with %(name)s?"
 msgstr ""

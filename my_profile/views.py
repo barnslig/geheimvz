@@ -48,9 +48,13 @@ def profile(request: HttpRequest, id: str):
     are_friends = Friend.objects.are_friends(request.user, user)
 
     friend_request_sent = False
+    friend_request_received = False
     if not are_friends:
         friend_request_sent = request.user.friendship_requests_sent.filter(
             to_user=user
+        ).first()
+        friend_request_received = user.friendship_requests_sent.filter(
+            to_user=request.user
         ).first()
 
     sections = []
@@ -102,6 +106,7 @@ def profile(request: HttpRequest, id: str):
         "friends": friends,
         "are_friends": are_friends,
         "friend_request_sent": friend_request_sent,
+        "friend_request_received": friend_request_received,
         "connection": connection,
         "groups": groups,
         "pinboard_page_obj": pinboard_page_obj,
