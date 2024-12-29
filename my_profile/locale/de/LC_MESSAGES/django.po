@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 13:10+0100\n"
+"POT-Creation-Date: 2024-12-29 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: my_profile/forms.py:47 my_profile/views.py:66
+#: my_profile/forms.py:47 my_profile/views.py:70
 msgid "General"
 msgstr "Allgemeines"
 
-#: my_profile/forms.py:55 my_profile/views.py:68
+#: my_profile/forms.py:55 my_profile/views.py:72
 msgid "Personal"
 msgstr "Persönliches"
 
@@ -263,81 +263,89 @@ msgstr "Freundschaftsanfrage stellen"
 msgid "Cancel friend request"
 msgstr "Freundschaftsanfrage zurückziehen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:44
+#: my_profile/templates/my_profile/myprofile_detail.html:43
+msgid "Confirm friend request"
+msgstr "Freundschaftsanfrage bestätigen"
+
+#: my_profile/templates/my_profile/myprofile_detail.html:49
+msgid "Reject friend request"
+msgstr "Freundschaftsanfrage ablehnen"
+
+#: my_profile/templates/my_profile/myprofile_detail.html:57
 msgid "Friends"
 msgstr "Freunde"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:47
+#: my_profile/templates/my_profile/myprofile_detail.html:60
 msgid "You have no friends."
 msgstr "Du hast keine Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:49
+#: my_profile/templates/my_profile/myprofile_detail.html:62
 #, python-format
 msgid "<span dir=\"auto\">%(name)s</span> has no friends."
 msgstr "<span dir=\"auto\">%(name)s</span> hat keine Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:63
+#: my_profile/templates/my_profile/myprofile_detail.html:76
 msgid "Connection"
 msgstr "Verbindung"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:65
+#: my_profile/templates/my_profile/myprofile_detail.html:78
 msgid "It's you!"
 msgstr "Das bist Du!"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:67
+#: my_profile/templates/my_profile/myprofile_detail.html:80
 msgid "You are friends."
 msgstr "Ihr seid Freunde."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:77
+#: my_profile/templates/my_profile/myprofile_detail.html:90
 msgid "No connection found."
 msgstr "Keine Verbindung gefunden."
 
-#: my_profile/templates/my_profile/myprofile_detail.html:83
+#: my_profile/templates/my_profile/myprofile_detail.html:96
 msgid "Informations"
 msgstr "Informationen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:84
+#: my_profile/templates/my_profile/myprofile_detail.html:97
 msgid "Account"
 msgstr "Account"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:88
+#: my_profile/templates/my_profile/myprofile_detail.html:101
 msgid "Name"
 msgstr "Name"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:93
+#: my_profile/templates/my_profile/myprofile_detail.html:106
 msgid "Member since"
 msgstr "Mitglied seit"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:98
+#: my_profile/templates/my_profile/myprofile_detail.html:111
 msgid "Last update"
 msgstr "Letztes Update"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:120
+#: my_profile/templates/my_profile/myprofile_detail.html:133
 msgid "Groups"
 msgstr "Gruppen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:130
+#: my_profile/templates/my_profile/myprofile_detail.html:143
 msgid "Pinboard"
 msgstr "Pinnwand"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:133
+#: my_profile/templates/my_profile/myprofile_detail.html:146
 #, python-format
 msgid "Showing %(showing)s of %(total)s"
 msgstr "Zeige %(showing)s von %(total)s"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:139
+#: my_profile/templates/my_profile/myprofile_detail.html:152
 msgid "Write something"
 msgstr "Etwas schreiben"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:140
+#: my_profile/templates/my_profile/myprofile_detail.html:153
 msgid "Show all"
 msgstr ""
 
-#: my_profile/templates/my_profile/myprofile_detail.html:148
+#: my_profile/templates/my_profile/myprofile_detail.html:161
 msgid "Delete post"
 msgstr "Post löschen"
 
-#: my_profile/templates/my_profile/myprofile_detail.html:152
+#: my_profile/templates/my_profile/myprofile_detail.html:165
 msgid "Be the first to write something!"
 msgstr "Schreib den ersten Beitrag!"
 
@@ -349,6 +357,6 @@ msgstr "Das bin ich"
 msgid "Back to your profile"
 msgstr "Zurück zu deiner Seite"
 
-#: my_profile/views.py:118
+#: my_profile/views.py:123
 msgid "Profile successfully updated"
 msgstr "Profil erfolgreich geupdated."
