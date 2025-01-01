@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: generate-invites
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: "OnFailure"
+          volumes:
+            - name: env-config
+              configMap:
+                name:  {{ include "geheimvz.fullname" . }}-config
+                items:
+                  - key: .env
+                    path: .env
+            - name: database-config
+              configMap:
+                name: {{ include "geheimvz.fullname" . }}-database-config
+          imagePullSecrets:
+            - name: dockerconfigjson-github-com
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command: [ "/app/.venv/bin/python" ]
+              args:
+                - /app/manage.py
+                - generate_invites
+              volumeMounts:
+                - name: env-config
+                  mountPath: /app/.env
+                  subPath: .env
+                - name: database-config
+                  mountPath: /app/geheimvz/db_settings.py
+                  subPath: db_settings.py
+                  readOnly: true
+              {{- with .Values.volumeMounts }}
+                {{- toYaml . | nindent 12 }}
+              {{- end }}
+              env:
+               - name: S3_ACCESS_KEY_ID
+                 valueFrom:
+                   secretKeyRef:
+                     name: geheimvz-minio
+                     key: root-user
+               - name: S3_SECRET_ACCESS_KEY
+                 valueFrom:
+                   secretKeyRef:
+                     name: geheimvz-minio
+                     key: root-password
+               - name: DATABASE_PASSWORD
+                 valueFrom:
+                   secretKeyRef:
+                     name: geheimvz-postgresql
+                     key: postgres-password
+               - name: DJANGO_SETTINGS_MODULE
+                 value: "geheimvz.db_settings"

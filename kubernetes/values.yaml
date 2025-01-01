@@ -5,7 +5,7 @@ config:
   SECRET_KEY: "django-insecure-0vmd)dzp1if@fftcsgaka2y5m5+&r#k^!1yq5d3pq8*w)l3ku^"
   TIME_ZONE: "Europe/Berlin"
   EMAIL_FROM: "vz@example.com"
-  EMAIL_URL: "smtp://haraka:8025"
+  EMAIL_URL: "smtp://geheimvz-haraka:8025"
   BASE_URL: "http://localhost:8000"
   QUEUE_BROKER_URL: "redis://geheimvz-redis-master:6379/0"
   CACHE_URL: "redis://geheimvz-redis-master:6379/1"
@@ -27,7 +27,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "main"
+  tag: ""
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: {}
@@ -147,14 +147,20 @@ minio:
   fullnameOverride: geheimvz-minio
   provisioning:
     buckets: "geheimvz"
+  # if you want to use minio locally you probably need to set this to true and add a hostname
+  hostname:
+  apiIngress:
+    enabled: false
+    path: /media(/|$)(.*) 
+    pathType: ImplementationSpecific
 
 postgresql:
   fullnameOverride: geheimvz-postgresql
   auth:
     database: "geheimvz"
 
-haraka:
   haraka:
+   haraka:
     env:
     - name: HARAKA_HOSTLIST
       value: localhost,localhost.kubero.dev
